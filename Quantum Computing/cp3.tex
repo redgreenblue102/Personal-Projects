@@ -1,0 +1,68 @@
+\section{Introduction to Computer Science}
+
+\textbf{3.3}
+
+Suppose we have a turing machine with two tapes. The top one takes as it's input $x$ and the rest is blanks, while the second tape starts off as all blanks, b. The alphabet we consider will have $ 0,1,b, \triangleright$, we will have states $ q_s, f, r,b_0,q_h $ and our program lines will be
+\[\braket{q_s,\triangleright,\triangleright,f,\triangleright,\triangleright, 1,1}\]
+\[\braket{f,1,b,f,1,b, 1, 0}\]
+\[\braket{f,0,b,f,0,b,1,0}\]
+\[\braket{f,b,b,r,b,b,-1,0}\]
+\[\braket{r,1,b,r,b,1,-1,1}\]
+\[\braket{r,0,b,r,b,0,-1,1}\]
+\[\braket{r,\triangleright,b,q_h,\triangleright,b,0,0}\]
+This will have the reverse of the input on the second tape
+
+\textbf{3.5}
+
+Suppose for contradiction that there exists an algorithm, H which can determine if the turing machine $M$ will halt when given a blank tape. Let H return true if M does halt for a blank tape and false otherwise. Let $M$ be defined so that when H is true, M does not halt for a blank tape, and when H is false $M$ does halt for a blank tape. In the case $M$ does halt, H would have returned true, meaning $M$ doesn't halt, a contradiction. In the case $M$ doesn't halt $H$ would have returned false, meaning $M$ does halt, a contradiction. In both cases we have a contradiction and so there does not exist such an algorithm to determine if a turing machine halts.
+
+\textbf{3.6}
+
+Suppose for contradiction there does exist a probabilistic turing machine, M which outputs $h_p(x)$ with probability of correctness strictly greater than $1/2$ for all x. Let x be the machine defined as such, x halts if $M$ outputs 0 otherwise it doesn't halt. In the case $M$ outputs 0, we have two cases. In the case $M$ is correct, we would have $ M$ returning $0$ greater than $1/2$ of the time. But that would mean, x halts greater than $1/2$ of the time, a contradiction. In the case $M$ is wrong, then $M$ would return 0 less than $1/2$ and halt less than $1/2$ of the time but that would mean $M$ is correct, a contradiction. In the case $M$ returns 1, we have two cases. In the case $M$ is correct, $M$ would return $1$, greater than $1/2$ of the time leading to $x$ not halting more than $1/2$ of the time and so it would halt less than $1/2$ of the time, a contradiction since $M$ returning 1 being correct means $x$ halts $1/2$ of the time or greater. In the case $M$ is wrong, we would have halting greater than $1/2$ the time, but that would mean $M$ is right, a contradiction. Therefore such an $M$ cannot exist as required.
+
+\textbf{3.9}
+
+Suppose $f(n)\in O(g(n))$ then $ f(n)\leq cg(n)$ for some constant $c$ and all $n\geq n_0$ for some $n_0$. But that also means, $\frac{1}{c}f(n)\leq g(n)$. Since $\frac{1}{c}$ is a constant, we now have $ g(n)\in \Omega(f(n))$. Suppose $g(n)\in \Omega(f(n))$ Then $ cg(n) \leq f(n)$ for some constant $c$ and all $n\geq n_0$ for some $n_0$. That then means $g_(n)\leq \frac{1}{c}f(n)$ and so we can conclude $ g(n)\in \Omega(f(n))$ as required. This proves the equivalence relationship. Now $f(n)\in \Theta(g(n))$ if and only if $ f(n)\in O(g(n))$ and $ f(n)\in \Omega(g(n))$. This is true if and only if $ g(n)\in \Omega(f(n))$ and $g(n) \in O(f(n))$, which is true if and only if $ g(n)\in \Theta(f(n))$ as required.
+
+\textbf{3.10}
+
+Suppose $g(n)$ is a polynomial of degree k. Let $l\geq k$, then $n^l\geq n^k$ for all $n\geq 1$. Since we have \[g(n) 
+= \sum_{i=0}^ka_in^i\] and $ a_in^l\geq a_in^i$ for all $n\geq 1$, we can conclude that \[\sum_{i=0}^ka_in^i \leq n^l\sum_{i=0}a_i\] for all $n\geq 1$. So $g(n)\in O(n^l)$ for any $l\geq k$. 
+
+
+\textbf{3.11}
+
+Suppose $k\geq 0$, we have $ 2^{\log(n)} = n$, and $ n\leq 2^n$ for all $n$. Then $\log(n) \leq n$. Since $n\leq n^k$ for all $k>0$ and $n\geq 1$, we can thus conclude $\log(n) \leq n^k$ for all $k>0$ and $n\geq 1$ meaning $ \log(n) \in O(n^k)$ for all $k>0$ as required.
+
+\textbf{3.15 (U)}
+
+We will do proof using induction. For base case $n=1$, we will have $ 1$ possible initial ordering and after $k\geq 0$ swaps, we would have the 1 possible initial ordering sorted. Thus we have at most $2^k$ initial offering sorted. Now suppose as inductive hypothesis that for $n>0$ we have $ S_{nk}\leq 2^k$, where $S_{nk}$ is the amount of initial orderings that have been sorted after $k$ compare and swaps of an element list with $n$ elements. Now consider a list of $n+1$ elements. We first consider sorting the first $n$ elements. By inductive hypothesis, we would have $ S_{nk}\leq 2^k$ for $k$ swap operations. But in order for the $n+1$ elements to be sorted, we must also have the last element being in the correct place, so given the first $n$ elements, are sorted, only $1/(n+1)$ of the possible combinations would be fully sorted. So we have $ S_{nk}/(n+1) \leq 2^k$ will be sorted when the first $n$ elements are sorted. For the final element to be sorted, we would have at most $n+1$ extra swaps, each swap only bringing in one additional permutation, This would still mean that the amount sorted after $k$ swaps is at most $2^k$ as required.
+Since we can sort at most $2^k$ permutations, after $k$ swaps, and a list of $n$ element, has $n!$ permutations, we would need at least $2^k \geq n!$, so \[k \geq \log(n!) = \sum_{i=1}^n\log(i)\] and since we have $ $ for $n\geq 1$, we have 
+\[\sum_{i=1}^n\log(i) = \log(n!) \leq n\log(n)\] We then have $ n! \leq n^n$ for $n\geq 1$
+
+\textbf{3.17}
+
+Suppose a polynomial-time algorithm for finding the factors of a number m exists. Then the factoring decision problem is easily answered if we apply the given algorithm and compare its results to see if there are any factors less than l that aren't 1. This would add at most a factor of l to the time complexity. Thus the factoring decision problem is still polynomial-time. Therefore we can conclude that it is in \textbf{P} by definition of \textbf{P}. Now suppose the factoring decision problem is in \textbf{P}. Then given a composite integer $m$ and $l<m$, we can determine if $m$ has a non-trivial factor less than $l$ in polynomial time. Now consider the algorithm defined as so, check inductively starting from 1, if there are any non-trivial factors of m less than $l$. At the lowest $l$ that returns true, we would know that $l-1$ is a factor of $m$. This will take no more than $m$ factoring decisions, so we have $m*T$ where $T$ is the time for a factoring decision. We then divide m by $l-1$ and obtain a new factor s. Applying the factoring decision algorithm as we did for m, except with s as the new number, we obtain a factor p of both s and m. Dividing s by p we get another factor of m lets call n. We then apply the above process to n and continue until the factoring decision can't find anymore factors. This will take at most m more uses of m more factoring decisions and $m*m*T + m*T$. But $T\leq Cm^k$ for some $k$ since it is a polynomial-time algorithm. Thus $m*m*T + m*T \leq Cm^{k+2} +Cm^{k+1}$ which is in the class $O(m^{k+2})$ and is still polynomial time as required.
+
+\textbf{3.19}
+
+Let m,n be the vertices we are considering for reachability. Start at m and consider the recursive method defined as so. Mark current node as visited. Check if any of the edges connected to the current vertex lead to n. if there is, we are done. if not traverse an edge that does not lead to a visited vertex. If none of the edges lead to a vertex that hasn't been visited, return to the previous vertex or in the case that there is no previous vertex, we are done and conclude that n cannot be reached.  Repeat above steps until one of the stopping cases are met. This algorithm will determine reachability in $O(n^2)$ time since at each node we will have visited each vertex at most $n-1$ times and with a total of $n$ vertices, we would have $n(n-1)$ visits and a complexity of $O(n^2)$ as required. Then by checking from vector $m$ if all the other $n-1$ nodes are reachable, we can confirm if the graph is connected. This would be in the class $O(n^3)$ as required.
+
+\textbf{3.20}
+
+Let $G$ be a connected graph of $t$ vertices. Suppose $G$ contains a Euler cycle. Suppose for contradiction that one of the vertex has an odd number $m = 2n-1$ edges. Since $G$ contains a Euler cycle, there exists a cycle $v_j$, such that each of the $m$ edges are traversed exactly once. Then for any edge of the vertex, we must have $l = \{v_k,v_{k+1}\}$ for some $k$ and $l\neq \{v_j,v_{j+1}\}$ where $j\neq k$. So when also considering the definition of a cycle, we must have $\{v_k,v_{k+1}\}\neq\{v_{k-1},v_{k}\}$. These two are edges of the vertex which are different. So by following the above procedure $n-1$ times, we will be left with one edge which has not been paired off. We must have for some  k, $\{v_k,v_{k+1}\}$ being the edge. But we must have $\{v_k,v_{k+1}\} = \{v_{k-1},v_{k}\}$ since all other edges have been paired off. But this is also a contradiction since that would mean the same edge appeared twice in the cycle. Therefore we have a contradiction and the vertex must have an even number of edges at each vertex. Now suppose every vertex has an even number of edges. We can create a cycle through the following procedure. Start at any vertex. Traverse a non-traversed edge that does not go back to the starting vertex and mark it as traversed, also add it to the sequence. If the only non-traversed edge is to the starting vertex, traverse that edge and we are done. Repeat until stopping case is reached and the sequence will be a eulur cycle.
+
+\textbf{3.21}
+
+Suppose $L_1$ is reducible to $L_2$ and $L_2$ is reducible to $L_3$. Then there exists a Turing machine operating in polynomial time such that given an input $x$, it outputs $R(x)$, and $x\in L_1$ if and only if $R(x)\in L_2$ and there exists a Turing machine operating in polynomial time such that given an input $x$, it outputs $F(x)$, and $x\in L_2$ if and only if $F(x)\in L_3$. We then have a Turing machine which first applies $R(x)$ and then applies $F(x)$ to $R(x)$ for a composition $F(R(x))$. This is in polynomial time since the turing machines that output $R(x)$ and $F(x)$ are in polynomial time and the composition is just the addition of the two times which would also be polynomial time. Now suppose $x\in L_1$ then $R(x)\in L_2$ and $F(R(x))\in L_3$ as required. Now suppose $z\in L_3$. Then there is a $y\in L_2$ such that $ F(y)=z$. Since $y\in L_2$, we have an $x\in L_1 $ such that $R(x) = y$ and so $z = F(R(x))$ where $x\in L_1$ as required. Therefore we can conclude that $L_1$ is reducible to $L_3$.
+
+\textbf{3.22}
+
+Suppose $L$ is complete for a complexity class, and $L'$ is another language in the complexity class such that $L$ reduces to $L'$. Let $X$ be a language in the same complexity class as $L$. Then $X$ can be reduced to $L$ but since $L$ can be reduced to $L'$ we have by transitivity that $X$ can be reduced to $L'$. Since $X$ was arbitrary in the complexity class, we can conclude that all languages in the complexity class can be reduced to $L'$ making $L'$ complete as required.
+
+\textbf{3.29}
+
+We have from the application of the fredkin gate on inputs $a,b,$ and $c$, two cases. In the case $c$ is $1$, the output after the first fredkin gate will be $b,a,c$. Since $c$ doesn't change, the application of the second fredking gate will then result in a swap and so $a,b,c$ which is just the input. In the case $c = 0$, we have no swap resulting in an output of $a,b,c$ after the first fredkin gate. Since $c$ stays the same, we would have no swap from the second fredkin gate, meaning the output is $a,b,c$ as required. Thus we can conclude that applying the fredkin twice results back in the input. 
+
+ 
+

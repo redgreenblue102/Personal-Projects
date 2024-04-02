@@ -1,0 +1,16 @@
+
+
+
+
+\section{Introduction}
+
+\textbf{1.1}
+
+Suppose that Alice sends two different numbers to Bob. In the case that both numbers come back the same, we assume that the function is constant, if different then assume that the function is balanced. Doing this only requires two queries. The probability of getting the function correct would be \[ 1* p_c + \frac{1}{2}*p_b\] where $p_c$ is the probability of bob using a constant function and $ p_b$ the probability of bob using a balanced function. This is because when the function is balanced we must get $1,0$ or $0,1$ half of the time. Thus we will get $p_b$ correct half the time. This method will also always get the constant valued function right since when given a constant valued function both of the values will return as the same all the time. Since we must have $p_b + p_c = 1$, and we have $ 2(1* p_c + \frac{1}{2}*p_b) = p_c + p_c + p_b = p_c +1 $, we can conclude that 
+\[ 1* p_c + \frac{1}{2}*p_b = \frac{1}{2}p_c + \frac{1}{2}\]
+But $p_c\geq 0$ due to describing the probability of getting a constant function. Thus we have \[ 1* p_c + \frac{1}{2}*p_b = \frac{1}{2}p_c + \frac{1}{2}\geq \frac{1}{2}\]
+meaning that we will get the correct function half the time. Thus having an error rate of $1/2$ as required.
+
+
+
+

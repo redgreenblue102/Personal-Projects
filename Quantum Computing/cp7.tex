@@ -1,0 +1,56 @@
+\section{Physical Realization}
+
+\textbf{7.1}
+
+We have \[a^\dag a =\frac{1}{\sqrt{2m\hbar\omega}}\left(m\omega x -ip\right)\frac{1}{\sqrt{2m\hbar\omega}}\left(m\omega x + ip\right) =\]
+\[\frac{1}{2m\hbar\omega}(m^2\omega^2x^2 -im\omega px +im\omega x p +p^2) = \]
+\[\frac{1}{2m\hbar\omega}(m^2\omega^2x^2 +im\omega (x p-px ) +p^2) =\]
+\[\frac{1}{2m\hbar\omega}(m^2\omega^2x^2 +im\omega(i\hbar) +p^2) =\frac{1}{2m\hbar\omega}(m^2\omega^2x^2 -m\omega\hbar +p^2) =  \]
+\[\frac{1}{\hbar\omega}\left(\frac{m\omega^2x^2}{2} +\frac{p^2}{2m}\right)-\frac{1}{2} = \frac{H}{\hbar\omega } - \frac{1}{2}\]
+as required
+
+\textbf{7.2}
+
+We have 
+
+\[aa^\dag = \frac{1}{\sqrt{2m\hbar\omega}}\left(m\omega x +ip\right)\frac{1}{\sqrt{2m\hbar\omega}}\left(m\omega x - ip\right)= \]
+\[\frac{1}{2m\hbar\omega}(m^2\omega^2x^2 +im\omega (px-xp) +p^2) = \frac{1}{2m\hbar\omega}(m^2\omega^2x^2 +m\omega\hbar +p^2) \]
+So
+\[[a, a^\dag] = aa^\dag - a^\dag a = \frac{1}{2m\hbar\omega}\left((m\omega x)^2 +m\omega\hbar +p^2 - (m\omega x)^2 +m\omega\hbar -p^2)\right)= 1\]
+
+\textbf{7.3}
+
+We have 
+\[[H,a] = Ha -a H =\hbar\omega \left(a^\dag aa + \frac{a}{2}-aa^\dag a -\frac{a}{2}\right) = \hbar\omega\left(a^\dag aa -aa^\dag a\right) \]\[\hbar \omega\left(a^\dag a - a a^\dag\right)a = -\hbar \omega a \]
+
+Since $\ket{\psi}$ has energy $ E\geq n\hbar \omega$. We then have $ Ha^n\ket{\psi} = H a a^{n-1}\ket{\psi} = ([H,a] + aH)a^{n-1} \ket{\psi} =([H,a] + aH)a^{n-1} \ket{\psi}=([H,a] + aH)a^{n-1} \ket{\psi} = (-\hbar\omega a + aH)a^{n-1}\ket{\psi} = -\hbar\omega a^n\ket{\psi}+ aHa^{n-1}\ket{\psi}$. But we can reapply $H$ to $a^{n-1}$ in the same way and get another $-\hbar \omega a^n\ket{\psi}$ term until we have $ n$ of it and $H$ gets applied to $\ket{\psi}$ resulting in a $ E\ket{\psi}$ term. Thus we have $(E -n\hbar \omega)a^n\ket{\psi}$.
+
+
+\textbf{7.4}
+
+Consider the base case $ n=0$, we then have
+\[\ket{0} = \frac{(a^\dag)^0}{\sqrt{0!}}\ket{0} = \ket{0}\] proving the base case.
+Now suppose for some $n\geq 0$, we have \[\ket{n} = \frac{(a^\dag)^n}{\sqrt{n!}}\ket{0}\] Since \[a^\dag \ket{n} = \sqrt{n+1}\ket{n+1} \quad\text{we have} \quad \frac{a^\dag}{\sqrt{n+1}} \ket{n} = \ket{n+1}\] But \[\frac{a^\dag}{\sqrt{n+1}} \ket{n}  =  \frac{(a^\dag)^{n+1}}{\sqrt{(n+1)!}}\ket{0}\] by inductive hypothesis and so 
+\[\ket{n+1} = \frac{(a^\dag)^{n+1}}{\sqrt{(n+1)!}}\ket{0}\]
+as required
+
+\textbf{7.5}
+
+We have $ a^\dag a\ket{n} = a^\dag \sqrt{n}\ket{n-1} =\sqrt{n}a^\dag \ket{n-1} = \sqrt{n}\sqrt{n}\ket{n} = n\ket{n}$ as required.
+
+\textbf{7.6}
+
+We have \[a\ket{\alpha} = a\left(e^{-|\alpha|^2/2}\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}\ket{n}\right)=e^{-|\alpha|^2/2}\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}a\ket{n} =\]\[e^{-|\alpha|^2/2}\left(a\ket{0}+\sum_{n=1}^\infty\frac{\alpha^n}{\sqrt{n!}}a\ket{n}\right) = e^{-|\alpha|^2/2}\sum_{n=1}^\infty\frac{\alpha^n}{\sqrt{n!}}a\ket{n} = \]\[e^{-|\alpha|^2/2}\sum_{n=1}^\infty\frac{\alpha^n}{\sqrt{n!}}\sqrt{n}\ket{n-1} = e^{-|\alpha|^2/2}\sum_{n=1}^\infty\frac{\alpha^n}{\sqrt{(n-1)!}}\ket{n-1} =\] \[\frac{1}{\alpha}e^{-|\alpha|^2/2}\sum_{n=1}^\infty\frac{\alpha^{n-1}}{\sqrt{(n-1)!}}\ket{n-1} = \frac{1}{\alpha}e^{-|\alpha|^2/2}\sum_{n=0}^\infty\frac{\alpha^{n}}{\sqrt{(n)!}}\ket{n} = \frac{1}{\alpha}\ket{\alpha}\]
+as required
+
+\textbf{7.7}
+
+We have $\ket{\psi_{in}} = c_0\ket{01} +c_1\ket{10}$. Then after going through the circuit shown, we have $\ket{\psi_{out}} = c_0e^{i\pi}\ket{01} +c_1\ket{10} =c_0e^{i\pi}\ket{01} +c_1\ket{10} =  -c_0\ket{01} +c_1\ket{10} $
+From the matrix we have
+\[\begin{bmatrix}
+    e^{i\pi} & 0 \\
+    0 & 1
+\end{bmatrix}\ket{\psi_in} =\begin{bmatrix}
+    e^{i\pi} & 0 \\
+    0 & 1
+\end{bmatrix}(c_0\ket{01} +c_1\ket{10}) = -c_0\ket{01} +c_1\ket{10}) \]

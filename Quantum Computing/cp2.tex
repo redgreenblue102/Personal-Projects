@@ -1,0 +1,474 @@
+\section{Introduction to quantum mechanics}
+
+\textbf{2.1}
+
+Consider $(1,2) + (1,-1) - (2,1) = (1+1-2, 2-1 -1) = 0$. Thus we have coefficients that are not 0 which result in a sum that equals 0. Meaning the vectors are indeed linearly dependent.
+
+\textbf{2.2}
+
+We can assume that A is a 2x2 matrix because it maps from a 2 dimensional to a 2 dimensional vector space. So let 
+\[
+A=
+\begin{bmatrix}
+   A_{11} & A_{12}\\
+   A_{21} & A_{22}
+\end{bmatrix}
+\]
+Then we have $ A\ket{0} =(A_{11}, A_{21}) $ and $A\ket{1} = (A_{12},A_{22})$. But we want $A\ket{0} = \ket{1}$. So we must have $(A_{11}, A_{21}) = (0,1)$ thus $A_{11} = 0$ and $A_{21} = 1$. Also because $ A\ket{1} = \ket{0}$, we must also have $(A_{12},A_{22}) = (1,0)$. Thus $A_{12} = 1$ and $A_{22} =0$. So
+\[A =
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0 \\
+\end{bmatrix}
+\]
+
+Consider the basis vectors $\ket{\alpha}=\frac{1}{\sqrt{2}}(\ket{0} + \ket {1})$ and $\ket{\beta}\frac{1}{\sqrt{2}}(-\ket{0} + \ket{1})$. We then have $A\ket{\alpha} =\ket{\alpha}$. Also $A\ket{\beta} = -\ket{\beta}$. So the transformation in this new basis will have the form 
+\[
+B=
+\begin{bmatrix}
+    1 & 0\\
+    0 & -1
+\end{bmatrix}_{\{\alpha,\beta\}}
+\]
+
+\textbf{2.3}
+
+Let $1\leq l \leq  i$ where $i$ is the length of the $\ket{v_i}$ basis. Then we have the matrix $\mathcal{M}(BA)$ being defined as \[(BA)v_l = \sum_{n=1}^{k} C_{n, k}x_n\] where $k$ is the length of the $\ket{x_k}$ basis. By definition of product of linear maps we have \[(BA)v_l = B(Av_l) = B\sum_{n=1}^{j}A_{n,l}w_n\] where $j$ is the length of the $ \ket{w_j}$ basis. But because $B$ is a linear map we have 
+\[B\sum_{n=1}^{j}A_{n,l}w_n =\sum_{n=1}^{j}A_{n,l}Bw_n =  \]
+\[B\sum_{n=1}^{j}A_{n,l}w_n =\sum_{n=1}^{j}A_{n,l}Bw_n = \sum_{n=1}^{j}A_{n,l}\sum_{m=1}^{i}B_{m,n}v_m = \sum_{n=1}^{j}\sum_{m=1}^{i}B_{m,n}A_{n,l}v_m \]
+But the last part is just the matrix representation of $\mathcal{M}(B)\mathcal{M}(A)$ Thus we can conclude that $\mathcal{M}(BA) = \mathcal{M}(B)\mathcal{A}$ as required.
+
+\textbf{2.4}
+
+The properties of the identity operator $I$, on any linear map $T$ from $V\to W$ where $V$ and $W$ are vector spaces is $ IT = TI = T$. Let $\ket{v_j}$ be a basis of $ V$ and $T$ be a linear map from $ V\to V$  The matrix representation of $\mathcal{M}(IT)$ and $\mathcal{TI}$ is \[ (IT)v_i = Tv_i = \sum_{n=1}^j A_{n,i}v_n\]\[(TI)v_i = Tv_i = \sum_{n=1}^j A_{n,i}v_n\] and also \[(IT)v_i = I(Tv_i) = I\sum_{n=1}^j A_{n,i}v_n = \sum_{n=1}^j A_{n,i}Iv_n\]
+\[(TI)v_i = T(Iv_i) = T\sum_{n=1}^jB_{n,i}v_n = \sum_{n=1}^jB_{n,i}Tv_n\]Thus \[(IT)v_i = (TI)v_i\]
+\[ \sum_{n=1}^jB_{n,i}Tv_n =  \sum_{n=1}^j A_{n,i}Iv_n\]
+\[\sum_{n=1}^jB_{n,i}Tv_n  = \sum_{n=1}^jB_{n,i}\sum_{m=1}^j A_{m,n}v_m = \sum_{n=1}^j\sum_{m=1}^jB_{n,i} A_{m,n}v_m\]
+meaning
+\[ \sum_{n=1}^j A_{n,i}v_n= \sum_{n=1}^j\sum_{m=1}^jB_{n,i} A_{m,n}v_m\]
+But subtracting both sides by  \[\sum_{n=1}^j A_{n,i}v_n \]
+results in 
+\[0 = \left(\sum_{n=1}^j\sum_{m=1}^jB_{n,i} A_{m,n}v_m\right)-\sum_{n=1}^j A_{n,i}v_n =\sum_{m=1}^j\left(\sum_{n=1}^jB_{n,i} A_{m,n}v_m\right)-A_{m,i}v_m = \]\[\sum_{m=1}^j\left(\left(\sum_{n=1}^jB_{n,i} A_{m,n}\right)-A_{m,i}\right)v_m \] 
+The right hand side is just a linear combination of the basis $\ket{v_j}$ of $V$ and so \[ \left(\sum_{n=1}^jB_{n,i} A_{m,n}\right)-A_{m,i} = \]\[\left(\sum_{n=1}^{i-1}B_{n,i} A_{m,n}\right)+\left(\sum_{n=i+1}^{j}B_{n,i} A_{m,n}\right)+A_{m,i}(B_{i,i} -1 )=0\] for all $m$ and $i$. But $A_{m,n}$ could be any value since $T$ was an arbitrary linear transformation. Thus in order for the above equation to be fulfilled, $B_{i,i} = 1$ and $ B_{n,i} = 0$ when $n\neq i$. Doing this means that we must have \[Iv_i = \sum_{n=1}^jB_{n,i}v_n = v_i\]
+Thus we have a matrix which is $1$ only on it's diagonals as required.
+
+\textbf{2.5}
+
+Let $\ket{w},\ket{v},\ket{u}\in \textbf{C}^n$ and $ \lambda \in\textbf{F}$. Then \[(\ket{w},\ket{v}+ \ket{u}) =\sum\limits_{i=1}^n w_i^*(v_i+u_i)\]
+\[(\ket{w},\ket{v}) +(\ket{w},\ket{u}) = \left(\sum\limits_{i=1}^nw_i^*v_i\right)+\left(\sum\limits_{i=1}^nw_i^*u_i\right) = \sum\limits_{i=1}^n w_i^*(v_i+u_i)\] Thus $(\ket{w},\ket{v}) +(\ket{w},\ket{u}) = (\ket{w},\ket{v}+\ket{u})$
+
+Also 
+\[
+\lambda(\ket{w},\ket{v}) = \lambda\sum\limits_{i=1}^nw_i^*v_i
+\]
+\[(\ket{w},\lambda\ket{v}) = \sum\limits_{i=1}^n\lambda w_i^*v_i =\lambda\sum\limits_{i=1}^n w_i^*v_i \]
+Thus $(\ket{w},\lambda\ket{v}) = \lambda(\ket{w},\ket{v})$ and so we can confirm that the defined inner product is linear in it's second argument. 
+
+We also have \[ (\ket{w},\ket{v}) = \sum\limits_{i=1}^nw_i^*v_i\]\[(\ket{v},\ket{w})^* = (\sum\limits_{i=1}^nv_i^*w_i)^* = \sum\limits_{i=1}^n(v_i^*w_i)^*=\sum\limits_{i=1}^nw_i^*v_i\]
+because we have $ v_i = a+bi$ and $ w= c+di$, so $ w_i^*v_i = ac +cbi -adi +bd = (ac+bd) + (cb-ad)i$ and also $(v_i^*w_i)^* = (ac -bci +adi +bd)^* = ((ac+bd) -(cb-ad))^* = (ac+bd) +(cb-ad)$. Thus we have $(v_i^*w_i)^* = w_i^*v_i$ and so it can be concluded that $ (\ket{w},\ket{v}) = (\ket{v},\ket{w})^*$ as required. 
+
+Finally \[(\ket{v},\ket{v}) = \sum_{i=1}^n v^*_iv_i\] But we have $v^*_iv_i = (a-bi)(a+bi)= a^2 +b^2$ which must be greater than or equal to $0$.
+That in turn means $\sum_{i=1}^n v^*_iv_i$ is a sum of numbers greater than or equal to 0 and must therefore be greater than or equal to 0. Thus we have 
+\[(\ket{v},\ket{v})\geq 0\]
+Now suppose $(\ket{v},\ket{v}) = 0$. We then have 
+\[\sum_{i=1}^n v^*_iv_i = 0\]Suppose for contradiction that $ v_i\neq 0$ for some $i$. Then $v^*_iv_i > 0$. But that would mean $\sum_{i=1}^n v^*_iv_i>0$ since all other terms besides $i$ is greater than or equal to 0. That means we must have $v_i = 0$ for all $i$ and thus we can conclude that $\ket{v} = 0$
+
+Now suppose $\ket{v} = 0$. Then $v_i = 0$ and so \[(\ket{v},\ket{v}) = \sum_{i=1}^n v^*_iv_i = \sum_{i=1}^n v^*_i*0 = 0\]Therefore we can conclude that the defined operator is indeed an inner product of $ \textbf{C}^n$
+
+\textbf{2.7}
+
+We have $\ket{w} = (1,1)$ and $ \ket{v} = (1,-1)$. Then $ \braket{w|v} =1*1 -1*1 = 0$. Thus we have orthogonality. The normalized vectors are $\ket{w}/||w|| = \ket{w}/\sqrt{2} = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right) $ and also $ \ket{v}/||v|| = \ket{v}/ \sqrt{2} =\left(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}\right)$
+
+
+
+\textbf{2.9}
+
+For $\sigma_0$ we have \[\sigma_0=I\sigma_0I = \sum_{m=1}^2\sum_{n=1}^2\bra{w_n}\sigma_0\ket{v_m}\ket{w_n}\bra{v_m} =\]\[\braket{0|0}\ket{0}\bra{0} + \braket{1|1}\ket{1}\bra{1} = \ket{0}\bra{0} + \ket{1}\bra{1}\]
+For $\sigma_x$ we have 
+\[\sigma_x = \ket{0}\bra{1} + \ket{1}\bra{0}\]
+For $\sigma_y$ we have 
+\[\sigma_y = i\ket{1}\bra{0}-i\ket{0}\bra{1}\] 
+For $\sigma_z$ we have \[\sigma_z = \ket{0}\bra{0} - \ket{1}\bra{1}\]
+
+\textbf{2.11}
+
+We have 
+\[X =
+\begin{bmatrix}
+    0 & 1\\ 
+    1 & 0
+\end{bmatrix}\]
+so to find the eigenvalues
+\[det\left(\begin{bmatrix}
+    0-\lambda & 1\\ 
+    1 & 0-\lambda
+\end{bmatrix}\right) = 0
+\]
+This means $ \lambda^2 -1 = 0$ and so $ \lambda = \pm 1$. Then the eigenvector corresponding to $\lambda = 1$ has $ -v_1 + v_2 = 0$. This results in $ v_1 = v_2$ and an eigenvector $\frac{1}{\sqrt{2}}(1,1)$
+The eigenvector corresponding to $\lambda= -1$ has $v_1 +v_2 = 0 $ thus resulting in $v_2 = -v_1$ and an eigenvector $\frac{1}{\sqrt{2}}(1,-1)$. Thus we have a diagonal matrix 
+\[\begin{bmatrix}
+    1 & 0\\
+    0 & -1
+\end{bmatrix}\] with respect to the basis $\left(\frac{1}{\sqrt{2}}(1,1), \frac{1}{\sqrt{2}}(1,-1)\right)$.
+For 
+\[Y=
+\begin{bmatrix}
+   0 & i \\
+   -i & 0
+\end{bmatrix}
+\]
+we find the eigenvalues by
+\[det\left(\begin{bmatrix}
+    0-\lambda & i\\ 
+    -i & 0-\lambda
+\end{bmatrix}\right) = 0\]
+meaning $ \lambda^2 -1 = 0$ which once again results in eigenvalues $\lambda = \pm 1$. The eigenvector that corresponds to $\lambda = 1$ then has the property $ -v_1 +iv_2 = 0$. Thus resulting in an eigenvector of $\frac{1}{\sqrt{2}}(i, 1)$. For $\lambda = -1$, we then have the property $ v_1+iv_2 = 0$ and so $v_1 = -iv_2$ thus resulting in eigenvector $ \frac{1}{\sqrt{2}}(-i, 1)$. This means we have a diagonal matrix \[\begin{bmatrix}
+    1 & 0\\
+    0 & -1
+\end{bmatrix}\] with respect to the basis $\left(\frac{1}{\sqrt{2}}(i, 1), \frac{1}{\sqrt{2}}(-i, 1)\right)$. For
+\[Z = 
+\begin{bmatrix}
+    1 & 0\\
+    0 & -1
+\end{bmatrix}\]
+we find the eigenvalues through 
+\[det\left(\begin{bmatrix}
+    1-\lambda & 0\\ 
+    0 & -1-\lambda
+\end{bmatrix}\right) = 0\]
+meaning $ -(1-\lambda)(1+\lambda) = 0$ and so $ 1-\lambda^2 = 0$ which results in once again $\lambda = \pm 1$. The eigenvector corresponding to $ \lambda = 1$ then has the property $-2v_2 = 0$. That means we have an eigenvector $(1,0)$. The eigenvector corresponding to $\lambda = -1$ has the property that $2v_1 = 0$ and so we have an eigenvector $(0,1)$. This results in a diagonal matrix of
+\[\begin{bmatrix}
+    1 & 0\\
+    0 & -1
+\end{bmatrix}\]
+with respect to the basis $ \left((1,0),(0,1)\right)$
+
+\textbf{2.12}
+
+Let
+\[
+Z=
+\begin{bmatrix}
+    1& 0 \\
+    1& 1
+\end{bmatrix}\]
+
+We have $ Zv = \lambda v$. So $ (Z-\lambda I)v = 0$. Solving for $\lambda$ we have $ \det(Z-\lambda I) = 0$. Meaning $ (1-\lambda)(1-\lambda) = 0$. Thus we have $\lambda = 1$ being the only eigenvalue. We then find the eigenvector corresponding to this eigenvalue to be
+\[(Z-\lambda I)v =(Z- I)v = 
+\begin{bmatrix}
+    0 & 0 \\
+    1 & 0
+\end{bmatrix} v = 0\]
+meaning $ 0v_1 + 0v_2 = 0$ and $ v_1 +0 v_2 = 0 $. So $v_1 = 0$ and $v_2$ arbitrary. So we only have the normalized eigenvector of $ \ket{1}$. But $ \ket{1}\bra{1}= \begin{bmatrix}
+    0 & 0 \\
+    0 & 1
+\end{bmatrix}$
+which cannot represent $ Z$ thus it is not diagonalizable.
+
+\textbf{2.13}
+
+Let $\ket{w}$ and $\ket{v}$ be any two vectors. Then \[ ((\ket{w}\bra{v})^\dag\ket{y},\ket{x})=(\ket{y},(\ket{w}\bra{v})\ket{x}) \text{ By definition of hermitian}=\]
+\[\braket{y|w}\braket{v|x} = \braket{y|w}(\ket{v},\ket{x}) = ((\braket{y|w})^*\ket{v},\ket{x}) \text{ Conjugate linear} =\]\[(\braket{w|y}\ket{v},\ket{x}) \text{ Definition of inner product}= (\ket{v}\braket{w|y},\ket{x})\]
+Thus we have $ (\ket{w}\bra{v})^\dag =\ket{v}\bra{w}$ as required
+
+\textbf{2.14}
+
+Let $A$ be any linear operator on a Hilbert space $ V$ and let $ \ket{v},\ket{w}\in V$. Then
+
+\[\left(\left(\sum_{i}a_iA_i\right)^\dag\ket{v},\ket{w}\right) =\left(\ket{v},\sum_{i}a_iA_i\ket{w}\right) = \bra{v}\sum_{i}a_iA_i\ket{w} = \]\[\sum_ia_i(\ket{v},A_i\ket{w}) = \sum_ia_i(A_i^\dag\ket{v},\ket{w}) =\left(\sum_ia_iA_i^\dag\ket{v},\ket{w}\right)\]
+Thus we have 
+\[\left(\sum_{i}a_iA_i\right)^\dag =\sum_ia_iA_i^\dag \]
+as required
+\newpage
+\textbf{2.15}
+
+Let $A$ be any linear operator on a Hilbert space $ V$ and let $ \ket{v},\ket{w}\in V$. Then \[ ((A^\dag)^\dag\ket{v},\ket{w}) = (\ket{v}, A^{\dag}\ket{w}) = (A^{\dag}\ket{w}, \ket{v} )^* = (\ket{w}, A\ket{v})^* = (A\ket{v}, \ket{w})\]
+and so $ (A^\dag)^\dag = A$ as required.
+
+\textbf{2.16}
+
+Let $P$ be any projector. Then \[ P^2 =\sum_{i}^k\sum_{j}^k\ket{i}\bra{i}\ket{j}\bra{j}\] But we have $\braket{i|j} = 0$ when $ i\neq j$, and $ \braket{i|j} = 1$ when $ i = j$. That means 
+\[\sum_{i}^k\sum_{j}^k\ket{i}\bra{i}\ket{j}\bra{j} = \sum_{i}^k\ket{i}\bra{i} = P\]
+Thus we have $P^2 = P$ as required.
+
+\textbf{2.24}
+
+Let $A$ be an arbitrary operator. We have \[A = \frac{A +A + A^\dag - A^\dag}{2} =\frac{(A +A^\dag)  + (A- A^\dag)}{2} = \frac{(A +A^\dag)  + (A- A^\dag)}{2} = \]\[\frac{(A +A^\dag)  + (A- A^\dag)}{2} = \frac{(A +A^\dag)  + i(iA^\dag-iA)}{2}\] Now define \[ B = \frac{(A +A^\dag)}{2}\quad and \quad C = \frac{(iA^\dag-iA)}{2}\]
+Then \[B^\dag =\frac{(A +A^\dag)^\dag}{2} = \frac{(A^\dag + (A^\dag)^\dag)}{2} = \frac{(A+A^\dag)}{2}  = B\] Meaning $B$ is hermitian. Also \[C^\dag =\frac{(iA^\dag-iA)^\dag}{2} = \frac{(-i(A^\dag)^\dag+iA^\dag)}{2} =\frac{(iA^\dag-iA}{2} = C \] and so $C$ is hermitian. Since we have $ A = B + iC$, we can thus conclude that any arbitrary operator can indeed be written as $A = B+iC$ where $B$ and $C$ are hermitian
+
+Let $ P$ be a positive operator. Then $ P = B+iC$ where $B$ and $C$ are hermitian. Now consider $(\ket{\psi},A\ket{\psi})$. We have \[ (\ket{\psi},A\ket{\psi}) =\bra{\psi}A\ket{\psi} =\bra{\psi}(B+iC)\ket{\psi} = \bra{\psi}B\ket{\psi}+i\bra{\psi}C\ket{\psi}\]But because $A$ is positive, we must have $\bra{\psi}B\ket{\psi}+i\bra{\psi}C\ket{\psi}\geq 0  $ and real. That means \[(\bra{\psi}B\ket{\psi}+i\bra{\psi}C\ket{\psi}) =(\bra{\psi}B\ket{\psi}+i\bra{\psi}C\ket{\psi})^* =\bra{\psi}B\ket{\psi}-i\bra{\psi}C\ket{\psi}\]But
+\[B-iC = A^\dag\] and so 
+\[\bra{\psi}B\ket{\psi}-i\bra{\psi}C\ket{\psi} = \braket{\psi|A^\dag\psi}\]We thus have $\braket{\psi|A^\dag\psi} = \braket{\psi|A^\dag\psi}$ and so we can conclude that $A^\dag = A$
+as required.
+
+\textbf{2.25}
+
+Let $A$ be any operator. Then $A = B+iC$ where $B$ and $C$ are hermitian. Then 
+\[AA^\dag = (B+iC)(B+iC)^\dag = (B+iC)(B-iC) =(B+iC)(B-iC)  = B^2 + C^2\]
+
+Since $B$ is hermitian and $ C$ is hermitian, we have a spectral decomposition such that $B = \sum_i\lambda_i\ket{v_i}\bra{v_i}$ and $C = \sum_i\gamma_i \ket{w_i}\bra{w_i}$ where $\lambda_i, \gamma_i$ are real  and $\ket{v_i}$, $\ket{w_i}$ are orthonormal bases. Then 
+\[AA^\dag = \sum_i\lambda_i\ket{v_i}\bra{v_i}\sum_i\lambda_i\ket{v_i}\bra{v_i} +\sum_i\gamma_i \ket{w_i}\bra{w_i}\sum_i\gamma_i \ket{w_i}\bra{w_i} = \]
+\[\sum_{i}\lambda_i^2\ket{v_i}\bra{v_i} +\sum_{i}\gamma_i^2  \ket{w_i}\bra{w_i}\]
+
+So 
+\[\bra{\psi}AA^\dag\ket{\psi} =  \sum_{i}\lambda_i^2\bra{\psi}\ket{v_i}\bra{v_i}\ket{\psi} +\sum_{i}\gamma_i^2  \bra{\psi}\ket{w_i}\bra{w_i}\ket{\psi} =\]\[ \sum_{i}\lambda_i^2|\braket{\psi|v_i}|^2+\sum_{i}\gamma_i^2  |\braket{\psi|w_i}|^2\]
+But we have $\gamma_i^2  |\braket{\psi|w_i}|^2,\lambda_i^2|\braket{\psi|v_i}|^2\geq 0$ are both real and positive. Thus \[\bra{\psi}AA^\dag\ket{\psi} =\sum_{i}\lambda_i^2|\braket{\psi|v_i}|^2+\sum_{i}\gamma_i^2  |\braket{\psi|w_i}|^2 \geq 0\] and so $ A A^\dag$ is indeed a positive operator as required. 
+    
+
+\textbf{2.26}
+
+We have
+
+\[\ket{\psi}^{\otimes2} = \frac{(\ket{0} + \ket{1})}{\sqrt{2}}\otimes\frac{(\ket{0} + \ket{1})}{\sqrt{2}} =\frac{1}{2}((\ket{0}+\ket{1})\otimes\ket{0} + (\ket{0}+\ket{1})\otimes\ket{1}) =\] \[\frac{1}{2}(\ket{0}\ket{0}+\ket{0}\ket{1} + \ket{0}\ket{1} + \ket{1}\ket{1})\]
+With the Kronecker product, we have 
+\[ \ket{\psi}^{\otimes 2} = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    \ket{\psi}\\
+    \ket{\psi}
+\end{bmatrix}
+=\frac{1}{2}
+\begin{bmatrix}
+    1\\
+    1\\
+    1\\
+    1\\
+\end{bmatrix}\]
+
+
+\textbf{2.34}
+
+We first look for the spectral decomposition of 
+\[A = 
+\begin{bmatrix}
+    4 & 3\\
+    3 & 4
+\end{bmatrix}\]
+
+So we solve for the eigenvalues. We have $ (4-\lambda)^2 - 9 = 0 $. Thus $ \lambda = 4\pm 3$, meaning $\lambda_1 = 1$ and $\lambda_2 = 7$ are the two eigenvalues of $A$. Solving for the eigenvector we obtain \[\begin{bmatrix}
+    3 & 3\\
+    3 & 3
+\end{bmatrix} 
+\ket{v} = 0 \quad 
+\begin{bmatrix}
+    -3 & 3\\
+    3 & -3
+\end{bmatrix} 
+\ket{w} = 0 \]meaning we have $v_1 + v_2 = 0$, thus $v_2 = -v_1$ and so $\ket{v} = \frac{1}{\sqrt{2}}(1,-1)$ is a normalized eigenvector. We also have $ -w_1 +w_2 = 0$, so $ w_1 = w_2$, and $ \ket{w} = \frac{1}{\sqrt{2}}(1,1)$ is another normalized eigenvector. The two are also orthogonal since $ \braket{w|v} = 0$. We then have 
+\[A = 7\ket{w}\bra{w} + \ket{v}\bra{v}\]Thus \[\sqrt{A} = \sqrt{7}\ket{w}\bra{w} + \ket{v}\bra{v} = 
+\frac{1}{2}\begin{bmatrix} 
+\sqrt{7} + 1 & \sqrt{7} - 1\\
+\sqrt{7} - 1 & \sqrt{7} + 1
+\end{bmatrix}\]
+and
+
+\[\log(A)= \frac{1}{2}\begin{bmatrix} 
+\log{7} + 1 & \log{7} - 1\\
+\log{7} - 1 & \log{7} + 1
+\end{bmatrix}\]
+
+\textbf{2.42}
+
+\[\frac{[A,B] + \{A,B\}}{2} = \frac{AB-BA + AB+ BA}{2} = \frac{2AB}{2} = AB\]
+as required
+
+\textbf{2.44}
+
+We have $ AB -BA = 0$ and $ AB + BA = 0$. So $AB = BA$ and $ -AB = BA$. Meaning $ AB = -AB$. So $ AB+AB = 0$. Then $ A(2B) = 0$. Applying $ A^{-1}$ to both sides we then get $ 2B = 0$. Thus $B=0$ as required.
+
+\textbf{2.45}
+
+We have $ [A,B]^\dag = (AB-BA)^\dag = (AB)^\dag - (BA)^\dag = B^\dag A^\dag - A^\dag B^\dag = [B^\dag, A^\dag]$
+
+\textbf{2.48}
+
+The polar decomposition of a positive matrix $P$ has $J = \sqrt{P^\dag P}$ and $ K = \sqrt{PP^\dag}$, but because $P$ is positive, we have $P = P^\dag$. So $ J = P$ and $K = P$. Meaning $ P = UP= PU$. But the identity matrix $I = U$ is unitary and satisfies this so $P = IP = PI$. The polar decomposition of a unitary matrix $U$ has $J = \sqrt{U^\dag U}$ and $ K = \sqrt{UU^\dag}$. But because $ U $ is unitary we have $ UU^\dag = I = U^\dag U$ thus $ J = I$ and $K = I$. So we have $ U = UI = IU$. The polar decomposition of a hermitian matrix $H$ has $ J = \sqrt{H^\dag H}$ and $K = \sqrt{HH^\dag}$. But $H$ is hermitian so $H^\dag  = H$ thus $J = H$. We have $ H = UH = HU$. The identity matrix $I$ which is also unitary satisfies $ H = IH = HI$.
+
+\textbf{2.49}
+
+Consider the normal matrix $ N$. We then have $ J = \sqrt{N^\dag N}$ and $ K= \sqrt{NN^\dag}$. But because $N$ is normal we have $ J=K$ and so $N = UJ = JU$ for some unitary matrix $U$. Let $ \sum_ia_i\ket{i}\bra{i}$ be the spectral decomposition of $J$ and let $\sum_jb_j\ket{j}\bra{j}$ be the spectral decomposition of $U$. Then the outer product representation is $ \sum_ia_i\ket{i}\bra{i}\sum_jb_j\ket{j}\bra{j}$
+
+\textbf{2.51}
+
+The Hadamard gate 
+\[H = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+\end{bmatrix}\]
+has \[H^\dag = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+\end{bmatrix}\]
+We then have 
+\[H^\dag H =\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+\end{bmatrix} \frac{1}{\sqrt{2}}\begin{bmatrix}
+    1 & 1 \\
+    1 & -1
+\end{bmatrix} =\begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+\end{bmatrix}  \]
+Thus $H $ is unitary as required
+
+\textbf{2.52}
+
+Since $H^\dag =H$, we can conclude from 2.51 that $H^2 = H^\dag H = I$ as required.
+
+\textbf{2.53}
+
+For the eigenvalues we have $ (\frac{1}{\sqrt{2}}-\lambda)(-\frac{1}{\sqrt{2}}-\lambda) - \frac{1}{2} = 0$. So $ \lambda^2-1 = 0$. Leaving us with $ \lambda_1 = 1$ and $\lambda_2 = -1$ as eigenvalues. That in turn results in \[\begin{bmatrix}
+    \frac{1}{\sqrt{2}} - 1 & \frac{1}{\sqrt{2}}\\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} - 1
+\end{bmatrix}
+v = 0\]
+Thus $ (\frac{1}{\sqrt{2}}-1)v_1  + \frac{1}{\sqrt{2}}v_2 = 0 $, and $ \frac{1}{\sqrt{2}}v_1 +(-\frac{1}{\sqrt{2}} -1)v_2 = 0$. Then $(1-\sqrt{2})(-\frac{2}{\sqrt{2}} -1)v_2 = \frac{1}{\sqrt{2}}v_2$. Meaning $v_2$ is arbitrary, and since $ v_1 = (1+\sqrt{2})v_2$, we have $ (1+\sqrt{2},1)$ as an eigenvector with eigenvalue $ \lambda_1 = 1$. For $\lambda_2 = -1$, we have 
+\[
+\begin{bmatrix}
+    \frac{1}{\sqrt{2}} + 1 & \frac{1}{\sqrt{2}}\\
+    \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} + 1
+\end{bmatrix}
+w = 0
+\]
+That results in $(\frac{1}{\sqrt{2}}+1)w_1  + \frac{1}{\sqrt{2}}w_2 = 0$ and $ \frac{1}{\sqrt{2}}w_1 +(-\frac{1}{\sqrt{2}} +1)w_2 = 0$. Then $ \frac{1}{\sqrt{2}}w_2 = (1+\sqrt{2})(-\frac{1}{\sqrt{2}} +1)w_2$ which once again means $w_2$ is arbitrary. Since $ w_1=(1 -\sqrt{2})w_2$, we have $ (1-\sqrt{2}, 1) = w$ being the other eigenvector with eigenvalue $\lambda_2 = -1$.
+
+\textbf{2.54}
+
+Since $ A$ and $B$ are commuting Hermitian operators, we then have $A$ and $B$ being simultaneously diagonalizable. So $ A = \sum_i a_i \ket{i}\bra{i}$ and $ \sum_i b_i \ket{i}\bra{i}$.
+Then \[ \exp(A)\exp(B) = (\sum_i \exp(a_i) \ket{i}\bra{i})(\sum_i \exp(b_i) \ket{i}\bra{i})=\]\[\sum_{ij} \exp(a_j) \ket{j}\bra{j}\exp(b_i) \ket{i}\bra{i} =\sum_{ij} \exp(a_j)\exp(b_i) \ket{j}\bra{j}\ket{i}\bra{i}\]
+But because $\ket{i}$ is an orthonormal set of eigenvectors, we have \[\exp(A)\exp(B) =\sum_{i} \exp(a_i)\exp(b_i)\ket{i}\bra{i} = \exp(A)\exp(B) =\]\[\sum_{i} \exp(a_i+b_i)\ket{i}\bra{i} = \exp(A+B)\] as required 
+
+\textbf{2.55}
+
+We have  \[U^\dag(t_1, t_2) = \exp\left[\frac{iH^\dag(t_2 - t_1)}{\hbar}\right]\]
+Then due to H being Hermitian \[U^\dag U = \exp\left[\frac{iH^\dag(t_2 - t_1)}{\hbar}\right]\exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right] =\exp\left[0\right] = I\] as required. 
+
+\textbf{2.57 (U)}
+
+We have an application of $L_l$ on some state $\ket{\psi}$ being \[\frac{L_l\ket{\psi}}{\sqrt{\bra{\psi}L_l^\dag L_l\ket{\psi}}}\] Then an application of $ M_m$ results in \[\frac{M_lL_l\ket{\psi}}{\sqrt{\bra{\psi}M_m^\dag M_m\ket{\psi}}\sqrt{\bra{\psi}L_l^\dag L_l\ket{\psi}}} =\frac{M_lL_l\ket{\psi}}{\sqrt{\bra{\psi}M_m^\dag M_m\ket{\psi}}\sqrt{\bra{\psi}L_l^\dag L_l\ket{\psi}}} \]
+
+\textbf{2.58}
+
+The average observed value would be $ \bra{\psi}M \ket{\psi}$. Since $\ket{\psi}$ is in an eigenstate of $M$, we have $ \bra{\psi}M \ket{\psi} = \bra{\psi}m\ket{\psi} =  m\braket{\psi|\psi} = 1$. The standard deviation is then $ \braket{M^2} - \braket{M}^2 =\bra{\psi}M^2\ket{\psi}-m^2\braket{\psi|\psi} =m^2\braket{\psi |\psi}-m^2\braket{\psi|\psi} = 0$.
+
+\textbf{2.59}
+
+The average value would be $ \bra{0}X\ket{0} = \braket{0|1} = 0$. The standard deviation is then $\braket{X^2} - \braket{X}^2 =\braket{X^2} =  \bra{0}X^2\ket{0} = \braket{0|0} = 1$. 
+
+\textbf{2.60}
+
+We have \[\vec{v}\cdot \vec{\sigma} =\begin{bmatrix}
+    v_3 & v_1-iv_2 \\
+    v_1 + i v_2 & -v_3
+\end{bmatrix}\]
+So 
+\[\det\left(\begin{bmatrix}
+    v_3-\lambda & v_1-iv_2 \\
+    v_1 + i v_2 & -v_3-\lambda
+\end{bmatrix}\right)= 0\]Thus we have 
+$-(v_3-\lambda)(v_3 + \lambda) - (v_1-iv_2)(v_1+iv_2) = 0$. This results in $ -v_3^2 +\lambda^2 - v_1^2 -v_2^2 = 0 $ and so $ \lambda^2 =v_3^2  +v_1^2 +v_2^2$. But since $ \vec{v}$ is a unit vector, we have $ \lambda^2 = 1$ and so $\lambda = \pm 1$ as eigenvalues. We then have $( v_3\mp 1)w_1 + (v_1-iv_2)w_2 = 0$ as well as $ (v_1+iv_2)w_1 - (v_3\pm1)w_2 = 0 $. Thus we have \[w_1 = \frac{(v_3 \pm 1)}{v_1 + iv_2}w_2 \quad \] and so the eigenvectors are
+\[\begin{bmatrix}
+    v_3 \pm 1\\
+    v_1 + iv_2
+\end{bmatrix}\] 
+which has a magnitude of $\sqrt{v_3^2 \pm2v_3 + 1 +v_1^2 + v_2^2} = \sqrt{\pm 2v_3 + 2} = \sqrt{2(1\pm v_3)}$ resulting in normalized eigenvectors of 
+\[\renewcommand{\arraystretch}{1.5}\frac{1}{\sqrt{2}}\begin{bmatrix}
+    \frac{v_3 \pm 1}{\sqrt{1\pm v_3}}\\
+    \frac{v_1 + iv_2}{\sqrt{1\pm v_3}}
+\end{bmatrix}\] 
+Since $ v_1^2 + v_2^2 = 1-v_3^2 = (1-v_3)(1+v_3)$, we then have  
+\[\renewcommand{\arraystretch}{1.5}P_\pm = \frac{1}{2}\begin{bmatrix}
+    \frac{v_3 \pm 1}{\sqrt{1\pm v_3}}\\
+    \frac{v_1 + iv_2}{\sqrt{1\pm v_3}}
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{v_3 \pm 1}{\sqrt{1\pm v_3}}&
+    \frac{v_1 - iv_2}{\sqrt{1\pm v_3}}
+\end{bmatrix} =\]\[
+\frac{1}{2}\begin{bmatrix}
+    1\pm v_3&
+    \pm (v_1 - iv_2) \\
+    \pm (v_1 + iv_2) & 1\pm v_3
+\end{bmatrix} =\frac{1}{2}\left(I\pm \vec{v}\cdot \sigma\right)\]
+as required
+
+\textbf{2.61}
+
+The probability of getting $+1$ would be \[\frac{1}{2}\bra{0}\left(I + \vec{v}\cdot \sigma\right)\ket{0} = \frac{1}{2}(1 +\bra{0}\vec{v}\cdot \sigma\ket{0}) =\frac{1}{2}(1 + v_3) \]
+and if $+1$ is measured, we have a state
+\[\frac{P_+\ket{\psi}}{\sqrt{\frac{1}{2}(1 + v_3)}} = \frac{1}{\sqrt{\frac{1}{2}(1+v_3)}}
+\begin{bmatrix}
+1+ v_3 \\ v_1 + iv_2
+\end{bmatrix}\]
+
+\textbf{2.63}
+
+We have $E_m = M^\dag_m M_m$. Using polar decomposition, we have $J = \sqrt{M^\dag M} = \sqrt{E_m}$. Thus we have $M_m = U_m\sqrt{E_m}$ for some unitary matrix $U_m$ as required.
+
+\textbf{2.65}
+
+Consider the basis 
+\[\ket{v} = \frac{\ket{0}+\ket{1}}{\sqrt{2}}\quad\ket{w} = \frac{\ket{0}-\ket{1}}{\sqrt{2}}\]
+In this basis we have the two states as $ (1,0)$ and $(0,1)$. Suppose for contradiction that they differ by a relative phase in this basis. Then we have $ 1 = \exp(i\theta)*0 = 0$, a contradiction. Therefore they are not the same up to a relative phase in this basis. 
+
+\textbf{2.66}
+
+The average value is defined as \[\frac{1}{2}\left(\ket{00} + \ket{11}, X_1Z_2(\ket{00} + \ket{11})\right) =\]\[\frac{1}{2}\left(\ket{00} + \ket{11}, X_1\ket{0}Z_2\ket{0} + X_1\ket{1}Z_2\ket{1})\right) =\] \[\frac{1}{2}\left(\ket{00} + \ket{11}, \ket{1}\ket{0} + \ket{0}(-\ket{1})\right) =
+\]
+\[\frac{1}{2}\begin{bmatrix}
+    1 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+    0 \\ -1\\ 1\\ 0
+\end{bmatrix} =
+0\]
+as required.
+
+\textbf{2.71}
+
+Suppose $\rho $ is a density operator. Then $tr(\rho) = 1$ and is also a positive operator. It then has a spectral decomposition $ \sum_i\lambda_i\ket{i}\bra{i}$, where $\sum_i\lambda_i = 1$ and $\lambda_i \geq 0$. So $\rho^2 = \sum_i\lambda_i\ket{i}\bra{i}\sum_j\lambda_j\ket{j}\bra{j} =\sum_{ij}\lambda_j\lambda_i\ket{i}\bra{i}\ket{j}\bra{j} = \sum_{i}\lambda_i^2\ket{i}\bra{i}$. Thus $ tr(\rho^2) = \sum_{i}\lambda_i^2$. But we must have $ 0\leq\lambda_i \leq1$ and so $0\leq\lambda_i^2\leq \lambda_i \leq 1$ meaning $\sum_i\lambda_i^2 \leq \sum_i\lambda_i =1$. Thus we have $ tr(\rho^2) \leq 1$.
+
+Suppose $ tr(\rho^2) = 1$. Then we have $ \sum_i\lambda_i^2 = \sum_i \lambda_i$. But we have $ \lambda_i^2\leq\lambda_i \leq 1$. So $\lambda_i^2 = \lambda_i$. Which is only possible when $ \lambda_i = 1$ or $\lambda_i = 0$. Since $ \sum_i \lambda_i = 1$, we must have $ \lambda_i = 1$ for some $i$, and $0$ for all other $i$. Meaning we are left with $\rho = \ket{i}\bra{i}$ for some $i$. So by definition is a pure state as required.
+
+Now suppose $\rho$ is a pure state. Then $\rho = \ket{\psi}\bra{\psi}$ where $\ket{\psi}$ is a state vector. We then have $ tr(\rho) = \braket{\psi| \psi} = 1$ as required.
+
+\textbf{2.72}
+
+1) Let $\rho$ be a density matrix for a mixed state qubit. Then $ \rho = a_1I + a_2 X + a_3 Y + a_4 Z$. Since $\rho$ is positive, it must also be hermitian. Thus $\rho = a_1^*I + a_2^* X^\dag + a_3^* Y^\dag + a_4^*Z\dag$. But the Pauli matrices are Hermitian thus $\rho = a_1^*I + a_2^* X + a_3^* Y + a_4^*Z$. But that in turn means $ a_i = a_i^*$ due to the Pauli matrices being linearly independent. Thus we have $ a_i$ is real. We must also have $tr(\rho) = 1$. Meaning $1 = a_1tr(I) + a_2tr(X) + a_3tr(Y) + a_4tr(Z) = 2a_1 + 0 +0+0 = 2a_1$. Meaning $a_1 = 1/2$ and $a_2..a_4$ can be arbitrary reals. So letting $\vec{r} = (2a_2,2a_3,2a_4)$ and $ \sigma = (X, Y, Z)$, we have \[\rho = \frac{1}{2}I+ a_2X + a_3 Y + a_4 Z = \frac{1}{2}I  + \frac{1}{2}\vec{r} \cdot \vec{\sigma}=\frac{I + \vec{r}\cdot \vec{\sigma}}{2}\] as required
+
+2) We have $ \vec{r} = (0,0,0)$. Since $ 0\cdot \vec{\sigma} = 0$. So
+\[\rho = \frac{1}{2}I +\frac{1}{2}\vec{r}\cdot\vec{\sigma} = \frac{1}{2}I\]
+
+3) Suppose $\rho$ is pure. Then $ \rho = \ket{\psi}\bra{\psi}$ for some pure state $ \ket{\psi}$. We have \[\rho= \frac{I + \vec{r}\cdot \vec{\sigma}}{2}\quad tr(\rho^2) = 1\] Since \[tr(\rho^2) = tr\left(\frac{I + \vec{r}\cdot \vec{\sigma}}{2}\frac{I + \vec{r}\cdot \vec{\sigma}}{2}\right) = tr\left(\frac{I + 2\vec{r}\cdot \vec{\sigma} + (\vec{r}\cdot \vec{\sigma})(\vec{r}\cdot \vec{\sigma})}{4}\right) = \]
+\[\frac{1}{4}tr\left(I + 2\vec{r}\cdot \vec{\sigma} + (r_1X +r_2 Y + r_3 Z) (r_1X +r_2 Y + r_3 Z)   \right)  = \]
+\[\frac{1}{4}tr(I + 2\vec{r}\cdot \vec{\sigma} + r_1^2X^2 +r_2r_1 YX + r_3r_1 ZX + r_1r_2XY +\]\[r_2^2Y^2 + r_3r_2ZY + r_1r_3XZ +r_2r_3 YZ + r_3^2 Z^2 ) = \]
+\[\frac{1}{4}tr(I + 2\vec{r}\cdot \vec{\sigma} + r_1^2 X^2 + r_2^2 Y^2 + r_3^2 Z^2) =\] \[\frac{1}{4}(tr(I) + 2tr(\vec{r}\cdot \vec{\sigma}) + r_1^2 tr(X^2) + r_2^2 tr(Y^2) + r_3^2 tr(Z^2) = \frac{1}{4}(2 +2r_1^2+2r_2^2 + 2r_3^2)\]
+That means $\frac{1}{2}(1+r_1^2 +r_2^2 + r_3^2) = 1$ and so we have $||\vec{r}|| =r_1^2 +r_2^2 + r_3^2 = 1$ as required. 
+
+Now suppose $ ||\vec{r}|| =r_1^2 +r_2^2 + r_3^2 = 1$. We had shown that \[tr(\rho^2) = \frac{1}{4}(2 +2r_1^2+2r_2^2 + 2r_3^2)\] meaning \[tr(\rho^2) = \frac{1}{4}(2+ 2) = 1\] as required thus proving the equality
+
+4) We have for pure states, $\rho = \ket{\psi}\bra{\psi}$ and the Bloch vector having the property $ ||\vec{r}|| = 1$. Since $\ket{\psi}$ is a qubit, we have $\ket{\psi} = a\ket{0}+ b\ket{1}$ and $ ||\ket{\psi}||^2 = 1$. So we have $ \rho = (a\ket{0}+ b\ket{1})(a^*\bra{0}+ b^*\bra{1})  = a^*a\ket{0}\bra{0} + $
+
+\textbf{2.74}
+
+Suppose $ \ket{a}$ and $\ket{b}$ are pure states of their respective systems and the composite system is in state $\ket{a}\ket{b}$. Then the density operators for A is $\rho_A = \ket{a}\bra{a}$ and for B is $\rho_B = \ket{b}\bra{b}$. The density operator of the composite system is then $ \ket{ab} \bra{ab}$. Then we have $\rho^A = tr_b(\ket{ab} \bra{ab}) = \ket{a}\bra{a}\braket{b|b}$, but since $\ket{b} $ is a pure state we have $ \braket{b|b} = 1$ and so $ \rho^A=\ket{a}\bra{a} = \rho_A$ which we established as a pure state as required.
+
+\textbf{2.75}
+
+For the bell state
+\[\frac{\ket{00} + \ket{11}}{\sqrt{2}}\]
+we have 
+\[\rho = \left(\frac{\ket{00} + \ket{11}}{\sqrt{2}}\right)\left(\frac{\bra{00} + \bra{11}}{\sqrt{2}}\right) = \frac{\ket{00}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{00} + \ket{11}\bra{11}}{2}\]
+The reduced density operator for $A$ has already been shown in the textbook so we have
+\[\rho^B = tr_A\left(\frac{\ket{00}\bra{00} + \ket{00}\bra{11} + \ket{11}\bra{00} + \ket{11}\bra{11}}{2}\right) =\]\[\frac{tr_A(\ket{00}\bra{00}) + tr_A(\ket{00}\bra{11}) + tr_A(\ket{11}\bra{00}) + tr_A(\ket{11}\bra{11})}{2} =\]\[ \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} =\frac{I}{2} \]
+
+For the bell state
+\[\frac{\ket{00} - \ket{11}}{\sqrt{2}}\]
+We have 
+\[\rho = \left(\frac{\ket{00} - \ket{11}}{\sqrt{2}}\right)\left(\frac{\bra{00} - \bra{11}}{\sqrt{2}}\right) = \frac{\ket{00}\bra{00} - \ket{00}\bra{11} - \ket{11}\bra{00} + \ket{11}\bra{11}}{2}\]
+And so 
+\[\rho^B = tr_A\left(\frac{\ket{00}\bra{00} - \ket{00}\bra{11} - \ket{11}\bra{00} + \ket{11}\bra{11}}{2}\right) =\]\[\frac{tr_A(\ket{00}\bra{00}) - tr_A(\ket{00}\bra{11}) - tr_A(\ket{11}\bra{00}) + tr_A(\ket{11}\bra{11})}{2} =\]\[ \frac{\ket{0}\bra{0} + \ket{1}\bra{1}}{2} =\frac{I}{2}\]
+The same can be said about $\rho^A$ due to symmetry.
