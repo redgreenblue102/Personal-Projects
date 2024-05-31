@@ -1,0 +1,622 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{images/}}
+\title{Terence Tao Analysis 2 Exercise}
+\author{Carl Liu}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Metric Spaces}
+
+\indent \textbf{1.1.1}
+
+Suppose $(x_n)^\infty_{n=m}$ converges to $x$. Then $|x_n-x|\leq \varepsilon$ for all $n\geq N$ for some $N\geq m$. That means $|x_n-x|=|x_n-x|-0=||x_n-x|-0|\leq \varepsilon$ for all $n\geq N$ for some $N\geq m$. So by definition we have $\lim_{n\to\infty}|x_n-x|=0$. But $d(x_n,x)=|x_n-x|$ and so $\lim_{n\to\infty}|x_n-x|=\lim_{n\to\infty}d(x_n,x)=0$ as required.
+
+Suppose $\lim_{n\to\infty}d(x_n,x)=0$. Then $|d(x_n,x)-0|\leq \varepsilon$ for all $n\geq N$ for some $N\geq m$. But we have $|d(x_n,x)-0|= |d(x_n,x)|= ||x_n-x||=|x_n-x|$ and so $|x_n-x|\leq \varepsilon $ for all $n\geq N$ for some $N\geq m$. Thus by definition $(x_n)^\infty_{n=m}$ converges to 0 as required.
+
+\textbf{1.1.2}
+
+A) for $x\in \textbf{R}$ we have $d(x,x)=|x-x|= 0$ as required.
+
+B) for $x,y\in \textbf{R}$ where $x\neq y$, we have $d(x,y)=|x-y|$. Since $|x-y| \geq 0$ and $x-y\neq 0$, we have $|x-y|\neq 0$, therefore $|x-y|>0$. So $d(x,y)>0$ as required.
+
+C) for $x,y\in \textbf{R}$, we have $d(x,y)=|x-y|= |-(x-y)|= |y-x|= d(y,x)$ as required. 
+
+D) for $x,y,z\in \textbf{R}$, we have $d(x,y)+d(y,z)=|x-y|+|y-z|$ and so by the triangle inequality, $d(x,z)=|x-z|\leq|x-y|+|y-z|=d(x,y)+d(y,z)$ as required.
+
+\textbf{1.1.3}
+
+A) consider an arbitrary set X and the function $d_{disc}$ defined by $d(x,y) = 0.1$ when $x=y$ and $d(x,y)= 1$ when $x\neq y$. We then have for $x,y,z\in X,\ d(x,x) = 0.1 \neq 0$ and so a is false, $d(x,y) = 0.1 = d(y,x)$ when $x=y$ and $d(x,y)= 1 = d(y,x)$ when $y\neq x$ and so c is true, finally when $x=y=z, d(x,y) = 0.1,\ d(y,z) = 0.1,\ d(x,z) = 0.1$ and so $d(x,z)=0.1\leq d(x,y)+d(y,z)=0.2$. When $x=y\neq z$ we have $d(x,y) = 0.1,\ d(y,z) = 1,\ and\ d(x,z) = 1$, so $d(x,z) = 1\leq d(x,y) + d(y,z) = 1.1$, the same can be said in the case of $x\neq y=z$. Now in the case $x\neq y\neq z$, we have $d(x,y)=1,\ d(y,z) = 1,\ and d(x,z)$ is equal to either $1\ or \ 0.1$. But in either case we have $d(x,z) \leq d(x,y)+d(y,z)= 2$. Since in all cases we have $d(x,z)\leq d(x,y)+d(y,z)$ we can conclude that d is true. For $x,y\in X$ such that $x\neq y$, we have $d(x,y)= 1> 0$ and so b is true. Therefore $(X,d_{disc})$ obeys bcd but not a as required.
+
+B) consider the arbitrary set X and the function $d:X\times X\to [0,\infty)$ defined as $d(x,y)=0$. We then have, for $x,y,z\in X$, $d(x,x) = 0$ so a is true, $d(x,y) = 0 = d(y,x)$ so c is true, and $d(x,z) = 0\leq d(x,y)+d(y,z)=0+0=0$ so d is true. But for $x,y\in X$ such that $x\neq y$, we have $d(x,y)= 0$ which isn't greater than 0 and therefore b is false as required. 
+
+C) consider the set of real numbers \textbf{R} and the function $d:\textbf{R}\times \textbf{R}\to [0,\infty)$ defined as $d(x,x) = 0$ when $x=x$, $d(x,y) = 1$ when $x>y$ and $d(x,y) = 2$ when $x<y$. We then have for any $x,y,z\in \textbf{R}$, $d(x,x) = 0$, satisfying a. In the case $x\neq y$, we have $d(x,y)$ is either equal to $2$ or $1$, in either case it is greater than 0 thereby satisfying b. In the case $x>y$, we have $d(x,y)=1$, but $d(y,x) = 2$ and so c cannot be true. Now we have $d(x,z)$ is either 0, 1, or 2. In the case $d(x,z) = 0$, we have $d(x,z)= 0\leq d(x,y) +d(y,z)$ since $d(x,y),d(y,z)\geq 0$. In the case $d(x,z) = 1$, we have $x>z$, then $d(x,y)$ is also either 0, 1, or 2. In the case of 1 and 2, we have $d(x,z)\leq d(x,y)+d(y,z)$. In the case it's 0 we have $x=y$ and so $x=y>z$ meaning $d(y,z) = 1$, we therefore have $d(x,z)=1 \leq d(x,y) +d(y,z) = 0 + 1 = 1$. In the final case of $d(x,z) = 2$, we have $x<z$. We then have $d(x,y)$ is either 0, 1, or 2. In the case $d(x,y) =2$, we have $d(x,z)=2 \leq d(x,y)+d(y,z)$. In the case $d(x,y) = 1$, we have $x>y$ and so $y<x<z$ meaning $y<z$ and therefore $d(y,z) =2$. This results in $d(x,z)=2 \leq d(x,y) +d(y,z) = 1+2=3$. In the case $d(x,y) = 0$, $x=y$ so $x=y<z$ and $d(y,z) =2$. This means $d(x,z)=2 \leq d(x,y) +d(y,z) = 0+2 = 2$. So in all cases we have $d(x,z) \leq d(x,y)+d(y,z)$ and so d is true. We therefore have abd true while c is false as required.
+
+D) consider the set $X=\{0,1,3\}$ and the function $d:\{0,1,3\}\times\{0,1,3\}\to [0,\infty)$ defined as $d(x,y) = 10.$ when $x=0$ and $y =3$, or when $x=3$ and $y=0$. In all other cases $d(x,y) = |x-y|$. We then have for any $x,y,z\in X$, $d(x,x) = |x-x|=0$, satisfying a. When $x\neq y$ we have either $d(x,y) = 10$ or $d(x,y) = |x-y|$. Since $x-y\neq 0$ we have $|x-y| >0$. we also have $10>0$ so in both cases b is satisfied. Now consider any $x,y\in X$. We have either $d(x,y) =10$ or $d(x,y) = |x-y|$ when $d(x,y) = 10$ we must have either $x=3$ and $y=0$, or $x=0$ and $y=3$. In either case $d(y,x)=10$ therefore $d(x,y) =d(y,x).$ Now in the case $d(x,y) =|x-y|$ we have $|x-y|=|-(x-y)|=|y-x| = d(y,x)$. So in all cases c is satisfied. Now consider $x=0$, $y=1$, and $z=3$. We then have $d(x,z) = 10 $, $d(x,y) = 1$, and $d(y,z) = 2$. But that means $d(x,z)=10>d(x,y) +d(y,z) = 3$ So d is not satisfied and so we have abc is true while d is false as required.
+
+\textbf{1.1.4}
+
+We have for any $x,y,z\in Y\subseteq X$, $d|_{Y\times Y}(x,x) = d(x,x)=0$ satisfying a. When $x\neq y$ we have $d|_{Y\times Y}(x,x) = d(x,y)> 0$ because $x,y\in X$ and $x\neq y$. Therefore b is true. Now consider any $x,y\in Y$, then $d|_{Y\times Y}(x,y) = d(x,y) $, but we also have $d|_{Y\times Y}(y,x) = d(y,x)$ and by symmetry of the metric function $d$ on X, we have $d(x,y) = d(y,x)$ and so $d|_{Y\times Y}(y,x)=d|_{Y\times Y}(x,y) = d(x,y)$. Therefore symmetry is true for $d|_{Y\times Y}$ on Y. Now consider $d|_{Y\times Y}(x,y)=d(x,y)$, $d|_{Y\times Y}(y,z)=d(y,z)$, and $d|_{Y\times Y}(x,z)=d(x,z)$. Due to the triangle inequality of function $d$ on X we have $d(x,z) = d|_{Y\times Y}(x,z) \leq d(x,y) +d(y,z) = d|_{Y\times Y}(x,y)+d|_{Y\times Y}(y,z)$ and so the triangle inequality is also satisfied for $d|_{Y\times Y}$ on Y. Therefore we can conclude that $(Y,d|_{Y\times Y})$ is indeed a metric space.
+
+\textbf{1.1.5}
+
+We have $(\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2) =\sum_{i=1}^n(a_i^2\sum_{j=1}^n b_j^2)=\sum_{i=1}^n\sum_{j=1}^n a_i^2b_j^2$
+
+We have $(\sum_{i=1}^n a_ib_i)^2 = (\sum_{i=1}^n a_ib_i)(\sum_{j=1}^n a_jb_j) $ (because index doesn't matter) $= \sum_{i=1}^n (a_ib_i\sum_{j=1}^n a_jb_j)  =\sum_{i=1}^n \sum_{j=1}^n a_jb_ja_ib_i$ 
+
+We have $\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2=\sum^n_{i = 1}\sum^n_{j=1}(a_i^2b_j^2-2a_ib_ja_jb_i+a_j^2b_i^2)$.
+
+We then have $ (\sum_{i=1}^n a_ib_i)^2+(1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2 =\\\sum_{i=1}^n \sum_{j=1}^n (a_jb_ja_ib_i) + (1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_i^2b_j^2-2a_ib_ja_jb_i+a_j^2b_i^2) = \\\sum_{i=1}^n \sum_{j=1}^n (a_jb_ja_ib_i-a_ib_ja_jb_i+(1/2)a_i^2b_j^2+(1/2)a_j^2b_i^2)=\\\sum_{i=1}^n \sum_{j=1}^n((1/2)a_i^2b_j^2+(1/2)a_j^2b_i^2) =\\ \sum_{i=1}^n \sum_{j=1}^n((1/2)a_i^2b_j^2)+\sum_{i=1}^n \sum_{j=1}^n((1/2)a_j^2b_i^2) =\\\sum_{i=1}^n\sum_{j=1}^n((1/2)a_i^2b_j^2)+\sum_{j=1}^n \sum_{i=1}^n((1/2)a_j^2b_i^2)= \sum_{i=1}^n\sum_{j=1}^na_i^2b_j^2 $ (because index doesn't matter). 
+Therefore $(\sum_{i=1}^n a_ib_i)^2+(1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2 = (\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)$ as required. 
+
+Since  $ (\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)$ is all positive terms we have 
+$\\0\leq (\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)$. Also we have $0\leq (1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2$ and $ 0\leq(\sum_{i=1}^n a_ib_i)^2$. So $ 0\leq(\sum_{i=1}^n a_ib_i)^2 = (\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)-\\(1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2$. But we have $-(1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2\leq 0$ and so $(\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)-(1/2)\sum^n_{i = 1}\sum^n_{j=1}(a_ib_j-a_jb_i)^2\leq (\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2)$. Therefore $0\leq (\sum_{i=1}^n a_ib_i)^2\leq(\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2).\\$We then have $((\sum_{i=1}^n a_ib_i)^2)^{1/2}=|\sum_{i=1}^n a_ib_i|\leq((\sum_{i=1}^na_i^2)(\sum_{j=1}^n b_j^2))^{1/2}=(\sum_{i=1}^na_i^2)^{1/2}(\sum_{j=1}^n b_j^2)^{1/2}$ as required. 
+
+Triangle Inequality
+
+We have \[\left((\sum_{i=1}^na_i^2)^{1/2}+(\sum_{j=1}^n b_j^2)^{1/2}\right)^2 = (\sum_{i=1}^na_i^2)+2(\sum_{j=1}^n b_j^2)^{1/2}(\sum_{i=1}^na_i^2)^{1/2}+(\sum_{j=1}^n b_j^2)\]
+We also have \[\sum_{i=1}^n(a_i+b_i)^2 = \sum_{i=1}^n(a_i^2+2a_ib_i+b_i^2) =  \sum_{i=1}^na_i^2+2\sum_{i=1}^na_ib_i+\sum_{i=1}^n b_i^2\] But \[-(\sum_{j=1}^n b_j^2)^{1/2}(\sum_{i=1}^na_i^2)^{1/2}\leq\sum_{i=1}^na_ib_i\leq(\sum_{j=1}^n b_j^2)^{1/2}(\sum_{i=1}^na_i^2)^{1/2}\] and so
+\[\sum_{i=1}^n(a_i+b_i)^2=\sum_{i=1}^na_i^2+2\sum_{i=1}^na_ib_i+\sum_{i=1}^n b_i^2\leq \]\[(\sum_{i=1}^na_i^2)+2(\sum_{j=1}^n b_j^2)^{1/2}(\sum_{i=1}^na_i^2)^{1/2}+(\sum_{j=1}^n b_j^2)=((\sum_{i=1}^na_i^2)^{1/2}+(\sum_{j=1}^n b_j^2)^{1/2})^2\]Since both sides of the inequalities are positive we can take the square root and get \[(\sum_{i=1}^n(a_i+b_i)^2)^{1/2}\leq (\sum_{i=1}^na_i^2)^{1/2}+(\sum_{j=1}^n b_j^2)^{1/2}\] as required.
+
+\textbf{1.1.8}
+
+Suppose $x,y\in \textbf{R}^n$, then $d_{l^2}(x,y)^2 = \sum_{i=1}^n(x_i-y_i)^2$ and $d_{l^1}(x,y)^2 = (\sum^n_{i=1}|x_i-y_i|)^2=\sum^n_{i=1}(|x_i-y_i|\sum^n_{j=1}|x_j-y_j|)$. But $((x_i-y_i)^2)^{1/2} = |x_i-y_i|$ so $(((x_i-y_i)^2)^{1/2})^2 = (x_i-y_i)^2 = |x_i-y_i|^2$ and $|x_i-y_i|\leq \sum^n_{j=1}|x_j-y_j|.$ We then have $|x_i-y_i|^2=(x_i-y_i)^2\leq |x_i-y_i|\sum^n_{j=1}|x_j-y_j|$. Therefore by the comparison test $ \sum_{i=1}^n(x_i-y_i)^2\leq (\sum^n_{i=1}|x_i-y_i|)^2$. Since both sides are positive, we can take the square root to then obtain $(\sum_{i=1}^n(x_i-y_i)^2)^{1/2}=d_{l^2}(x,y)\leq\sum^n_{i=1}|x_i-y_i|=d_{l^1}(x,y)$ as required. 
+
+We also have $\sqrt{n}d_{l^2}(x,y) = \sqrt{n\sum_{i=1}^n(x_i-y_i)^2} = \sqrt{(\sum^n_{n=1}1)(\sum_{i=1}^n|x_i-y_i|^2)}$. So by exercise 1.1.5, we have $ d_{l^1}(x,y)=\sum^n_{i=1}|x_i-y_i|\leq\sqrt{(\sum^n_{n=1}1)(\sum_{i=1}^n|x_i-y_i|^2)}=\sqrt{n}d_{l^2}(x,y)$ as required. 
+
+\textbf{1.1.9}
+
+Suppose $x\in \textbf{R}^n$, then $d_{l^\infty}(x,x) = sup\{|x_i-x_i:1\leq i\leq n\}$, but $|x_i-x_i|=0$. So$\{|x_i-x_i:1\leq i\leq n\}=\{0\}$. We then have $d_{l^\infty}(x,x) = sup\{0\}=0$ as required. 
+
+Suppose $x,y\in \textbf{R}^n$ such that $x\neq y$. Then there exists an $1\leq i\leq n$ such that $x_i\neq y_i$. We then have $x_i-y_i\neq 0$ and so $|x_i-y_i|>0$. Since $|x_i-y_i|\in \{|x_i-y_i|:1\leq i\leq n\}$, we have $d_{l^\infty}(x,y)=sup\{|x_i-y_i|:1\leq i\leq n\}\geq|x_i-y_i|>0$ as required. 
+
+Suppose $x,y\in \textbf{R}^n$. We then have $d_{l^\infty}(x,y) = sup\{|x_i-y_i|:1\leq i\leq n\}$, but $|x_i-y_i|=|y_i-x_i|$ and so $ d_{l^\infty}(x,y)=sup\{|x_i-y_i|:1\leq i\leq n\} = sup\{|y_i-x_i|:1\leq i\leq n\} = d_{l^\infty}(y,x)$ as required. 
+
+Suppose $x,y,z\in \textbf{R}^n$. Then $|x_i-z_i|\leq |x_i-y_i|+|y_i-z_i|$ by the triangle inequality. We then have $ sup\{|x_i-z_i|:1\leq i\leq n\}\leq sup\{|x_i-y_i|+|y_i-z_i|:1\leq i\leq n\}.$ But $|x_i-y_i|\leq sup\{|x_i-y_i|:1\leq i\leq n\}$ and $|y_i-z_i|\leq sup\{|y_i-z_i|:1\leq i\leq n\}$ for all $1\leq i\leq n$. We then have $|x_i-y_i|+|y_i-z_i|\leq sup\{|x_i-y_i|:1\leq i\leq n\}+sup\{|y_i-z_i|:1\leq i\leq n\}$ and so $sup\{|x_i-y_i|+|y_i-z_i|:1\leq i\leq n\}\leq sup\{|x_i-y_i|:1\leq i\leq n\}+sup\{|y_i-z_i|:1\leq i\leq n\}$. Therefore $sup\{|x_i-z_i:1\leq i\leq n\}=d_{l^\infty}(x,z)\leq sup\{|x_i-y_i|:1\leq i\leq n\}+sup\{|y_i-z_i|:1\leq i\leq n\}=d_{l^\infty}(x,y)+d_{l^\infty}(y,z)$ as required. 
+
+\textbf{1.1.10}
+
+We have $(1/\sqrt{n})d_{l^2}(x,y) = \sqrt{(1/n)\sum_{i=1}^n(x_i-y_i)^2}$. But $(x_i-y_i)\leq sup\{|x_i-y_i|:1\leq i\leq n\}$ and so $(x_i-y_i)^2\leq (sup\{|x_i-y_i|:1\leq i\leq n\})^2$. Then $(1/n)\sum_{i=1}^n(x_i-y_i)^2\leq (1/n)\sum_{i=1}^n(sup\{|x_i-y_i|:1\leq i\leq n\})^2$. But $\sum_{i=1}^n(sup\{|x_i-y_i|:1\leq i\leq n\})^2 = n(sup\{|x_i-y_i|:1\leq i\leq n\})^2$. So we have $(1/n)\sum_{i=1}^n(x_i-y_i)^2\leq (sup\{|x_i-y_i|:1\leq i\leq n\})^2$ and so $\sqrt{(1/n)\sum_{i=1}^n(x_i-y_i)^2} = (1/\sqrt{n})d_{l^2}(x,y)\leq sup\{|x_i-y_i|:1\leq i\leq n\}=d_{l^\infty}(x,y)$ as required. 
+
+Suppose for contradiction that $sup\{|x_i-y_i|:1\leq i\leq n\}>(\sum_{i=1}^n(x_i-y_i)^2)^{1/2}$. We then have, there is an $1\leq i_0\leq n$ such that $|x_{i_0}-y_{i_0}|>(\sum_{i=1}^n(x_i-y_i)^2)^{1/2}$ and so $|x_{i_0}-y_{i_0}|^2>\sum_{i=1}^n(x_i-y_i)^2=\sum_{i=1}^n|x_i-y_i|^2$, But we have $\sum_{i=1}^n|x_i-y_i|^2 = \sum_{i=1}^{i_0}|x_i-y_i|^2 + \sum_{i_0+1=1}^{n}|x_i-y_i|^2 =\sum_{i=1}^{i_0-1}|x_i-y_i|^2 + |x_{i_0}-y_{i_0}|^2+\sum_{i_0+1=1}^{n}|x_i-y_i|^2 $. But since all terms are greater than or equal to 0, we have $\sum_{i=1}^{i_0-1}|x_i-y_i|^2 + |x_{i_0}-y_{i_0}|^2+\sum_{i_0+1=1}^{n}|x_i-y_i|^2 = \sum_{i=1}^n(x_i-y_i)^2 \geq |x_{i_0}-y_{i_0}|^2$, a contradiction, therefore $d_{l^\infty}(x,y)=sup\{|x_i-y_i|:1\leq i\leq n\}\leq (\sum_{i=1}^n(x_i-y_i)^2)^{1/2}=d_{l^2}(x,y)$. as required.
+
+
+\textbf{1.1.11}
+
+Suppose $x\in \textbf{R}^n$. Then $x=x,\ therefore \ d_{disc}(x,x) = 0$ as required. 
+
+Suppose $x,y\in \textbf{R}^n$ such that $x\neq y$. Then $d_{disc}(x,y) = 1>0$ as required. 
+
+Suppose $x,y\in \textbf{R}^n$. We have either $x=y$ or $x\neq y$. In the case $x=y$, $d_{disc}(x,y) = 0$. But we also have $y=x$, and so $d_{disc}(y,x) = 0=d_{disc}(x,y)$. In the case $x\neq y$, $d_{disc}(x,y) = 1$. But we also have $x\neq y$, and so $d_{disc}(y,x) = 1=d_{disc}(x,y)$. In all cases we have $d_{disc}(x,y) = d_{disc}(y,x)$ as required. 
+
+Suppose $x,y,z\in \textbf{R}^n$. We have either $x\neq z$ or $x=z$. In the case $x\neq z$, we have either $x\neq y$ or $x=y$, In the case $x\neq y$, we then have $d_{disc}(x,y) =d_{disc}(x,z) = 1$, and since $0\leq d_{disc}(y,z)$, we have $d_{disc}(x,z)=1 \leq d_{disc}(x,y) = 1 \leq d_{disc}(x,y)+d_{disc}(y,z)$. In the case $x=y$, $y\neq z$ and so $d_{disc}(y,z) = 1$. We then have $d_{disc}(x,z)=1\leq d_{disc}(x,y)+d_{disc}(y,z)$. Now in the other case of $x=z$, we have $d_{disc}(x,z) = 0$. but since, $0\leq d_{disc}(x,y), d_{disc}(y,z)$, we have $d_{disc}(x,z)\leq d_{disc}(x,y)+d_{disc}(y,z)$. In all cases we have $d_{disc}(x,z)\leq d_{disc}(x,y)+d_{disc}(y,z)$ as required.
+
+We can then conclude that $(\textbf{R}^n,d_{disc}(x,y)$ is indeed a metric space.
+
+\textbf{1.1.13}
+
+Suppose $(x^{(n)})_{n=m}^\infty$ converges to $x$ with respect to the discrete metric $d_{disc}$. Then for all $\varepsilon>0, \ d_{disc}(x^{(n)},x) \leq \varepsilon $ for all $n\geq N$ for some $N\geq m$. Since $0.5> 0$, we have $d_{disc}(x^{(n)},x)\leq 0.5$. Suppose for contradiction that $x^{(n)}\neq x$. Then $d_{disc}(x^{(n)},x) = 1$, but $d_{disc}(x^{(n)},x) \leq 0.5$, so $d_{disc}(x^{(n)},x) = 1 \leq 0.5$, a contradiction. 
+Therefore $x^{(n)} = x$ for all $n\geq N$ for some $N\geq m$ as required. 
+
+Suppose there exists an $N\geq m$ such that $x^{(n)} = x$ for all $n\geq N$. Then $d_{disc}(x^{(n)},x) = 0$, and so we have for all $\varepsilon >0$, $d_{disc}(x^{(n)},x) = 0\leq \varepsilon$ for all $n\geq N$. So by definition we have $(x^{(n)})_{n=m}^\infty$ converges to $x$ with respect to the discrete metric $d_{disc}$
+as required.
+
+\textbf{1.1.14}
+
+Suppose for contradiction that $x\neq x'$. Then $d(x,x')>0$. So $d(x,x')>\varepsilon>0$ for some real number $\varepsilon>0$. We have $d(x^{n},x)\leq \varepsilon/3$ for all $n\geq N_0$ for some $N_0\geq m$ and $d(x^{n},x')\leq \varepsilon/3 $ for all $n\geq N_1$ for some $N_1\geq 0$. Let $N = max(N_0, N_1)$, Then we have $d(x^{n},x),d(x^{n},x')\leq \varepsilon/3$ for all $n\geq N$. That means $d(x,x^{(n)})+d(x^{n},x')=d(x^{n},x)+d(x^{n},x') \leq 2\varepsilon/3$, and by the triangle inequality, we have $d(x,x')\leq  2\varepsilon/3$, a contradiction. Therefore $x=x'$ as required. 
+
+\textbf{1.1.15}
+
+For the $d_{l^1}$ metric
+
+Suppose $x\in X$, then $x=(a_n)^\infty_{n=0}$, such that $\sum_{n=0}^\infty|a_n|<\infty$, We  then have $d_{l^1}(x,x) = \sum_{n=0}^\infty|a_n|-\sum_{n=0}^\infty|a_n|=\sum_{n=0}^\infty|a_n|-|a_n| =\sum_{n=0}^\infty0=0$ as required. 
+
+Suppose $x,y\in X$, such that $x\neq y$. Then for some $n\geq 0$, $a_n\neq b_n$, and so $a_n-b_n\neq 0$, meaning $|a_n-b_n|>0$. But that means $d_{l^1}(x,y) = \sum_{n=0}^\infty|a_n-b_n|>0$ as required. 
+
+Suppose $x,y\in X$, we then have $d_{l^1}(x,y) = \sum_{n=0}^\infty|a_n-b_n|$, but $|a_n-b_n|=|b_n-a_n|$. So $d_{l^1}(x,y) = \sum_{n=0}^\infty|a_n-b_n|=\sum_{n=0}^\infty|b_n-a_n|=d_{l^1}(y,x)$ as required.
+
+Suppose $x,y,z\in X$. We have $|a_n-c_n|\leq |a_n-b_n| + |b_n-c_n|$. So $\sum_{n=0}^\infty|a_n-c_n|\leq\sum_{n=0}^\infty( |a_n-b_n| + |b_n-c_n|)=\sum_{n=0}^\infty|a_n-b_n| + \sum_{n=0}^\infty|b_n-c_n|$. So $d_{l^1}(x,z) \leq d_{l^1}(x,y)+d_{l^1}(y,z)$ as required.
+
+We can thus conclude that $(X,d_{l^1})$ is a metric space.
+
+For the $d_{l^\infty}$ metric
+
+Suppose $x\in X$, then $|a_n-a_n|= 0$, so $d_{l^\infty}(x,x)=sup_{n\in \textbf{N}}|a_n-a_n|= sup_{n\in \textbf{N}}0 = 0 $ as required.
+
+Suppose $x,y\in X$ such that $x\neq y$, then there exists an $n_0\geq 0$ such that $a_{n_0}\neq b_{n_0}$ and so $|a_{n_0}-b_{n_0}| >0$. We have $sup_{n\in \textbf{N}}|a_n-b_n|\geq |a_{n_0}-b_{n_0}|>0$ and so $d_{l^\infty}(x,y)>0$ as required. 
+
+Suppose $x,y\in X$, then $|a_n-b_n| = |b_n-a_n|$, so $d_{l^\infty}(x,y)=sup_{n\in \textbf{N}}|a_n-b_n| =sup_{n\in \textbf{N}}|b_n-a_n|=d_{l^\infty}(y,x)$ as required. 
+
+Suppose $x,y,z\in X$. We have $|a_n-c_n|\leq |a_n-b_n| + |b_n-c_n|$. So $sup_{n\in \textbf{N}}|a_n-c_n|\leq sup_{n\in \textbf{N}}(|a_n-b_n|+|b_n-c_n|)$. But $|a_n-b_n|\leq sup_{n\in \textbf{N}}|a_n-b_n|$ and $|b_n-c_n|\leq sup_{n\in \textbf{N}}|b_n-c_n|$. So $|a_n-b_n|+|b_n-c_n|\leq sup_{n\in \textbf{N}}|a_n-b_n|+sup_{n\in \textbf{N}}|b_n-c_n|$. Therefore $sup_{n\in \textbf{N}}|a_n-c_n|\leq sup_{n\in \textbf{N}}(|a_n-b_n|+|b_n-c_n|)\leq sup_{n\in \textbf{N}}|a_n-b_n|+sup_{n\in \textbf{N}}|b_n-c_n| $. Thus $d_{l^\infty}(x,z)\leq d_{l^\infty}(x,y)+d_{l^\infty}(y,z)$ as required. 
+
+We can then conclude that $(X,d_{l^\infty})$ is indeed a metric space.
+
+\textbf{1.1.16}
+We have $d(x_n,x) \leq \varepsilon/2$ for all $n\geq N_0$ for some $N_0\geq 1$, we also have $d(y_n,y)\leq \varepsilon/2 $ for all $n\geq N_1$ for some $N_1\geq 1$. Let $N=max(N_0,N_1)$. Then $d(x_n,x) \leq \varepsilon/2$ and $d(y_n,y)\leq \varepsilon/2$ for all $n\geq N$. By the triangle inequality we also have $d(x_n,y)\leq d(x_n,x)+d(x,y)$. But $d(x_n,x)+d(x,y)\leq \varepsilon/2 +d(x,y)$ and $d(y_n,y) = d(y,y_n)$. So $d(x_n,y)+d(y,y_n)\leq \varepsilon +d(x,y)$. Then by triangle inequality we  have $d(x_n,y_n)\leq \varepsilon +d(x,y)$. Therefore $d(x_n,y_n)-d(x,y)\leq \varepsilon$. We also have $d(x,y_n) \leq d(x,x_n)+d(x_n,y_n)\leq \varepsilon/2 +d(x_n,y_n)$. Then $d(x,y_n)+d(y_n+y)\leq \varepsilon/2 +d(x_n,y_n)+d(y_n+y)\leq\varepsilon + d(x_n,y_n)$. By the triangle inequality we have $d(x,y)\leq \varepsilon + d(x_n,y_n)$ and so $d(x,y)-\varepsilon\leq d(x_n,y_n)$. That means $ d(x,y)-\varepsilon \leq d(x_n,y_n)\leq \varepsilon+ d(x,y)$. Therefore $|d(x_n,y_n)-d(x,y)|\leq \varepsilon$ for all $n\geq N$ so $\lim_{n\to \infty}d(x_n,y_n)=d(x,y) $ as required.
+
+\textbf{1.2.1}
+
+Suppose $x\in E$, then we have $B(x,0.5) = \{y\in X: d(y,x)< 0.5\}$. But by the definition of discrete method, $d(y,x) = 1$ if $x\neq y$, and $d(y,x) = 0$ when $x=y$. So $d(y,x) =0 <0.5$ when $x=y$. Therefore $B(x,0.5) = \{y\in X: d(y,x)< 0.5\} = \{x\}$ and since $\{x\}\subseteq E$, we have $x$ is an interior point for all $x\in E$
+
+Suppose $x\notin E$, then we have $B(x,0.5) = \{y\in X: d(y,x)< 0.5\} = \{x\}$. Then $\{x\}\cap E =\emptyset$. Since $0.5>0$, we do have an $r>0$ such that $B(x,r)\cap E =\emptyset$ and so $x$ is an exterior point. 
+
+\textbf{1.2.2}
+
+Suppose $x_0$ is an adherent point of E. We have either $x_0\in E$, or $x_0\notin E$. In the case $x_0\notin E$, suppose $x_0$ is an exterior point for contradiction. Then there exists an $r>0$ such that $B(x_0,r)\cap E = \emptyset$, but we have $B(x_0,r)\cap E \neq \emptyset$ by definition of adherent point, therefore a contradiction and so $x_0$ must be a boundary point since $x_0$ is not in $E$ and cannot be an interior point. In the case $x_0\in E$, suppose for contradiction that $x_0$ is an exterior point. Then for some $r>0$, $B(x_0,r)\cap E = \emptyset$, but $x_0\in B(x_0,r)$ since $d(x_0,x_0) = 0 < r$. We then have $x_0\in B(x_0,r)\cap E \neq \emptyset$, a contradiction. So $x_0$ is not an exterior point. We then have $x_0$ is either an interior point or not. In the case it is not, $x_0$ is a boundary point by definition. So in all cases we have either $x_0$ is an interior or boundary point as required.
+
+\textbf{1.2.3}
+
+A) Suppose E is open. Suppose for contradiction that there exists an $x\in E$ such that for all $r>0$, $B(x,r)\not\subseteq E$. Since $x\in E$, x is an adherent point because the sequence $(x)^\infty_{n=1}$ obviously converges to $x$. We then have x is either an interior point or boundary point. Suppose for contradiction that $x$ is an interior point, then we have, there exists an $r_0>0$ such that $B(x,r_0) \subseteq X$. But we have $B(x,r_0)\not\subseteq E$ by hypothesis. So we must have $x$ is a boundary point. But by definition of E is open, $\partial E \cap E = \emptyset$. So we have $x\in \partial E \cap E\neq \emptyset$, a contradiction. Since all cases lead to contradictions, we must have for all $x\in E$, there exists an $r>0$ such that $B(x,r) \subseteq E$ as required. 
+
+Suppose for all $x\in E$, there exists an $r>0$ such that $B(x,r) \subseteq E$. Suppose for contradiction that $E$ contains its boundary points. So $E\cap \partial E \neq \emptyset$. We then have for $x\in \partial E\cap E$, there exists an $r>0$ such that $B(x,r) \subseteq E$. So $x$ is an interior point. But this is a contradiction since $x$ cannot be both a boundary and interior point. Therefore $E$ does not contain its boundary points and is therefore open.
+
+B) Suppose $E$ is closed. Let x be an adherent point of $E$. Then $x$ is either an interior point or a boundary point. In the case x is a boundary point, we have $x\in \partial E$, but $\partial E\subseteq E$ and so $x\in E$. In the case x is an interior point, we must have $x\in E$ and so in all cases we have $x\in E$. Therefore for all adherent points of $E$, $x\in E$ as required. 
+
+Suppose $E$ contains all it's adherent points. Suppose $x\in \partial E$, then $x$ is a boundary point, and therefore an adherent point of E. So $x\in E$. That means $\partial E \subseteq E$ and $E$ is therefore a closed set.
+
+C) Suppose $x_0\in X$ and $r>0$. Let $x \in B(x_0,r)$. We then have $d(x_0, x) <r$ but either $x=x_0$ or $x\neq x_0$. In the case $x= x_0$ we have $ B(x,r) \subseteq B(x_0,r)$. In the case $x\neq x_0$ we have $0<d(x_0,x)<r$. Consider $B(x, r-d(x_0,x))$. Let $y\in B(x, r-d(x_0,x))$. We then have $ d(x,y) <r-d(x_0,x)$ and so $d(x,y)+d(x_0,x) <r$. But by the triangle inequality we have $d(x_0,y) <r$ and so $y\in B(x_0,r)$. Therefore $ B(x, r-d(x_0,x))\subseteq B(x_0,r)$ meaning $x$ is an interior point of $B(x_0,r)$. But since $x$ was chosen arbitrarily in $ B(x_0,r)$, we have for all $x\in B(x_0,r) $, $x$ is an interior point of $B(x_0,r)$, but that also means $x$ is not a boundary point. So we have $B(x_0,r) \cap \partial(B(x_0,r)) = \emptyset$ and therefore $B(x_0,r)$ is open as required.
+
+Now consider the set $\{x\in X: d(x,x_0)\leq r\}$. Let $y$ be a boundary point of this set. Suppose for contradiction that $y\notin \{x\in X: d(x,x_0)\leq r\}$. Since $y$ is a boundary point, it is an adherent point and so there exists a sequence consisting of elements in the set such that $\lim_{n\to\infty}d(x_n,y) = 0$. But we have $d(y,x_0)>r$ and $d(x_n,x_0) \leq r$. So $d(y,x_0) >q> r$ meaning $d(y,x_0) - d(x_n,x_0) >q-r > 0$ Since $d(x_0,y)\leq d(x_n,y) + d(x_n,x_0)$, we have $q-r<d(x_0,y)-d(x_n,x_0)\leq d(x_n,y)$. By the hypothesis we have $d(x_n,y) \leq (q-r)/2$ for all $n\geq N$ for some $N\geq 1$ and so we have a contradiction. Therefore $\{x\in X: d(x,x_0)\leq r\}$ is indeed a closed set.
+
+D) Suppose $\{x_0\}$ is a singleton set where $x_0\in X$. Let $(x_n)_{n=m}^\infty$ be a convergent sequence such that $x_n\in \{x_0\} $. Then $x_n = x_0$ so $\lim_{n\to\infty}x_n= \lim_{n\to\infty}x_0$, but we have $d(x_0,x_0) = 0$ and so $\lim_{n\to\infty}x_0 = x_0$. So $\{x_0\}$ contains all it's adherent points. Therefore $\{x_0\}$ is indeed a closed set.
+
+E) Suppose E is open then $E=int(E)$ and so $X-E = X-int(E)$. Suppose $x$ is a boundary point of $X-E$. Suppose for contradiction that $ x\in E$. Then x is an interior point of E and so there exists an $r>0$ such that $B(x,r) \subseteq E$. But that means $B(x,r)\cap X-E= \emptyset$ and therefore $x$ is an exterior point of $X-E$. But this is a contradiction since $x$ is a boundary point of $X-E$ and cannot be an exterior point. Therefore $x\in X-E$ and so $X-E$ is closed as required.
+
+Suppose $X-E$ is closed. Let $x$ be a boundary point of $E$. Suppose for contradiction that $x\in E$. Then $x$ is neither an interior or a boundary point of $X-E$. This means that it must be an exterior point of $X-E$ and so there exists an $r>0$ such that $B(x,r)\cap(X-E) = \emptyset$. Let $x\in B(x,r)$. Then $x\in X$, but $x\notin X-E$ and so $x\in E$, meaning $B(x,r)$ is a subset of $E$. Therefore $x$ is an interior point of $E$, but this is a contradiction since $x$ is a boundary point of E by hypothesis. We therefore have $ x\notin E$ and so $\partial E \cap E = \emptyset$ meaning $E$ is indeed an open set. 
+
+F) First we shall prove that the intersection of two open sets is open. Let $E_1$ and $E_2$ be open sets. Let $x$ be a boundary point of $ Z=E_1\cap E_2$. Suppose for contradiction that $x\in Z$, then $x$ is an interior point of both $E_1$ and $E_2$. That means there exists an $r_1>0$ such that $B(x,r_1) \subseteq E_1$ and there exists an $r_2>0$ such that $B(x,r_2) \subseteq E_2$. Suppose $r = min(r_1,r_2)$, then $B(x,r)\subseteq B(x,r_1)$ and $B(x,r)\subseteq B(x,r_2)$. This is because for an $x_0\in B(x,r)$, we have $d(x,x_0) < r \leq r_1,r_2$. Since $B(x,r_1)$ and $B(x,r_2)$ are subsets of $E_1$ and $E_2$ respectively. We have for an $x\in B(x,r)$, $x\in E_1\cap E_2$ meaning $B(x,r)$ is a subset of $E_1\cap E_2$ and so $x$ is an interior point of $E_1\cap E_2$. But $x$ is a boundary point and so we have a contradiction. Therefore $x\notin E_1\cap E_2$ and so $E_1\cap E_2$ is open as required.
+
+We will prove using induction. In the case $n=1$, we have a collection $E_1$ which is open and since $E_1$ is open, we are done. Now suppose for inductive hypothesis that for some $n\geq 1$, if $E_1...E_n$ are open sets in X then $Z=E_1\cap...\cap E_n$ is an open set. Then let $E_1...E_{n+1}$ be a collection of open sets in X then $E_1\cap...\cap E_n\cap E_{n+1} = Z\cap E_{n+1}$ where Z and $E_{n+1}$ are both open sets. This means that $ Z\cap E_{n+1}=E_1\cap...\cap E_n\cap E_{n+1}$ is open thereby closing the induction.
+
+
+\textbf{1.4.1}
+
+Suppose hypothesis. Let $(x^{(n_j)})_{j=1}^\infty$ be a subsequence of $(x^{(n)})^\infty_{n=m}$. Since $(x^{(n)})^\infty_{n=m}$ converges to $x_0$, we have $d(x^{(n)},x_0)\leq \varepsilon$ for all $n\geq N$ for some $N\geq m$. But we have $n_j\geq N$ for all $j\geq N$, this means that $d(x^{(n_j)},x_0)\leq \varepsilon$ for all $j\geq N$. Since $\varepsilon $ was arbitrary we can conclude that the subsequence does converge to $x_0$ and since the subsequence was also arbitrary, we can then conclude that all subsequences of the convergent sequence is also convergent to $x_0$ as required.
+
+\textbf{1.4.2}
+
+Suppose L is a limit point of $(x^{(n)})^\infty_{n=m}$. Let $n_j$ be defined inductively as $n_1 = n$ such that $n\geq m$ where $d(x^{(n)},L)\leq 1$ and $ n_{j+1}=n$ such that $n\geq n_{j}+1$ where $d(x^{(n)},L)\leq 1/(j+1)$. The sequence $(x^{(n_j)})_{j=1}^\infty$ is then a subsequence of $(x^{(n)})^\infty_{n=m}$. Let $\varepsilon>0$ we then have some $N\geq 1$ such that $ \varepsilon >1/N>0 $, but $d(x^{(n_j)},L)\leq 1/N$ for all $j\geq N$. We can therefore conclude that $(x^{(n_j)})_{j=1}^\infty$ converges to L and so there exists a subsequence of $(x^{(n)})^\infty_{n=m}$ that converges to L as required.
+
+Suppose there exists a subsequence $(x^{(n_j)})_{j=1}^\infty$ of $(x^{(n)})^\infty_{n=m}$ which converges to L. Then $d(x^{(n_j)},L) \leq \varepsilon$ for all $j\geq N$ for some $N\geq 1$. Let $M\geq m$. Then either $M\geq N$ or $M<N$. In the case $M\geq N$, we have $M+1\geq N$ and so $d(x^{(n_{M+1})},L) \leq \varepsilon$, where $n_{M+1}\geq M+1$. In the case $M<N$, we have $N\geq N$ and so $d(x^{(n_{N})},L)\leq \varepsilon$, where $n_N\geq N>M$. In both cases we have, for $M\geq m$, there exists an $n\geq M$ such that $d(x^{(n)}, L)\leq \varepsilon$. We can therefore conclude that L is indeed a limit point of $(x^{(n)})^\infty_{n=m}$ as required. 
+
+\textbf{1.4.3}
+
+Suppose hypothesis. Then $d(x^{(n)},x_0) \leq \varepsilon/3$ for all $n\geq N$ for some $N\geq m$. Let $j\geq N$, we then have $d(x^{(j)}, x_0)\leq \varepsilon/3$ and so $d(x^{(n)},x^{(j)}) \leq 2\varepsilon/3$. Since $j$ was chosen arbitrary we can say $d(x^{(n)},x^{(j)}) \leq 2\varepsilon/3< \varepsilon$ for all $n,j\geq N$. Since $\varepsilon>0$ was chosen arbitrary we are done and therefore $(x^{(n)})^\infty_{n=m}$ is indeed cauchy as required. 
+
+\textbf{1.4.4}
+
+Suppose hypothesis. Then $x_0$ is a limit point of $(x^{(n)})^\infty_{n=m}$. Since the sequence is Cauchy, we have $d(x^{(j)},x^{(n)})< \varepsilon/2$ for all $j,n>N$ for some $N\geq m$. But since $x_0$ is a limit point of the sequence we also have $d(x^{(l)}, x_0)\leq \varepsilon/2$ for some $l\geq N$. But that also means $d(x^{(l)},x^{(n)})\leq \varepsilon$. We then have by triangle inequality, $d(x^{(n)}, x_0)<\varepsilon$ for all $n\geq N$. We can therefore conclude that $(x^{(n)})^\infty_{n=m}$ converges to $x_0$ as required. 
+
+\textbf{1.4.5}
+
+Suppose L is a limit point of the sequence $(x^{(n)})^\infty_{n=m}$, then there exists a subsequence of the original sequence such that $(x^{(n_j)})^\infty_{j=1}$ converges to L. We know that $n_j\geq m$ for all $j$ so $x^{n_j}\in \{x^{(n)}:n\geq m\}$. The sequence $(x^{(n_j)})^\infty_{j=1}$ is then contained in $\{x^{(n)}:n\geq m\}$ and converges to L, thereby making L an adherent point of the set as required.
+
+We know $x^{(m)}$ is an adherent point of $\{x^{(n)}:n\geq m\}$. Suppose for contradiction that the converse of the above is true. Then $x^{(m)}$ is a limit point of $(x^{(n)})^\infty_{n=m}$. But since $(x^{(n)})^\infty_{n=m}$ is any sequence of any set X, we can define $(x^{(n)})^\infty_{n=m}$ as $x^{(n)} = x^{(m)}$ for $n=m$ and $d(x^{(n)},x^{(m)})\geq 1$ otherwise for some set X containing $x^{(m)}$ and $x^{(n)}$ such that $d(x^{(n)},x^{(m)})\geq 1$. This obviously leads to a contradiction because for all $n\geq m+1,$ $d(x^{(n)},x^{(m)})\geq 1$ but by hypothesis we have an $n\geq m+1$ such that $d(x^{(n)},x^{(m)})\leq 0.5$ and so the converse is false. 
+
+\textbf{1.4.6}
+
+Let $(x^{(n)})^\infty_{n=m}$ be a Cauchy sequence of points in the metric space $(X,d)$. Suppose for contradiction that $(x^{(n)})^\infty_{n=m}$ has more than one limit point $L>1$. Then there exists L subsequences that converge to different numbers. Consider two of these subsequences, $(x^{(n_j)})^\infty_{j=1}$ and $(x^{(n_k)})^\infty_{k=1}$ that converges to Q and P respectively. $Q\neq P$. The original sequence $(x^{(n)})^\infty_{n=m}$ then converges to both Q and P. But a sequence cannot converge to different points and so we have a contradiction. Therefore the sequence can have at most 2 limit points. 
+
+\textbf{1.4.7}
+
+A) Suppose $(Y,d|_{Y\times Y})$ is complete. Let $x_0$ be a point of $X$ that is an adherent point of $Y$. So there is a sequence $(y^{(n)})_{n=m}^\infty$, consisting of elements in $Y$ that converges to $x_0$. But we know that all convergent sequences are Cauchy, so $(y^{(n)})_{n=m}^\infty$ is a Cauchy sequence in $Y$. But by hypothesis, $(y^{(n)})_{n=m}^\infty$ converges in $Y$ and therefore we have, all adherent points of $Y$ is in $Y$. Therefore $Y$ is closed in X
+
+B) Suppose $(X,d)$ is a complete metric space and $Y$ is a closed subset of $X$. Since $Y$ is a closed subset of $X$, all adherent points of $Y$ is in $Y$. Since $Y\subseteq X$ a cauchy sequence in Y is a cauchy sequence in X. So every cauchy sequence in Y converges in X. But that means every cauchy sequence in Y is convergent and by definition of closed, must converge in Y. We therefore have $(Y,d|_{Y\times Y})$ is indeed complete. 
+
+\textbf{1.5.1}.
+Let $(\textbf{R},d)$ be a metric space with the standard metric. Let $X$ be a subset of $\textbf{R}$. Suppose X is bounded by definition $1.5.3$, we then have $Y\subseteq B(x,r)$ for some $x\in \textbf{R}$ and some $r>0$. Then $d(y,x) < r$ and so $|y-x| <r$ for all $y$. Then $-r+x\leq y \leq r+x$. So for $M = r+x+1$, we have $y\in [-M,M]$ and since $M \neq y$ for all y we have $Y\subset [-M,M]$. But that means $Y$ is bounded by definition 9.1.22 as required. 
+
+Let $X$ be a subset of the real line that is bounded by definition 9.1.22. We know that $(\textbf{R},d)$ is a metric space and by definition $X\subset [-M,M]$ for some $M>0$. Consider the ball $B(0,M+1)$. Let $x\in X$, we then have $ |x| \leq M$, but that also means $|x|<M+1$, and since $d(0,x) = |x|$, we have $x\in B(0,M+1)$. This means $X\subseteq B(0,M+1)$ and so we have $X$ is bounded by definition 1.5.3
+
+\textbf{1.5.2}
+
+Suppose $(X,d)$ is a compact metric space. Let $(x_n)^\infty_{n=m}$ be a Cauchy sequence in X. Since $(x_n)^\infty_{n=m}$ is a sequence in X, it also has the property that there exists a subsequence of it that converges. But that means it must converge in X. That in turn means $(x_n)^\infty_{n=m}$ must also converge in $X$ thereby making $(X,d)$ complete. Now suppose for contradiction that for all $B(x,r)$ in $X$, there exists a $y\in X$ such that $y\notin B(x,r)$. Fix $x\in X$ and consider the set $B_n = \{y\in X: y\notin B(x,n)\}$. This is always non empty. Now using the axiom of choice define the sequence $(x_n)_{n=1}^\infty$ recursively as $x_n = y$ for some $y\in B_n$. This sequence is obviously in $X$ and so we must have a subsequence that converges to some $x_0\in X$. We have $2d(x_0,x) \leq N$ for some natural number N. But there exists an $n_0\geq 2N$ such that $ d(x_0,x_{n_0})\leq d(x_0,x)$. That means $d(x,x_{n_0})\leq 2d(x_0,x)\leq N$ by the triangle inequality. But we have $d(x,x_{n_0}) \geq n_0$ and so $d(x,x_{n_0})>2N$, a contradiction. Therefore $X$ is indeed bounded. 
+
+\textbf{1.5.4}
+
+ Consider the function $f:\textbf{R}\to \textbf{R}$ defined as $f(x) = x$ for $x\in (-1,1)$ and $f(x) = 1$ otherwise. This is continuous. Now consider the open set $V=(-2,2)\subseteq \textbf{R}$ which is open. The image of this set would be $f(V) = [-1,1]$. This set is not open since the boundary points $-1,1$ are both in the set. 
+
+\textbf{1.5.6}
+
+Suppose for contradiction that $ \bigcap^\infty_{n=1}K_n=\emptyset$. Consider the compact metric space $(K_1,d|_{K_1,K_1})$ and the sets $V_n = K_1-K_n$. These sets are open in $K_1$. We have $\bigcup^\infty_{n=1}(K_1-K_n) = K_1 -\bigcap^\infty_{n=1}(K_n)$. But since $\bigcap^\infty_{n=1}(K_n)=\emptyset$, $\bigcup^\infty_{n=1}(K_1-K_n) = K_1$. We know that $K_1$ is compact and is also a subset of $\bigcup^\infty_{n=1}(K_1-K_n)$ by definition of equality. So by theorem 1.5.8, we have a finite subset $F\subseteq\textbf{N}$ such that $K_1 \subseteq \bigcup_{n\in F}(K_1-K_n)$. But because $F$ is a finite subset of $\textbf{N}$, $F$ is bounded meaning that there exists an $M\in \textbf{N}$ such that for all $x\in F$, $x\leq M$. Consider the set $K_1-K_M$. Let $n\in F$. Let $x\in K_1-K_n$. Then $x\in K_1$ and $x\notin K_n$. But because $K_M\subseteq K_n$, $x\notin K_M$. Therefore $x\in K_1-K_M$. That means $K_1-K_n\subseteq K_1-K_M$ for all $n\in F$. Now let $x\in K_1$, then $x\in \bigcup_{n\in F}(K_1-K_n)$ and so $x\in (K_1-K_n)$ for some $n\in F$. This means that $x\in K_1-K_M $. We can then conclude that $K_1\subseteq K_1-K_M$. But because $K_1-K_M\subseteq K_1$, we have $K_1 = K_1-K_M$. But $K_M$ subseteq $K_1$ so for an $x\in K_M$, $x\in K_1-K_M$. Since $K_M$ is non empty, there is an $x\in K_M$ and it must also $x\in K_1-K_M$. So $x\in K_1$ and $x\notin K_M$, which is a contradiction. Therefore $\bigcap^\infty_{n=1}K_n\neq\emptyset$ as required. 
+
+\textbf{1.5.7}
+
+A) Let Y be a compact subset of X, and $Z\subseteq Y$
+
+Suppose $Z$ is compact. Let $x$ be an adherent point of $Z$. Then there exists a sequence $(x_n)^\infty_{n=m}$ in $Z$ that converges to $x$. Since this sequence is in $Z$ and $Z$ is compact, there exists a subsequence of it that converges in $Z$. But because $(x_n)^\infty_{n=m}$ converges to $x$, all of it's subsequences must also converge to $x$, therefore $x$ convereges in $Z$. So all adherent points of $Z$ are in $Z$ meaning that $Z$ is closed as required. 
+
+Suppose $Z$ is closed. Let $(x_n)^\infty_{n=m}$ be a sequence in Z. This sequence is also in $Y$ since $Z\subseteq Y$. This in turn means that $(x_n)^\infty_{n=m}$ has a subsequence that converges in Y since Y is compact. But this subsequence is a convergent sequence in Z. Since Z is closed, this subseqence must converge in Z. Therefore we can conclude that Z is compact as required. 
+
+B) Suppose $Y_1,..., Y_n$ are a finite collection of compact subsets of $X$. Let $(x^{(n)})^\infty_{n=m}$ be a sequence of the set $\bigcup^n_{i=1}Y_i$. Consider the sets $D_i = \{n\in \textbf{N}: x^{(n)}\in Y_i\}$ for $1\leq i\leq n$. Suppose for contradiction that all $D_i$ are finite. The union $\bigcup^n_{i=1}D_i$ is then finite. But we have for $n\in \textbf{N}$, $x^{(n)}\in Y_i$ for some $1\leq i\leq n$ and so $n\in D_i$ for some $1\leq i\leq n$ which in turn means $n\in \bigcup^n_{i=1}D_i$. This means that $\textbf{N}\subseteq\bigcup^n_{i=1}D_i$, and we also have $\bigcup^n_{i=1}D_i\subseteq\textbf{N} $. So $\bigcup^n_{i=1}D_i =\textbf{N}$. But because $\bigcup^n_{i=1}D_i$ is finite, it is bounded by some $M$, and so we have $M+1\in \textbf{N}$ while $M+1 \notin \bigcup^n_{i=1}D_i$ a contradiction. Therefore there exists a $D_i$ such that $D_i$ is infinite. Let $D_{i_0}$ be this infinite set. Consider the sequence $(x^{(n_j)})_{j=1}^\infty$ defined as so, $n_1 = min(D_{i_0})$ and $n_{j+1} = min\{x\in D_{i_0}: x>n_{j}\}$. This sequence is a subsequence of $(x^{(n)})^\infty_{n=m}$ and is in $Y_{i_0}$ so this subsequence converges in $Y_{i_0}$ since $Y_{i_0}$ is compact. This in turn means that the subsequence converges in $\bigcup^n_{i=1}Y_i$. Therefore we can conclude that all sequences of $\bigcup^n_{i=1}Y_i$ has a subsequence which converges in $\bigcup^n_{i=1}Y_i$ and so $\bigcup^n_{i=1}Y_i$ is compact as required. 
+
+C) First we will prove that all singleton subsets of $X$ is compact. Suppose $\{x\}\subseteq X$. Let $(x^{(n)})^\infty_{n=m}$ be a sequence in $\{x\}$. Since $x_n\in \{x\}$, it must equal $x$, and so we have $(x^{(n)})^\infty_{n=m}=(x)^\infty_{n=m}$. This sequence has the subsequence $(x)^\infty_{n=m}$, which converges to $x\in  \{x\}$. Therefore we can conclude that all singleton subsets of X are indeed compact.
+
+Suppose $Y$ is a finite subset of $X$. $Y$ then has some cardinality $N\in \textbf{N}$ and a bijection $f:Y \to \{n\in \textbf{N}: 1\leq n\leq N\}$. Consider the set $L_i = \{y\in Y:f(y)=i\}$ for $1\leq i\leq N$. This is a singleton and is therefore finite. Now consider the union $\bigcup_{n=1}^N L_i$. Let $x\in Y$, we then have $f(y) = i$ for some $1\leq i\leq N$. So $x\in L_i$. This in turn means $x\in \bigcup_{n=1}^N L_i$. So $Y\subseteq \bigcup_{n=1}^N L_i$ and since $\bigcup_{n=1}^N L_i\subseteq Y$, we have $Y=\bigcup_{n=1}^N L_i$, but because $\bigcup_{n=1}^N L_i$ is a union of finite compact subsets of $X$, we have $\bigcup_{n=1}^N L_i$ is compact and so $Y$ is compact as required. 
+
+\textbf{1.5.8}
+
+Suppose $x\in \{e^{(n)}:n\in \textbf{N}\}$. Then $x = e^{(n)} = (e^{(n)}_j)_{j=0}^\infty$ and we have $\sum_{j=0}^\infty e^{(n)}_j= \sum_{j=0}^{n-1}e^{(n)}_j+e^{(n)}_n +\sum_{j=n+1}^\infty e^{(n)}_j= 0+1+0=1$. But since $e^{(n)}_j\geq 0$ for all $j$, we have $|e^{(n)}_j|=e^{(n)}_j$ and so 
+$\sum_{j=0}^\infty |e^{(n)}_j| =\sum_{j=0}^\infty e^{(n)}_j = 1$. This makes it so that the sequence is absolutely convergent and so we can conclude that $x\in X$, making $\{e^{(n)}:n\in \textbf{N}\}\subseteq X$. 
+
+Let $(x^{(m)})^\infty_{m=p}$ be a convergent sequence in $\{e^{(n)}:n\in \textbf{N}\}$. Since the sequence is convergent, it must also be Cauchy. We then have $d(x^{(m)},x^{(z)})\leq 1/2$ for all $m,z\geq N$ for some $N\geq p$. So $d(x^{(m)},x^{(z)})=\sum_{j=0}^\infty|e^{(l)}_j-e^{(k)}_j|\leq 1/2$ where $x^{(m)} = (e^{(l)}_j)_{j=0}^\infty$ and $x^{(z)}=(e^{(k)}_j)_{j=0}^\infty$. Suppose for contradiction that $l\neq k$, we then have $e^{(l)}_l = 1$, but $e^{(k)}_l = 0$. This means $e^{(l)}_l-e^{(k)}_l = 1$ and so $|e^{(l)}_l-e^{(k)}_l| = 1$. But $\sum_{j=0}^\infty|e^{(l)}_j-e^{(k)}_j| = \sum_{j=0}^{l-1}|e^{(l)}_j-e^{(k)}_j| + |e^{(l)}_l-e^{(k)}_l| + \sum_{j=l+1}^{l-1}|e^{(l)}_j-e^{(k)}_j|$, and since all elements are positive, $0+|e^{(l)}_l-e^{(k)}_l| = 1\leq \sum_{j=0}^\infty|e^{(l)}_j-e^{(k)}_j|$, a contradiction. Therefore $l=k$ and so $(e^{(l)}_j)_{j=0}^\infty=(e^{(k)}_j)_{j=0}^\infty$. This then means $e^{(l)}_j =e^{(k)}_j$ and so $e^{(l)}_j-e^{(k)}_j= 0 = |e^{(l)}_j-e^{(k)}_j|$. We then have $\sum_{j=0}^\infty|e^{(l)}_j-e^{(k)}_j| = 0$. We then have for $d(x^{(N)}, x^{(m)}) = 0\leq \varepsilon $ for all $m\geq N$. So we can conclude that for any convergent sequence $(x^{(m)})^\infty_{m=p}$ in $\{e^{(n)}:n\in \textbf{N}\}$, $(x^{(m)})^\infty_{m=p}$ converges to $x^{(N)}$ for some $N\geq p$. But $x^{(N)}\in \{e^{(n)}:n\in \textbf{N}\}$ and so we can conclude that $\{e^{(n)}:n\in \textbf{N}\}$ is closed.
+
+Now consider the ball $B(e^{(0)},3)$. Suppose $x\in \{e^{(n)}:n\in \textbf{N}\}$, we then have $d(e^{(0)},x) = \sum^{\infty}_{j=0}|e^{(0)}_j-e^{(n)}_j|$. We have either $n= 0$ or $n\neq 1$, in the case $n=0$, we have $\sum^{\infty}_{j=0}|e^{(0)}_j-e^{(n)}_j| = \sum^{\infty}_{j=0}|e^{(0)}_j-e^{(0)}_j| =  \sum^{\infty}_{j=0} 0 = 0$ and so $d(e^{(1)},x)=0 <3$ therefore $x\in B(e^{(0)},3)$ In the case $n\neq 0,$ we have $d(e^{(0)},x) = \sum^{\infty}_{j=0}|e^{(0)}_j-e^{(n)}_j| =|e^{(0)}_0-e^{(n)}_0|+\sum^{n-1}_{j=1}|e^{(0)}_j-e^{(n)}_j|+|e^{(0)}_n-e^{(n)}_n|+\sum^{\infty}_{j=n+1}|e^{(0)}_j-e^{(n)}_j| = 1+0+1+0 = 2$. So $d(e^{(0)},x)=2 <3$ therefore $x\in B(e^{(0)},3)$. We can therefore conclude that $\{e^{(n)}:n\in \textbf{N}\}\subseteq B(e^{(0)},3)$ and therefore is bounded.
+
+Consider the sequence $(e^{(n)})^\infty_{n=0}$, this sequence is in $\{e^{(n)}:n\in \textbf{N}\}$. Let $(e^{(n_j)})^\infty_{j=0}$ be a subsequence of it. Let $N\geq 0$ then for $k> j\geq N,$ $d(e^{(n_j)},e^{(n_k)} ) = 2$ and so for all $N\geq 0$, we have $d(e^{(n_j)},e^{(n_k)} )>1$ for $j\geq N$ and $k=j+1$. This means that $(e^{(n_j)})^\infty_{j=0}$ isn't Cauchy and therefore can't be convergent. Since $(e^{(n_j)})^\infty_{j=0}$ is an arbitrary subsequence of $(e^{(n)})^\infty_{n=0}$, we can conclude that all subsequences of $(e^{(n)})^\infty_{n=0}$ does not converge in $\{e^{(n)}:n\in \textbf{N}\}$. This in turn means we can conclude that $\{e^{(n)}:n\in \textbf{N}\}$ is not compact as required. 
+
+\textbf{1.5.9}
+
+Suppose $(X,d)$ is compact. Let $(x^{(n)})^\infty_{n=m}$ be a sequence in $X$. Since $X$ is compact, this sequence must have a subsequence $(x^{(n_j)})^\infty_{j=0}$ that converges to some $x_0\in X$. That in turn means $(x^{(n)})^\infty_{n=m}$ has a limit point $x_0$. So we can conclude that all sequences in $X$ has at least 1 limit point. 
+
+Let $(X,d)$ be a metric space. Suppose every sequence in $X$ has at least one limit point. Let $(x^{(n)})^\infty_{n=m}$. This sequence has a limit point L and so there must be a subsequence which converges to $L$. L must be in $X$ because the metric $d$ is not defined outside of $X$. Therefore for all sequences in $X$, there exists a subsequence that converges in $X$ and so we can conclude that $(X,d)$ is indeed compact as required. 
+
+\textbf{1.5.10}
+
+A) Suppose $(X,d)$ is totally bounded. Suppose for contradiction that $X$ is not bounded. Then for all balls $B(x,r)$ in $X$, $X$ is not a subset of $B(x,r)$. Since $(X,d)$ is totally bounded, we have, for some positive integer $n$, and finite number of balls $B(x^{(1)},\varepsilon),..., B(x^{(n)},\varepsilon)$, $X = \bigcup^n_{i=1}B(x^{(i)},\varepsilon)$. But $X$ is not a subset of $B(x^{(i)},\varepsilon)$ for all $1\leq i \leq n$. Define $ z= \sum_{i=1}^nd(x^{(1)}, x^{(i)})$. Consider the ball $B(x^{(1)},z+2\varepsilon)$. Let $x\in X$, then $x\in B(x^{(i)},\varepsilon) $ for some $ 1\leq i \leq n$. That then means $d(x^{(i)}, x) \leq \varepsilon$. So $d(x^{(1)}, x)\leq d(x^{(i)}, x) + d(x^{(1)},x^{(i)})\leq \varepsilon +d(x^{1},x^{(i)})$. But $\varepsilon +d(x^{1},x^{(i)})\leq z + 2\varepsilon$. So we have $d(x^{(1)},x )\leq z + 2\varepsilon$ and therefore $x\in B(x^{(1)},z+2\varepsilon)$. We therefore have $X\subseteq B(x^{(1)},z+2\varepsilon)$. But this contradicts the hypothesis that $X$ is not bounded and so we must have $X$ is bounded.
+
+B) Suppose $(X,d)$ is compact. Then from P1.5.5, it is complete and bounded. Suppose for contradiction that $(X,d)$ is not totally bounded. We then have for some $\varepsilon>0$, $X$ cannot be covered by finitely many $B(x,\varepsilon)$ balls. Consider the set $\bigcup _{x\in X}B(x,\varepsilon)$. Suppose $x\in X$, we then have $x\in B(x,\varepsilon)$ since $d(x,x) = 0\leq \varepsilon$. This means $X=\bigcup _{x\in X}B(x,\varepsilon)$. But since we can't have a finite collection of $B(x,\varepsilon)$ that covers X, we must have X is infinite. Now consider the set of all balls $V=\{B(x,\varepsilon/2): x\in X\}$. This set is infinite since $X$ is infinite. It is also $V \subset 2^X$. We then have a subset of $Y\subseteq V$ such that for all $y\in Y$ and all $z\in Y$, $z\cap y = \emptyset$. Also for all $l\in V$, there exists a $h\in Y$ such that $l\cap h \neq \emptyset$.(Where to go?)
+
+Alternate proof. Suppose $(X,d)$ is compact. Suppose for contradiction that $(X,d)$ is not totally bounded. We then have for some $\varepsilon>0$, We then have for some $\varepsilon>0$, $X$ cannot be covered by finitely many $B(x,\varepsilon)$ balls. Consider the set $\bigcup _{x\in X}B(x,\varepsilon)$. Suppose $x\in X$, we then have $x\in B(x,\varepsilon)$ since $d(x,x) = 0\leq \varepsilon$. This means $X=\bigcup _{x\in X}B(x,\varepsilon)$. But since we can't have a finite collection of $B(x,\varepsilon)$ that covers X, we must have X is infinite. Since balls are open sets we also must have a finite subset of $F\subseteq X$ such that $X\subseteq \bigcup _{x\in F}B(x,\varepsilon)$. This is a contradiction since we can't have a finite set of $\varepsilon-balls$ that cover $X$ and so we must have $X$ is totally bounded. 
+
+\section{Continuous Functions on Metric Spaces}
+
+\textbf{2.1.3}
+
+A) Suppose hypothesis. We then have for every open set that contains $g(f(x_0))$ there is an open subset $U\subset Y$ containing $f(x_0)$ such that $g(U)\subseteq Z$. But since $U$ is an open proper subset of $Y$ that contains $f(x_0)$, there then exists an open subset $P \subset X$ containing $x_0$ such that $f(P)\subseteq Y$. But since $f(P) \subseteq Y$, we have $g(f(P)) \subseteq Z$. So we have, for every open set that contains $g(f(x_0))$ there is an open subset $P \subset X$ containing $x_0$ such that $g(f(P)) \subseteq Z$. This in turn means that $g\circ f$ is indeed continuous at $x_0$ as required. 
+
+B) Suppose hypothesis. Let V be an open set in Z we then have $ g^{-1}(V)$ is an open set. But $ g^{-1}(V)\subseteq Y$ and so we also have $f^{-1}(g^{-1}(V))$ is an open set. But $f^{-1}(g^{-1}(V))\subseteq X$. So we have for any open set $V$ in $Z$, the set $f^{-1}(g^{-1}(V))$ is an open subset of $X$. Therefore $g \circ f$ is continuous as required. 
+
+\textbf{2.1.4}
+
+A) consider the function $f:\textbf{R}\to \textbf{R}$, defined as $f(x) = x$ for all $x<0$ and $f(x) = x+1$ for all $x>= 0$. There is a discontinuity at $x=0$. Let $g:\textbf{R}\to\textbf{R}$ be defined as $g(x)=0$. This is continuous. The composition $g\circ f: \textbf{R}\to \textbf{R}$ is defined as $g(f(x))$ and so $g(f(x)) = 0$ for all $x\in \textbf{R}$. Therefore it is continuous. 
+
+B) consider the function $g:\textbf{R}\to \textbf{R}$ defined as $g(x) = 1$ for all $x\geq 0$, and $g(x) = 0$ for all $x<0$. Now consider the function $f:\textbf{R}\to \textbf{R}$ defined as $f(x) = 1$. We then have $g(f(x)) = g(1) = 1$ for all x. So $g\circ f$ is continuous
+
+C) consider the function $g:\textbf{R}\to \textbf{R}$ defined as $g(x) = 1$ for all $x\geq 0$ and $g(x) = 0$ for all $x<0$. Now consider the function $f:\textbf{R}\to \textbf{R}$ defined as $f(x) = 1$ for all $x\geq 0$ and $f(x) = 2$ for all $x<0$. We then have $g(f(x)) = g(1) = 1$ for all $x\geq 0$ and $ g(f(x)) = g(2) = 1$ for all $x< 0$. Therefore $g\circ f$ is continuous as required.
+
+\textbf{2.1.5}
+
+Suppose hypothesis. Let $x_0 \in E$. Let $\varepsilon >0$. Now consider $\delta = \varepsilon>0$. Consider the ball $B(x_0,\delta)$ in E. For $x\in B(x_0,\delta)$, $d_{E\times E}(x,x_0) = d(x,x_0)< \delta$. We then have $\iota_{E\to X}(x) = x$ and $\iota_{E\to X}(x_0) = x_0$ so $d(\iota_{E\to X}(x),\iota_{E\to X}(x_0)) = d(x,x_0) < \delta = \varepsilon$. Since $\varepsilon$ is arbitrary we can then conclude that for all $\varepsilon>0$, there exist a $\delta>0$ such that $d(\iota_{E\to X}(x),\iota_{E\to X}(x_0))< \varepsilon$ for all $x$ such that $d_{E\times E}(x,x_0)<\delta$. Therefore $\iota_{E\to X}$ is continuous at  $x_0$. But since $x_0$ is arbitrary in E we have $\iota_{E\to X}$ is continuous at every point in E and so is continous as required.
+
+\textbf{2.1.6}
+
+Suppose hypothesis. Consider the function $f\circ \iota_{E\to X}:E\to Y$. Let $x\in E$. Then $f(\iota_{E\to X}(x)) = f(x)$, but we also have $f|_{E\times E}(x) = f(x)$ and so we have $f\circ \iota_{E\to X} = f|_{E\times E}(x)$. But since $\iota_{E\to X}$ is continuous, it is continuous at $x_0$. Since the composition of two functions continuous at $x_0$ results in a function that is also continuous at $x_0$, we have $f\circ \iota_{E\to X}$ is also continuous at $x_0$. This in turn means $f|_{E\times E}$ is continuous at $x_0$ as required.
+
+The converse is not true because suppose for contradiction that it is. Now consider the function $g: \textbf{R}\to \textbf{R}$ defined as $ g(x) = 1$ for all $x\neq 0$ and $g(0) = 0$. Now consider the restriction $g|_{\{0\}}$. This is continuous at $0$ because for all $\varepsilon$, there exists $\delta= 1$, such that $d(f(x), f(0)) < \varepsilon$ When $d|_{\{0\}}(x,0)< 1$. This is since $x=0$ is the only $x\in \{0\}$. But the original function $g$ is obviously not continuous, a contradiction. So the converse cannot be true. 
+
+\textbf{2.2.1}
+
+A) Suppose $x_0\in X$
+
+Suppose $f$ and $g$ are both continuous at $x_0$. Let $((x_n))_{n=1}^\infty$ be a sequence in X that converges to $x_0$ in accordance with the $d_X$ metric. We have $(f(x_n))_{n=1}^\infty$ and $(g(x_n))_{n=1}^\infty$ converging to $f(x_0)$ and $g(x_0)$ respectively. This is using the standard metric on $\textbf{R}$. Now consider the sequence $(f\oplus g(x_n))_{n=1}^\infty$ which is equivalent to $((f(x_n),g(x_n)))_{n=1}^\infty$. Let $\varepsilon>0$. We have for all $n\geq N_1$, $|f(x_n)-f(x_0)|\leq \varepsilon/2 $ for some $N_1\geq 1$. Also for all $n\geq N_2$, $|g(x_n)-g(x_0)|\leq \varepsilon/2 $ for some $N_1\geq 1$. Let $N = max(N_1, N_2)$. Then for all $n\geq N$, $|f(x_n)-f(x_0)|,|g(x_n)-g(x_0)|\leq \varepsilon/2$. We then have $|f(x_n)-f(x_0)|+|g(x_n)-g(x_0)|\leq \varepsilon$ for all $n\geq N$. But this is just the taxicab metric on $\textbf{R}^2$. So we can conclude that $((f(x_n),g(x_n)))_{n=1}^\infty$ converges to $(f(x_0),g(x_0))$ with respect to the taxi cab metric. But because of the equivalence between the taxicab and Euclidean metric, we also have $((f(x_n),g(x_n)))_{n=1}^\infty$ converges to $(f(x_0),g(x_0))$ with respect to the Euclidean metric. This means that $(f\oplus g(x_n))_{n=1}^\infty$ converges to $(f\oplus g(x_0))$ with respect to the Euclidean metric. We can then conclude that $f\oplus g$ is indeed continuous at $x_0$. 
+
+Suppose $f\oplus g$ is continuous at $x_0$. Let $(x_n)^\infty_{n=1}$ be a sequence in X that converges to $x_0$. Then $((f(x_n),g(x_n)))^\infty_{n=1}$ converges to $(f(x_0),g(x_0))$ with respect to the Euclidean metric. But because of the equivalence between the Euclidean and taxi-cab metric, we have that the sequence also converges to $(f(x_0),g(x_0))$ with respect to the taxi-cab metric. Let $\varepsilon >0$, we then have for all $n\geq N$, $|f(x_n)-f(x_0)| +|g(x_n)-g(x_0)| \leq \varepsilon$ for some $N\geq 1$. But since both $|f(x_n)-f(x_0)|,|g(x_n)-g(x_0)|>0 $ we have $|f(x_n)-f(x_0)|,|g(x_n)-g(x_0)|\leq \varepsilon$. That in turn means $(f(x_n))^\infty_{n=1}$ and $(g(x_n))^\infty_{n=1}$ converges to $f(x_0)$ and $g(x_0)$ respectively. So we can conclude that $f$ and $g$ are both continuous at $x_0$.
+
+B) Suppose $f$ and $g$ are both continuous. Let $x_0\in X$, we then have $f$ and $g$ are both continuous at $x_0$. But by A, this means $f\oplus g$ is also continuous at $x_0$. But since $x_0$ was arbitrary in $X$, we have $f\oplus g$ is continuous for all $x\in X$ and so we have $f\oplus g$ is continuous  as required. 
+
+Suppose $f\oplus g$ is continuous. Let $x_0\in X$. Then $f\oplus g$ is continuous at $x_0$. But by A, this means $f$ and $g$ are also continuous at $x_0$. Since $x_0$ was arbitrary in $X$, We have $f$ and $g$ are continuous for all $x\in X$. So $f$ and $g$ are both continuous as required.   
+
+\textbf{2.2.2}
+
+Let $(x_0,y_0)\in \textbf{R}^2$. Let $((x^{(n)},y^{(n)}))^\infty_{n=1}$ be a sequence in $\textbf{R}^2$ that converges to $(x_0,y_0)$. Due to the equivalence of the taxi-cab and Euclidean metric, we have $ |x_n-x_0| + |y_n-y_0| \leq \varepsilon$ for all $n\geq N$ for some $N\geq 1$. This means $|x_n-x_0|,|y_n-y_0|\leq \varepsilon$ and so $(x^{(n)})^\infty_{n=1}$ and $(y^{(n)})^\infty_{n=1}$ converge to $x_0$ and $y_0$ respectively. But by limit law we then have $(x^{(n)} +y^{(n)})^\infty_{n=1}$ converge to $x_0+y_0$. So we have that addition is continuous at $(x_0,y_0)$, but since $(x_0,y_0)$ was arbitrary in $\textbf{R}^2$. We have addition is continuous as required. The rest can be proven similarly
+
+\textbf{2.3.1}
+
+Suppose hypothesis. Let $(f^{(n)})^\infty_{n=1}$ be a sequence in $ f(K)$. Define the set $K^{(n)} = \{x\in X:f(x) = f^{(n)} \}$. These are not empty because $f^{(n)}\in  f(K)$ and so there exists an $x\in K$ such that $f(x) = f^{(n)}$. By the axiom of choice we then have a sequence $(x^{(n)})^\infty_{n=1}$ where $x^{(n)}\in K^{(n)}$. This sequence is in $K$ and so has a subsequence $(x^{(n_j)})^\infty_{j=1}$ which converges to some $x_0$ in $K$. But $f$ is continuous so we have $(f(x^{(n_j)}))^\infty_{j=1}$ converges to $f(x_0)$. Since $x_0\in K$, we have $f(x_0)\in f(K)$ and since $f(x^{(n_j)}) = f^{(n_j)}$, $(f(x^{(n_j)}))^\infty_{j=1}$ is a subsequence of $(f^{(n)})^\infty_{n=1}$. So there exists a subsequence of $(f^{(n)})^\infty_{n=1}$ that converges in $f(K)$. Since the sequence was arbitrary in $f(K)$, we have $f(K)$ is compact as required.
+
+\textbf{2.3.2}
+
+Suppose hypothesis. Since $X\subseteq X$ and $X$ is compact, we have $f(X)$ is compact. Therefore it is bounded and there exists a $y\in f(X)$ such that $f(X) \subseteq B(y,r)$ for some $r>0$. Now let $x\in X$. Then $f(x)\in f(X)$ and so $f(x) \in B(y,r)$ This means $|f(x)-y| \leq r$. Which in turn means $ -r +y \leq f(x) \leq r+y$. Since $-|y|\leq y\leq |y|$, we can conclude $ -r-|y| \leq f(x) \leq r+|y|$, but that means $|f(x)| \leq r+|y|$ a real number. Since $x$ was arbitrary we have, for all $x\in X$, $|f(x)| \leq r+|y|$ and so the function is indeed bounded. Since $f(X)$ is bounded by some $M>0$, we have $sup(f(X)) \leq M$. Since $f(X)$ is compact, it is also closed so all adherent points of $f(X)$ are in $f(X)$. But we know $sup(f(X))$ is an adherent point. We then have $sup(f(X))\in f(X)$ and for all $f(x) \in f(X)$, $f(x)\leq sup(f(X))$. Also there exists an $x_0 \in X$ such that $f(x_0) =sup(f(X))$ and so $f(x)\leq f(x_0)$. We therefore have f attains a maximum at some point $x_0 \in X$ as required. Minimum can be proven similarly.
+
+\textbf{2.3.3}
+
+Let $f:X\to Y$ be a map from $(X,d_X)$ to $(Y,d_Y)$, two metric spaces. Suppose $f$ is uniformly continuous. Let $x_0\in X$, We then have for all $\varepsilon>0$, there exists $\delta >0$ such that $d_Y(f(x_0,x))< \varepsilon$ when $x\in X$ such that $d_X(x_0,x)<\delta$. This means that the function is continuous at $x_0$. But since $x_0$ is arbitrary in $X$, we have $f$ is continuous as required.  
+
+\textbf{2.3.4}
+
+Suppose hypothesis. Let $\varepsilon>0$. Then there exists 
+a $\delta_1>0$ such that $d_Z(g(y),g(y')) < \varepsilon$ whenever $y,y'\in Y$ are such that $d_Y(y,y')< \delta_1$. We also have a $\delta_2>0$ such that $d_Y(f(x),f(x'))< \delta_1$ whenever $x,x'\in X$ are such that $d_X(x,x')<\delta_2$. But since $f(x),f(x') \in Y$, we have $d_Z(g(f(x)),g(f(x'))< \varepsilon$ whenever $x,x'\in X$ such that $d_X(x,x')<\delta_2$. So we can conclude that $g\circ f$ is indeed uniformly continuous.
+
+\textbf{2.4.1}
+
+Suppose hypothesis. Let $x_0\in E$. Consider the set $F = \{x_0\}$ and the set $G = \{x\in E: x\neq x_0\}$. These are both subsets of $E$ and non-empty since $E$ has at least 2 elements. Now let $f\in F$. We then have $f = x_0$ and the ball $B(f,0.5)$ consists of only $x_0$. We thus have $B(f,0.5) \subseteq F$ therefore $f$ is an interior point of $F$. And since $f\in F$ was chosen arbitrarily, we can thus conclude that $F$ is indeed open. Now let $g\in G$. We then have the ball $B(g,0.5)$ consists of only $e$ and therefore we have $B(g,0.5) \subseteq G$ and so $g$ is an interior point of $G$. Since $g$ was arbitrarily chosen in $G$, we have $G$ is open. Suppose $x\in F$. Then $x=x_0$. This means $x\notin G$. Suppose $x\in G$. Then $x\neq x_0$ and so $x\notin F$. Thereby the two sets are disjoint. We also have for $x\in X$, x is either $x\neq x_0$ or $x= x_0$. In the case $ x\neq x_0$, we have $x\in F$. In the case $x = x_0$, we have $x\in G$. So $X\subseteq G\cup F$. We therefore have two disjoint open sets that cover $X$ and so $E$ is disconnected.
+
+\textbf{2.4.2}
+
+Suppose $f$ is continuous. We know that $Y$ is disconnected. So it is covered by two disjoint open sets lets call $Z$ and $L$. Consider the set $f^{-1}(Z)$ and $f^{-1}(L)$. These sets are open since $f$ is continuous. We either have the two sets are disjoint or they are not. In the case they are disjoint, $f^{-1}(Z)\cup f^{-1}(L)$ does not cover $X$ because $X$ is connected. But we have, for $x\in X$, $f(x) \in Y$. So $f(x)\in Z\cup L$. Meaning $x\in f^{-1}(Z\cup L)$ and so $X\subseteq f^{-1}(Z\cup L)$, a contradiction. In the case $f^{-1}(Z)\cap f^{-1}(L)\neq \emptyset$. Let $x,x_0\in X$ such that $x\neq x_0$. Suppose for contradiction that $f(x) \neq f(x_0)$. Consider the sets $Z = \{y\in Y: y=f(x)\}$ and $L = \{y\in Y: y\neq f(x)\}$. These two sets are open disjoint and non-empty as shown in exercise 2.4.1 and because $f(x_0) \in L$. So $ f^{-1}(Z)$ and $f^{-1}(L)$ are both open. Therefore $f^{-1}(Z)\cap f^{-1}(L)\neq \emptyset$ since $X$ is connected. But that means there exists an $x_1\in f^{-1}(Z)\cap f^{-1}(L)$. Since $x_1\in f^{-1}(Z)$, we have $f(x_1)=f(x)$. But we also have $x_1\in f^{-1}(L)$ and so $f(x_1) \neq f(x)$ a contradiction. Therefore $f(x) = f(x_0)$. Since $x$ and $x_0$ are arbitrary in $X$, we can thus conclude that for all $x,x_0\in X$, $f(x) = f(x_0)$. Therefore $f$ is indeed a constant function.
+
+Suppose $f$ is constant. We then have for all $x,x'\in X$, $f(x) = f(x')$. So given an $x_0\in X$, let $\varepsilon>0$. We then have $ d(f(x), f(x_0) ) = 0 < \varepsilon$ for all $x\in X$. The same can be said about any subset of $X$. So for any $\delta >0$, $d(f(x), f(x_0) ) = 0 < \varepsilon$ for all $x\in X$ such that $d(x,x_0) < \delta$. Since $x_0\in X$ was arbitrary, we have $f$ is continuous as required.  
+
+\textbf{2.4.4}
+
+Suppose hypothesis. Let $F,G$ be two disjoint open non-empty subsets of $f(E)$. Consider the set $ f|_E^{-1}(F)$ and $f|_E^{-1}(G)$. Suppose for contradiction that they aren't disjoint. We then have an $x\in f|_E^{-1}(F)\cap f|_E^{-1}(G)$ such that $f|_E(x) \in F$ and $f(x)|_E\in G$. but $F$ and $G$ are disjoint, a contradiction. Since they are in E, we then have $f|_E^{-1}(F)\cup f|_E^{-1}(G)$ cannot cover $E$. This in turn means that there is an $x\in E$ such that $x\notin f|_E^{-1}(F)\cup f|_E^{-1}(G)$. So $f(x) \in f(E)$ but $f(x)\notin F\cup G$ and therefore $F\cup G$ does not cover $f(E)$. This is true for all two disjoint open non-empty subsets of $f(E)$ and so we can say $f(E)$ is connected as required. 
+
+\textbf{2.4.5}
+
+Suppose hypothesis. We consider the case $f(a) \leq y \leq f(b)$. We have $ f(E)$ is connected by T2.4.6. $f(a) \leq f(b)$ so either $f(a) = f(b)$ or $f(a) < f(b)$. In the case $f(a) = f(b)$, we have $y = f(a)$. This in turn means for $a\in E$, we have $f(a) =y$ as required. In the case $f(a) < f(b)$, the interval $[f(a), f(b)]\subseteq f(E)$ since $f(E)$ is connected. That means $y\in f(E)$ and so we have an $x\in E$ such that $f(x) = y$ as required. 
+
+\textbf{2.4.6}
+
+Suppose hypothesis. Suppose for contradiction that there exists two disjoint open non-empty subsets of $\bigcup_{\alpha\in I}E_\alpha$, F and L, such that $F\cup L=\bigcup_{\alpha\in I}E_\alpha$. We have $f\in F$ and $l\in L$ since the two sets are non-empty. We also have $f\neq l$ since the two sets are disjoint. Since $f\in \bigcup_{\alpha\in I}E_\alpha$. We have $f\in E_\alpha$ for some $\alpha \in I$. Then either $l\in  E_\alpha$ or $l\notin E_\alpha$. In the case $l\in E_\alpha$, we have $ E_\alpha\cap F$ is relatively open with respect to $E_\alpha$ since $F$ is open in, and a subset of $\bigcup_{\alpha\in I}E_\alpha$ and $E_\alpha\cap F = F\cap E_\alpha$. Same can be said for $ E_\alpha \cap L$. The two sets are also non empty and disjoint so $E_\alpha\cap F \cup E_\alpha \cap L$ does not cover $E_\alpha$. But $E_\alpha\cap F \cup E_\alpha \cap L = E_\alpha\cap (F\cup L)$ and $E_\alpha \subseteq F\cup L$. So $E_\alpha = E_\alpha\cap F \cup E_\alpha \cap L = E_\alpha $. A contradiction. In the case $ l\notin E_\alpha$. We have either $E_\alpha \cap L= \emptyset$ or $E_\alpha \cap L\neq\emptyset$. In the case $E_\alpha \cap L= \emptyset$, we have $ E_\alpha \subseteq F$. In the case $E_\alpha \cap L\neq\emptyset$, we have the $l\in E_\alpha$ case again which leads to a contradiction. So we only have $E_\alpha\subseteq F$, when $f\in E_\alpha$. The same can be said for $L$. Now consider $g\in \bigcap_{\alpha\in I}E_\alpha$. We have either $g\in F$ or $g\in L$. In the case $g\in F$, we have $E_\alpha \subseteq F$ for all $\alpha \in I$. But that means $L =\emptyset$. A contradiction. Same can be said for $g\in L$. So we must have that $\bigcup_{\alpha\in I}E_\alpha$ is connected as required. 
+
+\textbf{2.4.7}
+
+Suppose $E$ is path-connected. Let $F$ and $L$ be two non-empty disjoint open subsets of $E$. Let $x\in F$ and $y\in L$. This can be done since both sets are non-empty. Also $x\neq y$. We have a continuous function $f: [0,1]\to E$ such that $f(0) = x$ and $f(1) = y$. Since $F$ and $L$ are open, we have $f^{-1}(F)$ and $f^{-1}(L)$ are both open sets in $[0,1]$. Where $0\in f^{-1}(F)$ and $1\in f^{-1}(L)$. They are disjoint as well. Since $[0,1]$ is an interval. We know that it must be connected and so $ f^{-1}(F)\cup f^{-1}(L) $ does not cover $[0,1]$. So there exists an $x\in[0,1] $ such that $x\notin f^{-1}(F)\cup f^{-1}(L)$. We then have $f(x)\in E$. Suppose for contradiction $f(x) \in F\cup L$. We then have $x\in f^{-1}(F)\cup f^{-1}(L)$ a contradiction. Thus $E$ is connected as required. 
+
+\textbf{2.5.1}
+
+It has the property of $\emptyset \in \mathcal{F}$, and $X\in \mathcal{F}$ as required. Also the only intersection of elements in $\mathcal{F}$ is $\emptyset \cap X = X$ which is open. So all finite intersections of elements in $X$ are indeed open as required. Now the only family of sets in $\mathcal{F}$ consists of only $\emptyset$ and $X$. The intersection of the two is $\emptyset$ which is in $\mathcal{F}$ as required. So it can be concluded that $(X,\mathcal{F})$ is indeed a topology.
+
+Suppose $X$ has more than one element. Consider the metric space $(X,d)$. Since $x$ has more than one element we have $x\in X$ and $y\in X$ such that $x\neq y$. That means $d(x,y) >0$ so there exists some r such that $d(x,y) >r>0$. Now consider the ball $B(x,r)$. $y\notin B(x,r)$ because $ d(x,y) >r$. That in turn means $B(x,r) \neq X$. But $B(x,r)$ is open. So $B(x,r) \in \mathcal{F}$. Thus a trivial topology on X cannot be constructed by placing a metric d on X when X has more than one element. There are only two open covers of $X$, it is $X$ and $\emptyset\cup X$. Both are finite and so a finite subset that covers $X$, would be themselves. Therefore the space is compact. It is also connected since there aren't two disjoint open, non-empty subsets thereby making it vacuously true.
+
+\textbf{2.5.2}
+
+Suppose the sequence $(x^{(n)})_{n=1}^\infty$ converges to $x_0\in X$ by definition 2.5.4. Let $\varepsilon>0$. Since the ball $B(x_0,\varepsilon)$ contains $x_0$ and is open, it is a neighborhood of $x_0$. That means for all $n\geq N$, $x^{(n)}\in B(x_0,\varepsilon)$ for some $N\geq 1$. That means $ d(x^{(n)},x_0) <\varepsilon$ for all $n\geq N$. Since $\varepsilon>0$ was arbitrary, we have convergence by definition 1.1.14 as required.
+
+Suppose the sequence $(x^{(n)})_{n=1}^\infty$ converges to $x_0\in X$ by definition 1.1.14. Let V be a neighborhood of $x_0$. Since V is open and we have $x_0\in V$, there exists a ball $B(x_0,r)$ such that $B(x_0,r) \subseteq V$ and $r>0$. But we have $d(x^{(n)},x_0)< r$ for all $ n\geq N$ for some $N\geq 1$. So $x^{(n)}\in B(x_0,r)$ for all $n\geq N$, but that in turn means $x^{(n)}\in V$ for all $n\geq N$ and therefore converges by definition 2.5.4 as required.
+
+\textbf{2.5.4}
+
+Consider the metric space $(X,d)$. Let $x,y\in X$ be two distinct points. Then $d(x,y) >0$. So there is an $r>0$ such that $d(x,y) >r>0$. Consider the ball $B(x,r/2)$ and $B(y,r/2)$. Let $x_0\in B(x,r/2)$. Suppose for contradiction that $x_0\in B(y,r/2)$. Then $d(x_0,x)<r/2$ and $d(x_0,y)<r/2$. That means $d(x,y)<d(x_0,x) + d(x_0,y) <r$ a contradiction. So $x_0\notin B(y,r/2)$. We also have for $y_0\in B(y,r/2)$, $y_0\notin B(x,r/2)$. So the two sets are disjoint. Therefore we have a neighbor of y and a neighbor of x that are disjoint to each other as required. So $(X,d)$ is indeed hausdorff. This can be extended to all metric spaces since $(X,d)$ is an arbitrary metric space. It is vacuously true only if $X$ has one element or less. When $X$ has more than one element, we have $x,y\in X$ such that $x\neq y$. The only neighborhood of $x$ and $y$ are $X$. But $x\in X$ and $y\in X$. So there does not exist a neighborhood of x and a neighborhood of y that are disjoint. Therefore the trivial topology is not hausdorff.
+
+\section{Uniform Convergence}
+
+\textbf{3.1.1}
+
+Suppose for some $L\in Y$, $lim_{x\to x_0; x\in E}f(x) = L$. Now consider $\\lim_{x\to x_0; x\in E-\{x_0\}}f(x)$. Let $\varepsilon>0$. There exists a $\delta >0$ such that $d_Y(f(x), L)$ for all $x\in E$ such that $d_X(x,x_0) <\delta$. But $E-\{x_0\}$ is a subset of $E$ and so $d_Y(f(x),L)< \varepsilon$ for all $x\in E-\{x_0\}$ such that $d_X(x,x_0) <\delta$. So we have $lim_{x\to x_0; x\in E-\{x_0\}}f(x) = L$. Suppose for contradiction that $L \neq f(x_0)$. Then $d_Y(L,f(x_0))>0$ and so we have an $r$ such that $d_Y(L,f(x_0))>r>0$. But there exists a $\delta >0$ such that $d_Y(f(x),L)<r$ for all $x\in E$ such that $d_X(x,x_0) <\delta$. $x_0\in E$ and $d(x_0,x_0) = 0 < \delta$ so we have $d_Y(f(x_0),L) <r$, a contradiction. So $L= f(x_0)$ as required. 
+
+Suppose the limit $lim_{x\to x_0; x\in E-\{x_0\}}f(x)=f(x_0)$. Let $\varepsilon>0$. Then there exists a $\delta >0$ such that $d_Y(f(x),f(x_0))<\varepsilon$ for all $x\in E-\{x_0\}$ such that $d_X(x,x_0)< \delta$. We know that $x_0\in E$ and $d_X(x_0,x_0) = 0 < \delta$ as well as $d_Y(f(x_0),f(x_0))=0<\varepsilon$. So for all $x\in E-\{x_0\} \cup \{x_0\} = E$ such that $d_X(x,x_0) < \delta$, $d_Y(f(x),f(x_0))<\varepsilon$. So we can conclude that $lim_{x\to x_0; x\in E} f(x)= f(x_0)$ and therefore exists as required.
+
+\textbf{3.2.1}
+
+A) Suppose $f$ is continuous. Let $(a_n)^\infty_{n=0}$ be a sequence of real numbers that converge to 0. Consider the sequence of functions $(f_{a_n})^\infty_{n=1}$. Let $x_0\in \textbf{R}$. Let $\varepsilon>0$. Then there exists a $\delta>0$ such that $d(f(x),f(x_0)) < \varepsilon$ for all $x\in \textbf{R}$ such that $d(x,x_0) < \delta$. Since $(a_n)^\infty_{n=0}$ converges to 0, $|a_n| \leq \delta/2$ for all $n\geq N$ for some $N\geq 1$. We then have $d(x_0-a_n, x_0) = |x_0-a_n-x_0| = |-a_n| \leq \delta/2<\delta$. So $d(f(x_0-a_n),f(x_0)) < \varepsilon$. But $f(x_0-a_n) = f_{a_n}(x_0)$. So $d(f_{a_n}(x_0), f(x_0)) < \varepsilon$ for all $n\geq N$. Therefore $f_{a_n}(x_0)$ converges to $f(x_0)$. Since $x_0\in X$ was arbitrary we have $f_{a_n}(x_0)$ converges to $f(x_0)$ for all $x_0\in X$. Therefore we have $(f_{a_n})^\infty_{n=1}$ converges point-wise to $f$. 
+
+Suppose hypothesis of the converse. Let $x_0\in \textbf{R}$. Let $(x^{(n)})^\infty_{n=1}$ be a sequence that converges to $x_0$. Let $(a_n)_{n=1}^\infty$ be defined as $a_n = x_0 - x^{(n)}$. Let $\varepsilon> 0$. Then $|x^{(n)}-x_0| = |x_0 -x^{(n)}| \leq \varepsilon$ for all $n\geq N$ for some $N\geq 1$. But that means $|a_n| \leq \varepsilon$ for all $n\geq N$. So we have $(a_n)_{n=1}^\infty$ converges to 0. That in turn means $(f_{a_n})^\infty_{n=1}$ converges point-wise to $f$. So $(f_{a_n}(x_0))^\infty_{n=1}$ converges to $f(x_0)$. But $f_{a_n}(x_0) = f(x_0-x_0 +x^{(n)}) = f(x^{(n)})$. So we have $(f(x_n))^\infty_{n=1}$ converges to $f(x_0)$. Since $(x^{(n)})^\infty_{n=1}$ was an arbitrary sequence that converges to $x_0$ we can conclude that $f$ is continuous at $x_0$. Since $x_0\in \textbf{R}$ was arbitrary as well we can conclude that $f$ is continuous as required.
+
+B) Suppose $f$ is uniformly continuous. Let $(a_n)^\infty_{n=0}$ be a sequence of real numbers that converge to 0. Let $\varepsilon>0$. Then there exists a $\delta >0 $ such that $d(f(x),f(x')) <\varepsilon$ for all $x,x'\in \textbf{R}$ such that $d(x,x') <\delta$. We have $|a_n|\leq \delta/2$
+for all $n\geq N$ for some $N\geq 1$. So $|x-a_n - x| = |-a_n| = |a_n| \leq \delta/2 < \delta$. Since $x-a_n, x\in \textbf{R}$ we have $d(f(x-a_n),f(x)) <\varepsilon$. But $f(x-a_n) = f_{a_n}(x)$ and so $d(f(x-a_n),f(x)) = d(f_{a_n}(x),f(x)) <\varepsilon$ for all $n\geq N$, for all $x\in \textbf{R}$. So we have uniform convergence as required. 
+
+Suppose hypothesis of converse. Suppose for contradiction that $f$ is not uniformly continuous. Then there exists an $\varepsilon>0$ such that for all $\delta>0$, $d(f(x),f(x'))>\varepsilon$ for some $x,x'\in \textbf{R}$ such that $ d(x,x') <\delta$. Consider the sequence defined as such $ a_n = x-x'$ where $x,x'$ has the property $d(f(x),f(x'))>\varepsilon$ and $-1/n<x-x' < 1/n$. This sequence exists by hypothesis. This sequence also converges to 0. So we have $d(f_{a_n}(x),f(x)) <\varepsilon$ for all $n\geq N$ for some $N\geq 1$. But for $n= N$, we have $d(f_{a_N}(x),f(x)) =d(f(x - x+x'),f(x)) = d(f(x'),f(x)) <\varepsilon$. This is a contradiction. Therefore $f$ must be uniformly continuous.
+
+\textbf{3.2.2}
+
+A) Suppose hypothesis. Let $x_0\in X$. Let $\varepsilon>0 $. We then have $d_Y(f^{(n)}(x_0), f(x_0)) < \varepsilon$ for all $n\geq N$ for some $N\geq 1$. Since $\varepsilon$ was arbitrary, $(f^{(n)}(x_0))_{n=1}^\infty$ converges to $f(x_0)$. Since $x_0\in X$ was arbitrary, we can conclude this for the whole domain $X$ and so we have point-wise convergence as required.
+
+B) Let $x_0\in (-1,1)$ and $g: (-1,1) \to \textbf{R}$ be defined as $g(x) = 0$. We then have $f^{(n)}(x_0) = x_0^{n}$. But since $-1<x_0 < 1$, we have $|x_0| < 1$ and the sequence $ (|x_0|^n)_{n=1}^\infty$ converges to $0$. But we have $|x_0|^n = |x_0^n|$ and so $-|x_0^n|\leq x_0^n\leq |x_0^n|$. Therefore $f^{(n)}(x_0)_{n=1}^\infty$ converges to $0 = g(x_0)$. Since $x_0\in (-1,1)$ was arbitrary we can conclude that $(f^{(n)})^\infty_{n=1}$ does indeed converge point-wise to $g$, the zero function.
+
+Suppose for contradiction that there exists a function $f: (-1,1) \to \textbf{R}$ such that $(f^{(n)})^\infty_{n=1}$ converges uniformly to $f$. Then it also converges point-wise to $f$. But we have $(f^{(n)})^\infty_{n=1}$ converges point-wise to $g$ and so $f=g$. We then have $d(f^{(n)}(x), 0) < 1/2$ for all $n\geq N$ for some $N\geq 1$ for all $x\in (-1,1)$. So $|(1/2)^n| = (1/2)^n < 1/2$. But we have $ (1/2)^{1/n} \in (-1,1)$ and so $f^{(n)}((1/2)^{1/n}) = 1/2$. But $d(f^{(n)}((1/2)^{1/n}), 0 )= |1/2| = 1/2 < 1/2$, a contradiction. So we must have for all functions $f: (-1,1) \to \textbf{R}$, $(f^{(n)})^\infty_{n=1}$ does not converge uniformly to $f$ as required.
+
+C)
+Let $x_0\in (-1,1)$. We have $\sum_{n=1}^Nf^{(n)}(x_0) =\sum_{n=1}^Nx_0^{n}$. Since $|x_0| < 1$, we have $(\sum_{n=1}^Nf^{(n)}(x_0))_{n=1}^\infty$ converges to $g(x_0) = x_0/(1-x_0)$ by theorem 7.3.3. Since $x_0\in (-1,1)$ is arbitrary, we can conclude that $(\sum_{n=1}^Nf^{(n)})_{n=1}^\infty$ does indeed converge point-wise to $g$ as required.
+
+We need to find an $M\geq N_1$ such that $|\sum^{M}_{n=1}f^{(n)}- f|>\varepsilon$ for some $x\in (-1,1)$. We know that $\sum^{M}_{n=1}f^{(n)} = (1-x^{M+1})/(1-x) -1$. So we have $|(1-x^{M+1})/(1-x) -1 - x/(1-x)|    = | -x^{M+1}/(1-x)| =x^{M+1}/(1-x) > \varepsilon$. So $x^{M+1} > \varepsilon(1-x)$. Then $x^{M+1}+\varepsilon x =(x^{M}+\varepsilon )x> \varepsilon$. Let $x=0.5^{1/M}$ and $\varepsilon = 1$. We then have $(0.5+1 )0.5^{1/M}> 1$ and so $0.5^{1/M}> 2/3$. But we have $0.5^{1/M}$ converges to 1 as $M\to \infty$. So for all $n\geq N_2$, we have $ |1-0.5^{n}| < 0.1$ for some $N_2> 1$. So $0.9<0.5^n < 1.1$. Now let $N = max(N_1,N_2)$ and $M = N$. We then have $M\geq N_1$ such that $2/3 <0.9<0.5^M $. Since $N_1$ was arbitrary, we have this being true for all $N_1>0$ and thus can conclude that $\sum^{M}_{n=1}f^{(n)}$ does not uniformly converge to $f$.
+
+\textbf{3.2.3}
+
+Let $x_0 \in X$. Let $\varepsilon>0$. Since $f(x_0)\in \textbf{R}$ we have $h(f(x_0))$ exists. Since $h$ is continuous there exists a $\delta >0$ such that $ d(h(f(x_0)),h(x)) < \varepsilon$ for all $d(f(x_0),x) < \delta$. But because we have point-wise convergence of $f^{(n)}$ to $f$, for all $n\geq N$, $d(f^{(n)}(x_0), f(x_0))< \delta$ for some $N\geq 1$. So we then have $d(h(f^{(n)}(x_0)),h(f(x_0)) <\varepsilon$. So $h(f^{(n)}(x_0))$ converges to $h(f(x_0))$. Since $x_0$ is arbitrary we can conclude that $h\circ f^{(n)}$ converges point-wise to $h\circ f$ as required. 
+
+\textbf{3.3.1}
+
+Suppose hypothesis. Let $x_0 \in X$.  Then we have $d(f(x), f^{(n)}(x)) < \varepsilon/3$ for all $n\geq N_1$ and $x\in X$, for some $N_1\geq 1$ and $d(f^{(n)}(x_0), f(x_0)) < \varepsilon/3$ for all $n\geq N_2$ for some $N_2\geq 1$. Let $N = max(N_1, N_2)$. Then $d(f^{(n)}(x_0), f(x_0))< \varepsilon/3$ and $d(f(x_0), f^{(n)}(x_0)) < \varepsilon/3$ for all $n\geq N$. There also exists a $\delta>0$ such that $d_Y(f^{(n)}(x_0),f^{(n)}(x)) < \varepsilon/3 $ for all $x\in X$ such that $d_X(x_0,x) <\delta$. By letting $n=N$, we have $d(f(x_0), f(x)) <\varepsilon$, by triangle inequality, for all $x\in X$ such that $d(x,x_0)< \delta$. Since $\varepsilon>0$ was arbitrary we can conclude that $f$ is continuous as required.
+
+\textbf{3.3.2}
+
+Suppose hypothesis. Consider the sequence $(lim_{x\to x_0;x\in E}f^{(n)}(x))_{n=1}^\infty.\\$ Then $d_Y(f^{(n)}(x), f(x)) < \varepsilon/4$ for all $n\geq N$ for some $N\geq 1$. Let $m\geq N$. Then $d_Y(f^{(m)}(x), f(x)) < \varepsilon/4$. There also exists a $\delta^{(l)}>0$ such that $d_Y(f^{(l)}(x),lim_{x\to x_0;x\in E},f^{(l)}(x))< \varepsilon/4$ for all $x\in E$ such that $d_X(x_0,x) < \delta^{(l)}$ for all $l>0$. So we have $d_Y(lim_{x\to x_0;x\in E}f^{(n)}(x),lim_{x\to x_0;x\in E}f^{(n)}(x))\leq d_Y(f^{(n)}(x),lim_{x\to x_0;x\in E}f^{(n)}(x)) +d_Y(f^{(m)}(x), f(x))\\+ d_Y(f^{(n)}(x),lim_{x\to x_0;x\in E},f^{(n)}(x)) + d_Y(f^{(m)}(x),lim_{x\to x_0;x\in E}f^{(m)}(x))< \varepsilon$ for all $n,m \geq N$. We thus have $(lim_{x\to x_0;x\in E}f^{(n)}(x))_{n=1}^\infty$ is Cauchy and since Y is complete, it also converges to some $L\in Y$. But we have for $\varepsilon>0$, $d_Y(f^{(n)},f(x)) <\varepsilon/3$ for all $n\geq N_1$ for some $N_1\geq 1$ and $\\ d_Y(lim_{x\to x_0;x\in E}f^{(n)}(x),L) < \varepsilon$ for all $n\geq N_2$ for some $N_2\geq 1$. Also there exist a $\delta^{(n)}>0$ such that $ d_Y(f^{(n)}(x), lim_{x\to x_0;x\in E}f^{(n)}(x))< \varepsilon/3$ for all $x\in E$ such that $d_X(x,x_0) < \delta^{(n)}$. So we have $d_Y(f(x),L)< \varepsilon$ for all $n\geq max(N_1,N_2)$ and for all $x\in E$ such that $d_X(x,x_0)< \delta ^{(n)}$. So we can conclude that $lim_{x\to x_0;x\in E}f(x) = L$ as required.
+
+\textbf{3.3.3}
+
+Since the function $x^{(n)}$ does not uniformly converge to any function $f$, we cannot apply proposition 3.3.3. The statement is false as well because the $lim_{n\to \infty}x^n$ for $x<1$ is $0$. So $lim_{x\to 1^-}lim_{n\to \infty}x^n$ = 0. Yet $lim_{x\to 1^-}x^n = 1$ and so $lim_{n\to \infty}lim_{x\to 1^-}x^n = 1$ a contradiction. 
+
+\textbf{3.3.4}
+
+Suppose hypothesis. Let $\varepsilon >0$. Since $f^{(n)}$ converges uniformly to $f$, we have $d_Y(f^{(n)}(x),f(x)) <\varepsilon/2$ for all $n\geq N_1$ for some $N\geq 1$. Since $f^{(n)}$ is continuous we have for some $\delta >0$, $d_Y(f^{(n)}(y),f^{(n)}(x)) < \varepsilon/2$ for all $y\in X$ such that $d_X(y,x)< \delta$. But we have $(x_n)^\infty_{n=1}$ converges to $x$ and so $d(x_n,x) < \delta/2$ for all $n\geq N_2$ for some $N_2 \geq 1$. So $d_Y(f^{(n)}(x_n), f(x))\leq d_Y(f^{(n)}(x_n),f^{(n)}(x))+d_Y(f^{(n)}(x),f(x)) < \varepsilon$ for all $n\geq max(N_1,N_2)$. Therefore we can conclude that $(f^{(n)}(x_n))^\infty_{n=1}$ converges to $f(x)$ as required. 
+
+\textbf{3.3.5}
+Consider the functions defined as $f^{(n)}(x) = x^{n}$ defined on the interval $(-1,1]$. This does not uniformly converge to any $f$ but it converges point-wise to the function lets call $f$ defined as $f(x) = 0$ for all $ x\in (-1,1)$ and $f(x) = 1$ for $x=1$. Consider the sequence $(0.2^{(1/n)})^\infty_{n=1}$ that converges to 1 and $(f^{(n)}(0.2^{1/n}))^\infty_{n=1}$. Let $ \varepsilon = 0.5$, we then have $d(f^{(n)}(0.2^{1/n}). f(1) )  = |(0.2^{1/n})^n-1| = 0.8 > 0.5$ for all $n\geq 1$. Therefore we can conclude that for every $N\geq 1$, we have $n=N$ such that $d(f^{(n)}(0.2{1/n}), f((0.2^{1/n}))) = 0.8 > 0.5$. So $(f^{(n)}(0.2^{(1/n)}))^\infty_{n=1}$ does not converge to $f(1)$. as required.
+
+\textbf{3.4.1}
+
+Let $f\in B(X\to Y)$. Then $d_Y(f(x), f(x)) = 0$ for all $x\in X$. So $sup\{d_Y(f(x), f(x)): x\in X\} = 0$ since for all $x\in \{d_Y(f(x), f(x)): x\in X\},$ $x\geq 0$ as required.
+
+Let $f,g \in B(X\to Y)$ where $f\neq g$. Then there exists an $x\in X$ such that $f(x) \neq g(x)$. Then $d_Y(f(x), g(x)) >0$.  Since $d_Y(f(x), g(x))\in \{d_Y(f(x), g(x)): x\in X\}$, we must have $sup \{d_Y(f(x), g(x)): x\in X\}>0$ as required. 
+
+Let $f,g\in B(X\to Y)$. We have $d_Y(f(x),g(x)) = d_Y(g(x), f(x))$ for all $x\in X$. So $ \{d_Y(f(x),g(x)), x\in X\} = \{d_Y(g(x),f(x)), x\in X\} $ meaning $sup\{d_Y(f(x),g(x)), x\in X\} = sup \{d_Y(g(x),f(x)), x\in X\} $ as required.
+
+Let $f,g,h\in B(X\to Y)$. Then $d_Y(f(x),h(x))\leq d_Y(f(x),g(x)) + d_Y(g(x),h(x))$ for all $x\in X$. Suppose for contradiction that $\\sup\{d_Y(f(x),h(x)): x\in X\} > sup\{d_Y(f(x),g(x)): x\in X\}+\\sup\{d_Y(g(x),h(x)): x\in X\}$. Then there exists an $x_0\in X$ such that $d_Y(f(x_0),h(x_0))>sup\{d_Y(f(x),g(x)), x\in X\}+sup\{d_Y(g(x),h(x)): x\in X\} \geq d_Y(f(x),g(x))+d_Y(g(y),h(y))$ for all $x,y\in X$. But that means $d_Y(f(x_0),h(x_0))>d_Y(f(x_0),g(x_0))+d_Y(g(x_0),h(x_0))$, a contradiction. So the triangle inequality holds as required.
+
+\textbf{3.4.2}
+
+Suppose $(f^{(n)})_{n=1}^\infty$ converges to $f$ in the metric $d_{B(X\to Y)}$. Then there exists an $N\geq 1$ such that $d_{B(X\to Y)}(f^{(n)},f) \leq \varepsilon/2$ for all $n\geq N$. So $d_{B(X\to Y)}(f^{(n)},f) = sup\{d_Y(f^{(n)}(x), f(x)): x\in X\}\leq \varepsilon/2$. But that means $d_Y(f^{(n)}(x), f(x)) \leq \varepsilon/2 < \varepsilon$ for all $n\geq N$ for all $x\in \textbf{X}$. Therefore we have uniform convergence as required
+
+Suppose $(f^{(n)})^\infty_{n=1}$ converges uniformly to f. Then there exists an $N\geq 1$ such that $d_Y(f^{(n)}(x), f(x)) < \varepsilon/2$ for all $n\geq N$ and all $x\in X$. So for all $n\geq N$ $d_{B(X\to Y)}(f^{(n)},f)=sup\{d_Y(f^{(n)}(x), f(x)): x\in X\} \leq \varepsilon$ because $\varepsilon$ is an upper bound of the set. Therefore we can conclude that $(f^{(n)})^\infty_{n=1}$ converges to $f$ with respect to the $d_{B(X\to Y)}$ metric as required.
+
+\textbf{3.4.3}
+
+Suppose hypothesis. Let $(f^{(n)})^\infty_{n=1}$ be a Cauchy series in $C(X\to Y)$. Then $\sup\{d_Y(f^{(n)}(x), f^{(m)}(x)):x\in X\} \leq \varepsilon$ for all $n,m\geq N_0$ for some $N_0\geq 1$. Then $d_Y(f^{(n)}(x), f^{(m)}(x)) \leq \varepsilon$ for all $x\in X$. But $Y$ is a complete metric space. So we can conclude that the sequence $(f^{(n)}(x))^\infty_{n=1}$ converges to some $y\in Y$ for all $x\in X$. Define a function as $ \lim_{n\to \infty}f^{(n)}(x) = f(x)$ for all $x\in X$. Clearly we have $(f^{(n)})^{\infty}_{n=1}$ converges point-wise to $f$. 
+
+Let $\varepsilon>0$. Then for some $N_1\geq 1$, $ \sup\{d_Y(f^{(n)}(x), f^{(m)}(x)):x\in X\} \leq \varepsilon/2$ for all $n,m\geq N_1$. So $d_Y(f^{(n)}(x), f^{(m)}(x)) \leq \varepsilon/2$ for all $n,m\geq N_1$ for all $x\in X$. Let $x$ be fixed. We have for some $N_2\geq 1$, $d_Y(f^{(l)}(x),f(x))\leq \varepsilon/2$ for all $l\geq N_2$. Let $N=max(N_1,N_2)$. Then $ d_Y(f^{(l)}(x),f(x)) \leq \varepsilon/2$ and $d_Y(f^{(n)}(x),f^{(l)}(x))\leq \varepsilon/2 $ for all $l\geq N$ and $n\geq N_1 $. So $d_Y(f^{(n)}(x), f(x))\leq d_Y(f^{(l)}(x),f(x)) + d_Y(f^{(n)}(x),f^{(l)}(x)) \leq \varepsilon$. Since $x$ was arbitrary, we can conclude this for all $x$ and thus we have uniform convergence. But because the sequence $f^{(n)}$ is continuous and bounded we must have $f$ is also continuous and bounded. By P3.4.4, we must have $ f^{(n)}$ converges in the metric $B(X\to Y)$. Since $ f$ is also continuous, it converges to a function in $C(X\to Y)$ as required.
+
+\textbf{3.5.1}
+
+Suppose hypothesis. For the base case of $N=1$, we have $f^{(1)}$ is a bounded function. Then $\sum_{n=1}^1f^{(1)} = f^{(1)} $ which is bounded as required. Suppose for inductive hypothesis $f^{(1)},..., f^{(N)}$ was a sequence of bounded functions and $\sum_{n=1}^Nf^{(i)}$ is bounded for $N\geq 1$. Then $\sum_{n=1}^Nf^{(i)} + f^{(N+1)} = \sum_{n=1}^{N+1}f^{(i)}$ where $f^{(N+1)}$ is a bounded function. But since $\sum_{n=1}^{N+1}f^{(i)}$ is bounded, we have $\sum_{n=1}^{N+1}f^{(i)} (x)\in [-M,M]$ for some $M> 1$ for all $x\in X$. We also have $f^{(N+1)}(x)\in [-R,R]$ for some $R> 0$ for all $x\in X$. Consider the interval $[-(R+M), R+M]$. Since $ -R\leq f^{N+1}(x)\leq R$ and $-M\leq \sum_{n=1}^Nf^{(i)}(x) \leq M$, we have $-M-R\leq\sum_{n=1}^Nf^{(i)}(x)+f^{N+1}(x) = \sum_{n=1}^{N+1}f^{(i)} (x)\leq M +R$. Thus we have $\sum_{n=1}^{N+1}f^{(i)} (x)\in [-(R+M), R+M]$ for all $x\in X$. Therefore $\sum_{n=1}^{N+1}f^{(i)}$ is bounded and we can close the induction. 
+
+Replace bounded with continuous for the hypothesis. The induction is similar, we know for the base case of 1 that the sum is continuous. Suppose hypothesis for some $N\geq 1$, then the function for $N+1$ is still continuous because the sum of continuous functions are continuous. Therefore we can close the induction and say all finite sums of continuous functions are continuous. 
+
+Same proof as for continuous function because addition of uniformly continuous functions are also uniformly continuous.
+
+\textbf{3.5.2 (Unfinished)}
+
+Suppose hypothesis. Then $|\sum_{n=q}^p||f^{(n)}||_{\infty}|  = |\sum_{n=1}^p||f^{(n)}||_{\infty}- \sum_{n=1}^{q-1}||f^{(n)}||_{\infty}|\leq \varepsilon$ for all $q,p\geq N$ for some $N\geq 1$.  Since $|f^{(n)}|| = \sup\{|f^{(n)}(x)|: x\in X\},$ we have $  |f^{(n)}(x)|\leq  ||f^{(n)}||_{\infty} $ for all $x\in X$. That in turn means $-||f^{(n)}||\leq f^{(n)}(x)\leq ||f^{(n)}|| $. So $-\sum_{n=1}^N||f^{(n)}||\leq \sum_{n=1}^Nf^{(n)}(x)\leq \sum_{n=1}^N||f^{(n)}||$   
+
+\textbf{3.6.1}
+
+First we will prove that a finite sum of Riemann integrable functions is also Riemann integrable. Let $N=1$ be the base case, we have $f^{(1)}$ is Riemann integrable on the interval $[a,b]$. Then $\sum_{n=1}^1f^{(n)} = f^{(1)}$ which is Riemann integrable as required. Suppose as inductive hypothesis that for some $N\geq 1$, $f{(1)},... ,f^{(n)}$ is a sequence of Riemann integrable functions on the interval $[a,b]$ and $\sum_{n=1}^Nf^{(n)}$ is Riemann integrable. Then, let $f^{(N+1)}$ be a Riemann integrable fun        ction, $\sum_{n=1}^Nf^{(n)} +f^{(N+1)}  = \sum_{n=1}^{N+1}f^{(n)}$. But the sum of Riemann integrable functions are also Riemann integrable so $\sum_{n=1}^{N+1}f^{(n)} $ is Riemann integrable and so we close the induction.
+
+Now suppose hypothesis. Since $(f^{(n)})^\infty_{n=1}$ is a sequence of Riemann integrable functions, we have $\sum_{n=1}^{N}f^{(n)}$ is Riemann integrable for any $N\geq 1$.
+So $ 
+(\sum_{n=1}^{N}f^{(n)})^\infty_{N=1}$ is a sequence of Riemann integrable functions on the interval $[a,b]$ that uniformly converge. Thus by Theorem 3.6.1 we then have $ \lim\limits_{N\to \infty}\int_{[a,b]}\sum_{n=1}^{N}f^{(n)} =\lim\limits_{N\to \infty}\sum_{n=1}^{N}\int_{[a,b]}f^{(n)} =\int_{[a,b]}\sum_{n=1}^\infty  f^{(n)}$ as required.
+
+\textbf{3.7.3}
+
+Suppose hypothesis. Since the series 
+\[\sum_{n=1}^\infty ||f'_n||\] is absolutely convergent, it is also conditionally convergent. That means we can use the Weierstrass M-test and conclude that \[\sum_{n=1}^\infty f_n'\] converges uniformly to some function $f$. But 
+\[\sum_{n=1}^\infty f_n' = \lim_{n\to\infty}\sum_{n=1}^N f_n'\] Since $\sum_{n=1}^N f_n' $ is a finite sum of continuous functions and is the derivative of $ \sum_{n=1}^N f_n$, we can apply Theorem 3.7.1 to obtain $ \frac{d}{dx}\lim_{n\to\infty}\sum_{n=1}^N f_n=\lim_{n\to\infty}\sum_{n=1}^N f_n'$ which is equivalent to saying
+\[\frac{d}{dx}\sum_{n=1}^\infty f_n = \sum_{n=1}^\infty \frac{d}{dx}f_n\] as required
+
+\textbf{3.8.1}
+
+Suppose hypothesis. Suppose for contradiction that $f(x) \neq0$ for $x\notin [a,b]\cap [c,d]$. Then $x\notin[a,b]$ or $x\notin[c,d]$. In the case $x\notin[a,b]$ we must have $f(x) = 0$ by definition of supported. In the case $ x\notin[c,d]$ we must have $f(x) = 0$. Thus this means 
+\[\int_{[a,b]}f = \int_{[a,b]\cap [c,d]}f =\int_{[c,d]}f \] as required.
+
+\textbf{3.8.2}
+
+a) In the base case of $n=0$ we have 
+\[(1-y)^0 = 1 \geq 1- 0*y = 1\] as required.
+Now suppose as inductive hypothesis that 
+\[(1-y)^n \geq 1-ny\] for some $n\geq 0$. Then we have
+\[(1-y)^{n+1} = (1-y)^{n}(1-y)\geq (1-ny)(1-y) = 1 - ny -y +ny^2 =\] \[1-(n+1)y +ny^2\geq 1-(n+1)y\] as required thereby closing the induction
+
+b) We have
+\[\int_{-1}^1(1-x^2)^ndx = \int_{-1/\sqrt{n}}^{1/\sqrt{n}}(1-x^2)^ndx +\int_{1/\sqrt{n}}^{1}(1-x^2)^ndx+\int_{-1}^{-1/\sqrt{n}}(1-x^2)^ndx\]When $|x| \leq \frac{1}{\sqrt{n}}$, because $x\in[-1,1]$ we have $0\leq x^2\leq 1$ and so by part a we see that $(1-x^2)^n \geq 1-nx^2$. That means 
+\[\int_{-1}^1(1-x^2)^ndx \geq \int_{-1/\sqrt{n}}^{1/\sqrt{n}}(1-nx^2)dx+ \int_{1/\sqrt{n}}^{1}(1-x^2)^ndx+\int_{-1}^{-1/\sqrt{n}}(1-x^2)^ndx=\]
+\[\frac{2}{\sqrt{n}} - \frac{2}{3\sqrt{n}} +\int_{1/\sqrt{n}}^{1}(1-x^2)^ndx+\int_{-1}^{-1/\sqrt{n}}(1-x^2)^ndx\geq\]
+\[\frac{4}{3\sqrt{n}}\geq \frac{1}{\sqrt{n}}\] where the second to last inequality comes from $1-x^2$ being positive over it's interval and thus making it's integral greater than 0.
+
+c) Let $ \varepsilon>0$ and $0<\delta < 1$. We then have for some $N$, $1 <\delta N$ and so $ \frac{1}{N} \leq \delta$. Then  $1-\frac{1}{N^2} = \frac{N^2-1}{N^2}< 1$. Then we have
+\[\sqrt{n}\left(\frac{N^2-1}{N^2}\right)^n  \leq n\left(1-\frac{1}{N^2}\right)^n \] Using the ratio test we have
+\[\frac{a_{n+1}}{a_n} = \frac{(n+1)\left(\frac{N^2-1}{N^2}\right)^n}{n\left(\frac{N^2-1}{N^2}\right)^n} = \frac{(n+1)\left(\frac{N^2-1}{N^2}\right)}{n}\]
+by letting $n > N^2+1$ we have $n = N^2 - 1 + k$ and so
+\[\frac{(n+1)\left(\frac{N^2-1}{N^2}\right)}{n} =  \frac{(N^2-+k)\left(\frac{N^2-1}{N^2}\right)}{N^2-1+k} = \frac{(N^2+k)}{N^2-1+k}\frac{N^2-1}{N^2} \] where we now see that
+\[N^4 +N^2k -N^2 -k < N^4-N^2+N^2k\] and thus we have
+\[\frac{(N^2+k)}{N^2-1+k}\frac{N^2-1}{N^2} < 1\] Meaning with $n$ starting at $N^2$, we have
+\[\lim\sup_{n\to \infty}\frac{|a_{n+1}|}{|a_n|}< 1\] thus proving the ratio test and we can therefore conclude that the sequence converges to 0 since the sum converges. That means there exists an $n\geq 1$ such that 
+\[n\left(1-\frac{1}{N^2}\right)^n < \varepsilon \] Since we also have
+\[\int_{-1}^1(1-x^2)^ndx  \geq \frac{1}{\sqrt{n}} \geq \frac{1}{n} \rightarrow \int_{-1}^1n(1-x^2)^ndx = c\geq1\rightarrow\] \[\int_{-1}^1\frac{n}{c}(1-x^2)^ndx = 1 \]  we also know that for all $\frac{1}{N}<\delta \leq |x|\leq 1$ we have
+\[1-\frac{1}{N^2} \geq 1-x^2\] and so 
+\[n(1-x^2)^n \leq n\left(1-\frac{1}{N^2}\right)^n< \varepsilon\] and because 
+\[\frac{1}{c}\leq 1\] we see that 
+\[\frac{1}{c}n(1-x^2)^n< \varepsilon\]
+So taking $f(x) = \frac{1}{c}n(1-x^2)^n$ on the interval $[-1,1]$ and $0$ otherwise, we see that $f(-1) = 0 = f(1)$ and is continuous on its interval as well as boundary. The function is a polynomial on the given interval, and also the integral is given as above due to the function being supported on $[-1,1]$ and finally for all $\delta\leq|x|\leq 1$ we have shown above that $f(x) < \varepsilon$. Since $f(x)$ is a polynomial we can thus conclude that there indeed exists a polynomial which is an $(\varepsilon,\delta)-approximation$ to the identity as required.
+
+\textbf{3.8.3}
+
+Since $f(x)$ is compactly supported, it is supported on some interval $[a,b]$ which means that for all $x\notin[a,b]$, $f(x) = 0$. Consider the function $f_{[a,b]}$ which is $f$ restricted to the domain $[a,b]$. Since $[a,b]$ is compact, by proposition 2.3.2, we see that for some $x_{max}\in [a,b]$, $f_{[a,b]}(x_{max}) \geq f_{[a,b]}(x)$ and for some $x_{min}\in [a,b]$, $f_{[a,b]}(x_{min})\leq f_{[a,b]}(x)$ for all $x\in [a,b]$. Then we have \[|f_{[a,b]}(x)| \leq \max(|f_{[a,b]}(x_{min})|,|f_{[a,b]}(x_{max})|) = M\] and is thus bounded. We can also use theorem 2.3.5 to conclude that $f_{[a,b]}$ is also uniformly continuous. Now because $f$ is continuous, it is also continuous at $ f(a)$ and $f(b)$. Also because $f$ is supported on $[a,b]$, we have for $x<a$ or $x>b$, $f(x) = 0$ and so $ |f(x)| \leq M$ for all $x$. Thus we conclude that $f(x)$ is bounded. Now let $\varepsilon>0 $. Due to the uniform continuity of $f_{[a,b]}$, we know that $|f(x)-f(x')| \varepsilon$ for all $ x,x'$ such that $|x-x'| <\delta$ for some $\delta$ on the interval $[a,b]$. But this can be extended. Let $x,x'\in \textbf{R}$ such that $ |x-x'| < \delta$. Then either $ x\in [a,b]$ and $x'\in [a,b]$ or $x\in[a,b]$ and $x'\notin [a,b]$ (opposite is true by symmetry) or $x\notin[a,b]$ and $x'\notin[a,b]$. In the first case we have $ |f(x)-f(x')| < \varepsilon$ by uniform continuity of $f_{[a,b]}$. In the second case, we must have $ |f(x)-f(x')| = |f(x)-0|$. Since either $ |x-a| < \delta$ or $|x-b| < \delta$ in order for $x'$ to satisfy the conditions, we must therefore have either $ |f(x)-f(a)| < \varepsilon$ or $ |f(x)-f(b)| < \varepsilon$ in both cases we have $|f(x)-0| < \varepsilon$ and so $|f(x)-f(x')| = |f(x)-0| < \varepsilon$ as required. Now in the final case we would have $|f(x)-f(x')| = 0 < \varepsilon$ as required. Therefore we can conclude uniform continuity of the entire function and we are done.
+
+\textbf{3.8.4}
+
+Suppose hypothesis 
+
+a) Since the functions are continuous and compactly supported, we have by the above exercise that they are also bounded and uniformly continuous. That means we also have $ f(y)g(x-y)$ as a function of $y$ being continuous and compactly supported. So it is also bounded and uniformly continuous. Also we have $g(x) = 0$ for $x\notin[a,b]$ and $ f(x) = 0 $ for $x\notin[c,d]$ for some interval $[a,b]$ and $[c,d]$. Thus we see that $f(y)g(x-y) = 0$ when $ y\notin[a,b]$ or $x-y\notin[c,d]$. This means that $f(y)g(x-y)$ as a function of $y$ is supported on $I = [a,b]$ and so \[\int_{-\infty}^\infty f(y)g(x-y)dy = \int_If(y)g(x-y)dy \] The second case is equivalent to 
+\[y\notin[x-d,x-c]\] But we see that when $ x <c+a$, we have $x-c < a$ meaning $x-c = a-s$ where $s$ is positive. So the function is 0 for $y\notin[x-d, a-s]$ which is disjoint from $[a,b]$ meaning for all $y$, we have $f(y)g(x-y) = 0$. Now when $ x> d+b$, we have $ x-d>b$ and so $x-d = b+r$ where $r$ is a positive number. This results in the function being $0$ for $y\notin[b+r, x-c]$ which is disjoint from $[a,b]$ and thus meaning its $0$ for all $y$. Thus for $ x\notin[c+a,d+b]$ we have
+\[\int_{-\infty}^\infty f(y)g(x-y)dy =\int_I 0dy = 0 \] Thus as a function of $ x$, we have $\int_{-\infty}^\infty f(y)g(x-y)dy$ is supported on $[c+a,d+b]$ and therefore compactly supported.
+
+Now we shall prove that the function is also continuous. Let $\varepsilon>0$. $f(y)$ is bounded by some $M$ and $g(x-y)$ is uniformly continuous on $y$. Then fixing $x$ we have $|g(x-y)-g(x-y')| < \varepsilon/(M|I|)$ for all $y,y'$ such that $|y-y'| < \delta$ for some $\delta$ where we have $|I|$ being the length of the $I$ interval. Now consider $|x-x'|< \delta$ we see that $x+\delta>x'>x-\delta$. So $ x'-s = x-\delta$ where $s>0$ meaning $ s = x'-x+\delta <2\delta $ and so we have $ |s-\delta|< \delta$. That means $x' = x+s-\delta$ which results in $g(x'-y) = g(x-(-s+\delta+y)) $ but $|y -(-s+\delta/2+y)| = |s-\delta| < \delta $. So we have 
+\[|g(x-y) -g(x'-y)| =|g(x-y) -g(x-(-s+\delta+y))| < \varepsilon/(M|I|) \] for all $y$. This then means that by letting $ |x-x'|< \delta$ we have
+\[\left|\int_I f(y)g(x-y)dy -\int_I f(y)g(x'-y)dy\right|=\] \[\left|\int_I f(y)(g(x-y)-g(x'-y))dy\right| \leq \] \[  \int_I |f(y)||(g(x-y)-g(x'-y))|dy < \int_I M\varepsilon/(M|I|)dy =\varepsilon\] as required.
+
+b) We have
+\[f * g(x) = \int_{-\infty}^\infty f(y)g(x-y) dy  \]
+Now consider 
+\[g*f(x) = \int_{-\infty}^\infty g(z)f(x-z) dz  \] if we let $ z = x-y$, we have $dz = -dy$ and since $ z=x-(-\infty)\rightarrow z=\infty+x  $ as well as $z = x - \infty $ the new integral will thus be from $ \infty \to -\infty$. Thus
+\[g*f(x) =-\int_{\infty}^{-\infty} g(x-y)f(x-(x-y))dy =\int_{-\infty}^\infty g(x-y)f(y)dy  \] as required
+
+c) We have 
+\[f*(g+h)(x) = \int_{-\infty}^\infty f(y)(g+h)(x-y)dy =\int_{-\infty}^\infty f(y)(g(x-y) +h(x-y))dy = \]
+\[\int_{-\infty}^\infty f(y)(g(x-y) +h(x-y))dy =\]\[\int_{-\infty}^\infty f(y)g(x-y)dy +\int_{-\infty}^\infty f(y)h(x-y)dy = f*g(x) + f*h(x) \]
+as required.
+Also
+\[f*(cg)(x)  =  \int_{-\infty}^\infty f(y)cg(x-y)dy =\int_{-\infty}^\infty cf(y)g(x-y)dy = (cf)*g(x) =   \]
+\[c\int_{-\infty}^\infty f(y)g(x-y)dy = c(f*g(x))\] as required.
+
+\textbf{3.8.5}
+
+Suppose hypothesis. Since $f(y)$ is supported on $ [0,1]$ we see that the function $f(y)g(x-y)$ is also supported on the same interval since since for all $ y\notin[0,1]$, $f(y)g(x-y) = 0g(x-y)= 0$. Thus we have 
+\[f*g(x) = \int_{-\infty}^\infty f(y)g(x-y)dy =\int_{[0,1]} f(y)g(x-y)dy\] Now let $ x\in [1,2]$. Since $y\in [0,1]$ we see that $ -1\leq -y\leq 0\rightarrow 0 \leq x-y\leq 2 $ and since $ g$ is constant on $[0,2]$, we then have 
+\[g(x-y) = c\] for $ y\in [0,1]$. This means that 
+\[\int_{[0,1]} f(y)g(x-y)dy = c\int_{[0,1]} f(y)dy = cM\] and since $x$ was arbitrary in $[1,2]$ we can thus conclude that 
+\[f*g(x) = cM\] on $[1,2]$ and is therefore constant.
+
+\textbf{3.8.6}
+
+a) Suppose hypothesis. Then
+\[\int_{-\infty}^\infty g(x)dx =\int_{[-1,1]} g(x)dx =\int_{[-1,-\delta]} g(x)dx + \int_{[-\delta,\delta]} g(x)dx +\int_{[\delta,1]} g(x)dx  =1 \] we see that 
+\[ \int_{[-\delta,\delta]}g(x)dx =1 - \int_{[-1,-\delta]}g(x)dx -\int_{[\delta,1]} g(x)dx  \] but because $ 0\leq g(x) \leq \varepsilon$ for $ \delta \leq |x| \leq 1$, we then have
+\[0\leq \int_{[-1,-\delta]} g(x)dx \leq\int_{[-1,-\delta]}\varepsilon dx\rightarrow\] \[0
+\leq\int_{[-1,-\delta]} g(x)dx \leq\varepsilon(-\delta +1) \] and also 
+\[0\leq \int_{[\delta,1]} g(x)dx \leq\int_{[\delta,1]}\varepsilon dx\rightarrow\] \[0
+<\int_{[\delta,1]} g(x)dx <\varepsilon(1-\delta) \] which means
+\[0 \leq\int_{[-1,-\delta]} g(x)dx+\int_{[\delta,1]} g(x)dx \leq \varepsilon(1-\delta)  +\varepsilon(-\delta +1)\rightarrow\]
+\[0 \leq \int_{[-1,-\delta]} g(x)dx+\int_{[\delta,1]} g(x)dx \leq 2\varepsilon(1-\delta)\] and so we have 
+\[1-2\varepsilon(1-\delta) \leq 1 - \int_{[-1,-\delta]} g(x)dx-\int_{[\delta,1]} g(x)dx \leq1 \rightarrow \]
+\[1-2\varepsilon\leq\int_{[-\delta,\delta]}g(x) dx \leq 1\] as required. where the last line comes from 
+$0<\delta < 1\rightarrow 0<1-\delta<1$ meaning $ 1-2\varepsilon > 1-2\varepsilon(1-\delta) $. 
+
+b) Suppose hypothesis. We then have 
+\[f*g(x) = \int_{-\infty}^\infty f(y)g(x-y) dy =\int_{[-1,1]} g(y)f(x-y) dy =\]\[\int_{[-1,-\delta]} g(y)f(x-y) +\int_{[-\delta,\delta]} g(y)f(x-y) dy +\int_{[\delta,1]} g(y)f(x-y)dy   \] From the hypothesis we have $ |f(x)-f(x-y)| < \varepsilon\rightarrow f(x)-\varepsilon<f(x-y) < f(x) + \varepsilon$ for $ y\in (-\delta,\delta)$. Also $ |f(x)| \leq M$. Due to $f$ and $g$ being continuous on $\textbf{R}$, the Riemann integral allows
+\[\int_{[-\delta,\delta]}g(y)f(x-y) dy  = \int_{(-\delta,\delta)} g(y) f(x-y) dy\] In the case $ f(x) \geq 0$ we have
+\[ \int_{(-\delta,\delta)} g(y) f(x-y) dy-f(x)\leq \int_{(-\delta,\delta)} g(y)(f(x)+\varepsilon)dy-f(x) \leq \]
+\[ f(x)+\varepsilon-f(x) = \varepsilon \leq \varepsilon(1+2M)\] where our second to last inequality comes from part a and our last inequality is due to $f(x)$ being bounded. Also
+\[\int_{(-\delta,\delta)}g(y)f(x-y) dy-f(x) \geq \int_{(-\delta,\delta)}g(y)(f(x)-\varepsilon) dy-f(x)\geq\] \[(1-2\varepsilon)(f(x) - \varepsilon)-f(x) = f(x)-2f(x)\varepsilon - \varepsilon+2\varepsilon^2-f(x) =\] \[\varepsilon(2\varepsilon -1-2f(x))\geq-\varepsilon(1+2f(x))\geq -\varepsilon(1+2M)\] where our last inequality comes from $f(x)$ being bounded Thus we conclude that for  $f(x) \geq 0$
+$|\int_{[-\delta,\delta]}g(y)f(x-y) dy - f(x)| \leq (1+2M)\varepsilon$. Now in the case $ f(x) < 0$, we have 
+\[ \int_{(-\delta,\delta)} g(y) f(x-y) dy-f(x)\leq \int_{(-\delta,\delta)} g(y)(f(x)+\varepsilon)dy-f(x) \leq\] \[f(x)(1-2\varepsilon) + \varepsilon -f(x) = (1-2f(x))\varepsilon \leq \varepsilon(1+2M)\] where once again the final inequality comes from $f$ being bounded and the second the last is from part a. Also
+\[\int_{(-\delta,\delta)}g(y)f(x-y) dy-f(x) \geq \int_{(-\delta,\delta)}g(y)(f(x)-\varepsilon) dy-f(x)\geq\] \[f(x) - \varepsilon - f(x) \geq -\varepsilon \geq -\varepsilon-2M\varepsilon = -\varepsilon(1+2M)\] once again meaning that 
+$|\int_{[-\delta,\delta]}g(y)f(x-y) dy - f(x)| \leq (1+2M)\varepsilon$. Therefore we can conclude that 
+\[\left|\int_{[-\delta,\delta]}g(y)f(x-y) dy - f(x)\right| \leq (1+2M)\varepsilon\] for all $x$. Now we then have from part a
+\[\left|\int_{[-1,-\delta]} g(y)f(x-y)dy\right|+\left| \int_{[\delta,1]} g(y)f(x-y)dy\right|\leq\]\[\int_{[-1,-\delta]} |g(y)||f(x-y)|dy+ \int_{[\delta,1]} |g(y)||f(x-y)|dy\leq\]\[M\left(\int_{[-1,-\delta]} g(y)dy +\int_{[\delta,1]} g(y)dy)\right) \leq 2\varepsilon(1-\delta)M \leq 2 M \varepsilon\] thus we have
+\[|f*g(x) - f(x)|\leq\left|\int_{[-\delta,\delta]}g(y)f(x-y) dy - f(x)\right| +\left|\int_{[-1,-\delta]} g(y)f(x-y)dy\right|\]\[+\left| \int_{[\delta,1]} g(y)f(x-y)dy\right| \leq(1+2M)\varepsilon + 2M\varepsilon = (1+4M)\varepsilon\] as required.
+
+\textbf{3.8.7}
+
+Suppose hypothesis. Let $\varepsilon>0$. By exercise 3.8.3 we have $f(x)$ is bounded by some $M>0$ and also it is uniformly continuous so $ |f(x)-f(y)| < \varepsilon/(1+4M)$ for all $ |x-y| < \delta$ for some $0< \delta <1$. By Lemma 3.8.8 we can $(\varepsilon/(1+4M), \delta)$-approximate the identity with a polynomial $ g(x)$. Also by theorem 3.8.14 we have
+\[\left|f*g(x)-f(x)\right|\leq (1+4M)\frac{\varepsilon}{1+4M}  = \varepsilon\] for all $ x\in [0,1]$ since $ f*g(x)$ is a polynomial on $[0,1]$ by Lemma 3.8.13 we are now done.
+
+\textbf{3.8.8}
+
+Suppose hypothesis. Let $P(x)$ be a polynomial. Then $ P(x) = \sum_{n=0}^Na_nx^n$. We then have 
+\[\int_{[0,1]}f(x)P(x)dx =\int_{[0,1]}f(x)\sum_{n=0}^Na_nx^ndx = \sum_{n=0}^N\int_{[0,1]}f(x)a_nx^ndx =  \]
+\[\sum_{n=0}^Na_n\int_{[0,1]}f(x)x^ndx = 0\] where the last equality comes from $\int_{[0,1]}f(x)x^ndx  = 0$ for all $n$. By corollary 3.8.15 there is a polynomial such that $ |P(x)-f(x)| \leq \varepsilon$ on $ [0,1]$. Suppose there doesn't exist a polynomial such that $ P(x) = f(x)$. Then for all $P(x)$, we have $ |P(x) - f(x)| > 0$. So we have $ |P(x) -f(x)| > \lambda > 0$. But we have for some $P(x)$, $ |P(x) -f(x)|\leq \lambda/2$ by 3.8.15, a contradiction. Therefore we have a polynomial such that $ P(x) = f(x)$. Putting this polynomial into the integral we have
+\[\int_{[0,1]}f(x)^2dx = 0\] but since $f(x)^2\geq0$ and $f(x)$ is continuous, we must have $ f(x) = 0$ on $[0,1]$.
+
+\textbf{3.8.9}
+
+Let $\varepsilon$ and $x\in \textbf{R}$. We shall prove for when either $x=0$ or $x =1$ because the other cases can be easily proved using a $\delta$ which is smaller than $\min(|x-a|,|x-b|)$  In the case $ x =0$, we have $F(0) = 0$ and since $f(x)$ is continuous we know that $ |F(0) - F(y)| = |F(0) - f(y)|  < \varepsilon$ for all $y\in [0,1]$ such that $|0-y| < \delta$ for some $\delta$. Now for $ y < 0$, we consider $\delta<y<0$ and see that $ F(y) = 0$ by definition of $F$. Thus $ |F(0)-F(y)| = 0 < \varepsilon$ and so for all $ |0-y| < \delta$ we have $|F(0)-F(y)| < \varepsilon$ proving continuity at $ x =0$. In the case $ x = 1$ we follow the same logic. Thus we see that at all $x$ the function $F(x)$ is continuous as required.
+
+\section{Power Series}
+
+\textbf{4.1.1}
+
+Suppose hypothesis
+
+a) By the root test and positivity of $ R$ we have 
+\[\lim\sup_{n\to\infty}|c_{n}(x-a)^{n}|^{1/n} =\lim\sup_{n\to\infty}|c_{n}|^{1/n}|(x-a)|^{n/n}=\] \[\lim\sup_{n\to\infty}|c_{n}|^{1/n}|(x-a)| > \lim\sup_{n\to\infty}|c_{n}|^{1/n}R =\frac{\lim\sup_{n\to\infty}|c_{n}|^{1/n}}{\lim\sup_{n\to\infty}|c_{n}|^{1/n}} = 1\] and thus we can conclude that the series does indeed diverge for $ |x-a| > R$. 
+
+b) Similar to above we have
+\[\lim\sup_{n\to\infty}|c_{n}(x-a)^{n}|^{1/n} =\lim\sup_{n\to\infty}|c_{n}|^{1/n}|(x-a)|^{n/n}=\] \[\lim\sup_{n\to\infty}|c_{n}|^{1/n}|(x-a)| < \lim\sup_{n\to\infty}|c_{n}|^{1/n}R =\frac{\lim\sup_{n\to\infty}|c_{n}|^{1/n}}{\lim\sup_{n\to\infty}|c_{n}|^{1/n}} = 1\] and thus we can conclude that the series  does indeed absolutely converge for $ |x-a| < R$.
+
+c) Since $f^{(n)}(x) = c_n(x-a)^n$ is continuous, it is thus also bounded on the compact interval $[a-r,a+r]$.
+We then have $||f^{(n)}||_{\infty} = |c_nr^n|$. Since $ r<R$, we have by $b$ that 
+\[\sum_{n=0}^\infty|c_nr^n|\] does indeed converge. That means by the M-test we can conclude that $ \sum_{n=0}^\infty c_n(x-a)^n$ does indeed converge uniformly to $f$ and is also continuous as required.
+
+d) Consider the functions 
+\[f_{(N)}' = \sum_{n=0}^N c_n(x-a)^n\] Clearly the function is continuous and differentiable on the given interval with derivative
+\[f_{(N)}' = \sum_{n=1}^Nc_n n(x-a)^{n-1}\] Now consider
+\[f'(x) = \sum_{n=1}^\infty c_n n(x-a)^{n-1}\] 
+We have $||c_nn(x-a)^{n-1}||_\infty = n|c_n|r^{n-1}$. This results in
+\[\sum_{n=1}^\infty n|c_n|r^{n-1} =\frac{1}{r}\sum_{n=1}^\infty n|c_n|r^{n}  \] By the root test we have
+\[\lim\sup_{n\to\infty}|nc_nr^n|^{1/n} =\lim\sup_{n\to\infty}|nc_n|^{1/n}r <\]  \[\lim\sup_{n\to\infty}|nc_n|^{1/n}R =\frac{\lim\sup_{n\to\infty}|nc_n|^{1/n}}{\lim\sup_{n\to\infty}|c_n|^{1/n}} =\]  \[\frac{\lim\sup_{n\to\infty}|n|^{1/n}\lim\sup|c_n|^{1/n}}{\lim\sup_{n\to\infty}|c_n|^{1/n}} = 1\] where the second to last equality is true due to both the $\lim\sup$ being convergent and also having a positive sequence. We thus see that 
+\[\sum_{n=1}^\infty n|c_n|r^{n-1}\] converges which means by the M-test, we can conclude that 
+\[f'(x) = \sum_{n=1}^\infty c_n n(x-a)^{n-1}\] uniformly converges to $f'(x)$. We also have that $f(x)$ where $|x-a| < r$ exist due to part $b$. Thus by Theorem 3.7.1 we can conclude that because the sum converges uniformly to $f(x)$, that means $f(x)$ is differentiable with derivative $f'(x)$ on $[a-r,a+r]$. Since $ r$ was chosen arbitrarily as $ 0<r<R$. This also means that $f(x)$ is differentiable for all $x\in (a-R,a+R)$.
+
+e)
+
+\textbf{4.1.2}
+
+
+
+\end{document}
+  
