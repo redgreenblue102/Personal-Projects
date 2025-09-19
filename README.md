@@ -1,2 +1,2 @@
-# Personal-Projects
-Stuff that i did on my own time
+#Projects
+Some extracurriculars that I have done
